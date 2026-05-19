@@ -117,6 +117,30 @@ function sanitizeRichText(raw = '') {
     .join('');
 }
 
+
+
+function setSafeHtml(el, html) {
+  if (!el) return;
+  const sanitized = String(html || '')
+    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+    .replace(/\son[a-z]+\s*=\s*(["']).*?\1/gi, '')
+    .replace(/javascript:/gi, '');
+  el.innerHTML = sanitized;
+}
+
+async function fetchTextSafe(url, timeoutMs = 10000) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(`${url}${url.includes('?') ? '&' : '?'}_t=${Date.now()}`, { cache: 'no-store', signal: controller.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const ct = (res.headers.get('content-type') || '').toLowerCase();
+    if (ct.includes('text/html')) throw new Error('Unexpected HTML response');
+    return await res.text();
+  } finally {
+    clearTimeout(t);
+  }
+}
 function dedupePosts(posts = []) {
   const seen = new Set();
   return posts.filter((post, index) => {
@@ -128,9 +152,11 @@ function dedupePosts(posts = []) {
 }
 
 function normalizeBlogPost(post = {}, index = 0) {
+  const cleanId = String(post.id || `blog-${index + 1}`).trim().replace(/[^\w-]/g, '').slice(0, 80);
+  const cleanTitle = String(post.title || '').trim().slice(0, 200);
   return {
-    id: String(post.id || `blog-${index + 1}`).trim(),
-    title: String(post.title || '').trim(),
+    id: cleanId || `blog-${index + 1}`,
+    title: cleanTitle,
     category: String(post.category || '').trim(),
     description: String(post.description || post.details || '').trim(),
     short_description: String(post.short_description || '').trim(),
@@ -176,9 +202,7 @@ async function fetchPosts() {
   const tryUrls = [BLOG_PROXY_URL, BLOG_CSV_URL];
   for (const url of tryUrls) {
     try {
-      const res = await fetch(`${url}${url.includes('?') ? '&' : '?'}_t=${Date.now()}`, { cache: 'no-store' });
-      if (!res.ok) continue;
-      const csv = await res.text();
+      const csv = await fetchTextSafe(url);
       if (!csv || csv.trim().startsWith('{') || csv.trim().startsWith('<!')) continue;
       const rows = csv.trim().split(/\r?\n/);
       if (rows.length < 2) continue;
@@ -374,8 +398,8 @@ function initBlogPostPage() {
       if (pictureSource) pictureSource.srcset = postImageSrc;
       
       const contentHtml = sanitizeRichText(post.description || post.short_description || 'No content available.') || '<p>No content available.</p>';
-      document.getElementById('postContent').innerHTML = contentHtml;
-
+      setSafeHtml(document.getElementById('postContent'), contentHtml);
+      
       const actions = document.getElementById('postActions');
       actions.innerHTML = '';
       const pdfUrl = normalizeActionLink(post.pdf_link);
@@ -420,7 +444,7 @@ function initBlogPostPage() {
       renderSidebarPosts('latestPosts', 'latestPostsToggle', posts);
     })
     .catch(() => {
-      document.getElementById('postContent').innerHTML = '<p style="text-align:center;">Could not load blog posts. Please try again later.<br><button type="button" onclick="location.reload()">Retry</button></p>';
+      setSafeHtml(document.getElementById('postContent'), '<p style="text-align:center;">Could not load blog posts. Please try again later.<br><button type="button" onclick="location.reload()">Retry</button></p>');
     });
 }
 
