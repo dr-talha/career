@@ -1,3 +1,9 @@
+(function () {
+  if (window._CMS_SHEETS_LOADER_ACTIVE || window.loadCMSData || window._CMS_BOOTSTRAP_DONE) {
+    console.info('[CMS] Legacy image-optimizer CMS loader disabled to prevent duplicate rendering/race conditions.');
+    return;
+  }
+  window._CMS_LEGACY_LOADER_ACTIVE = true;
 // ============================================================
 // Career Pakistan — google-sheet-loader.js  (v7 — Vercel proxy)
 // ============================================================
@@ -400,4 +406,6 @@ window.stopAutoRefresh = function() { clearInterval(window._CMS_AUTO_REFRESH_TIM
   await _loadAllSheets(false);
   _fireReady();
   window.startAutoRefresh();
+})();
+
 })();
