@@ -963,12 +963,17 @@ function updateListSchema(items, type) {
   document.head.appendChild(script);
 }
 
+function renderGridFallback(grid, message) {
+  if (!grid) return;
+  grid.innerHTML = `<div class="card card-empty-state"><div class="card-body"><h3 class="card-title">${escapeHtml(message || "No data available right now")}</h3><p class="card-details">Please retry in a moment.</p></div></div>`;
+}
+
 // ── Generic renderCards dispatcher ───────────────────────────
 function renderCards(items, gridId, type) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
   if (!items || items.length === 0) {
-    grid.innerHTML = '';
+    renderGridFallback(grid, 'No items found for this section');
     return;
   }
   const renderers = {
@@ -1994,3 +1999,18 @@ function injectAdPlaceholders() {
     footer.insertAdjacentElement('beforebegin', buildAdSlot('footer', 'Footer Banner'));
   }
 }
+
+
+// CMS loading UI state bindings
+document.addEventListener('cmsLoading', function (event) {
+  var loading = !!(event && event.detail && event.detail.loading);
+  document.querySelectorAll('.cards-grid, .cards-container').forEach(function (el) {
+    el.classList.toggle('is-loading', loading);
+  });
+});
+
+document.addEventListener('cmsLoadFailed', function () {
+  document.querySelectorAll('.cards-grid').forEach(function (grid) {
+    if (!grid.children.length) renderGridFallback(grid, 'Data failed to load. Please refresh.');
+  });
+});
