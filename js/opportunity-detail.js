@@ -187,6 +187,13 @@
     el.setAttribute('content', content);
   }
 
+  function sanitizeHtmlFragment(html) {
+    return _text(html)
+      .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+      .replace(/\son[a-z]+\s*=\s*(["']).*?\1/gi, '')
+      .replace(/javascript:/gi, '');
+  }
+
   // ── Main render ───────────────────────────────────────────────
   function render(item, type) {
     const label    = TYPE_LABELS[type] || 'Opportunity';
@@ -303,7 +310,8 @@
     const bodyEl = document.getElementById('opportunityBody');
     if (bodyEl) {
       const rawText = item.details || item.description || item.short_description || '';
-      bodyEl.innerHTML = rawText ? rich()(rawText) : '<p>Full details are available via the apply link below.</p>';
+      const richHtml = rawText ? rich()(rawText) : '<p>Full details are available via the apply link below.</p>';
+      bodyEl.innerHTML = sanitizeHtmlFragment(richHtml);
     }
 
     // CTA buttons
