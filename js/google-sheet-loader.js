@@ -55,15 +55,27 @@ function _bool(val) {
   return s === 'true' || s === 'yes' || s === '1' || s === 'y';
 }
 
+function _num(val, fallback = null) {
+  const n = Number(String(val ?? '').replace(/,/g, '').trim());
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function _date(val) {
+  const raw = String(val ?? '').trim();
+  if (!raw) return '';
+  const d = new Date(raw);
+  return Number.isNaN(d.getTime()) ? raw : d.toISOString();
+}
+
 function _mapRichContentFields(r) {
   const pdfRaw = _getField(r, ['PDF Links', 'PDF Link', 'PDF']);
   const imgRaw = _getField(r, ['Image Links', 'Image Link', 'Image URL', 'Image']);
   return {
     details:     _getField(r, ['Details', 'Description']),
-    pdf_links:   pdfRaw  ? [pdfRaw]  : [],
-    image_links: imgRaw  ? [imgRaw]  : [],
-    media_links: _getField(r, ['Media Links', 'Media Link']) ? [_getField(r, ['Media Links', 'Media Link'])] : [],
-    source_link: _getField(r, ['Source Link', 'External Link']),
+    pdfLinks:   pdfRaw  ? [pdfRaw]  : [],
+    imageLinks: imgRaw  ? [imgRaw]  : [],
+    mediaLinks: _getField(r, ['Media Links', 'Media Link']) ? [_getField(r, ['Media Links', 'Media Link'])] : [],
+    sourceLink: _getField(r, ['Source Link', 'External Link']),
   };
 }
 
@@ -75,9 +87,9 @@ function mapScholarship(r) {
     title:             _getField(r, ['Title']),
     country:           _getField(r, ['Country']),
     funding:           _getField(r, ['Funding', 'Amount']),
-    deadline:          _getField(r, ['Deadline', 'Application Deadline']),
+    deadline:          _date(_getField(r, ['Deadline', 'Application Deadline'])),
     eligibility:       _getField(r, ['Eligibility']),
-    apply_link:        _getField(r, ['Apply Link', 'Link', 'URL']),
+    applyLink:        _getField(r, ['Apply Link', 'Link', 'URL']),
     // New columns
     type:              _getField(r, ['Type']),
     level:             _getField(r, ['Level']),
@@ -85,10 +97,10 @@ function mapScholarship(r) {
     university:        _getField(r, ['University']),
     province:          _getField(r, ['Province']),
     tags:              _getField(r, ['Tags']),
-    is_featured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
-    posted_date:       _getField(r, ['Posted Date', 'Date Added']),
-    short_description: _getField(r, ['Short Description', 'Summary', 'Excerpt']),
-    image_url:         _getField(r, ['Image Link', 'Image URL', 'Image']),
+    isFeatured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
+    postedDate:       _date(_getField(r, ['Posted Date', 'Date Added'])),
+    shortDescription: _getField(r, ['Short Description', 'Summary', 'Excerpt']),
+    imageUrl:         _getField(r, ['Image Link', 'Image URL', 'Image']),
     ..._mapRichContentFields(r),
   };
 }
@@ -101,18 +113,18 @@ function mapJob(r) {
     location:          _getField(r, ['Location', 'City']),
     salary:            _getField(r, ['Salary', 'Compensation']),
     organization:      _getField(r, ['Organization', 'Company']),
-    apply_link:        _getField(r, ['Apply Link', 'Link', 'URL']),
+    applyLink:        _getField(r, ['Apply Link', 'Link', 'URL']),
     // New columns
-    deadline:          _getField(r, ['Deadline']),
+    deadline:          _date(_getField(r, ['Deadline'])),
     category:          _getField(r, ['Category']),
     province:          _getField(r, ['Province']),
     experience:        _getField(r, ['Experience']),
     education:         _getField(r, ['Education']),
     tags:              _getField(r, ['Tags']),
-    is_featured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
-    posted_date:       _getField(r, ['Posted Date', 'Date Added']),
-    short_description: _getField(r, ['Short Description', 'Summary']),
-    image_url:         _getField(r, ['Image Link', 'Image URL', 'Image']),
+    isFeatured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
+    postedDate:       _date(_getField(r, ['Posted Date', 'Date Added'])),
+    shortDescription: _getField(r, ['Short Description', 'Summary']),
+    imageUrl:         _getField(r, ['Image Link', 'Image URL', 'Image']),
     ..._mapRichContentFields(r),
   };
 }
@@ -125,17 +137,17 @@ function mapInternship(r) {
     location:          _getField(r, ['Location', 'City']),
     stipend:           _getField(r, ['Stipend', 'Compensation']),
     duration:          _getField(r, ['Duration']),
-    apply_link:        _getField(r, ['Apply Link', 'Link', 'URL']),
+    applyLink:        _getField(r, ['Apply Link', 'Link', 'URL']),
     // New columns
-    deadline:          _getField(r, ['Deadline']),
+    deadline:          _date(_getField(r, ['Deadline'])),
     type:              _getField(r, ['Type']),
     category:          _getField(r, ['Category']),
     tags:              _getField(r, ['Tags']),
-    is_featured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
-    posted_date:       _getField(r, ['Posted Date', 'Date Added']),
-    short_description: _getField(r, ['Short Description', 'Summary']),
+    isFeatured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
+    postedDate:       _date(_getField(r, ['Posted Date', 'Date Added'])),
+    shortDescription: _getField(r, ['Short Description', 'Summary']),
     education_level:   _getField(r, ['Education Level', 'Education']),
-    image_url:         _getField(r, ['Image Link', 'Image URL', 'Image']),
+    imageUrl:         _getField(r, ['Image Link', 'Image URL', 'Image']),
     ..._mapRichContentFields(r),
   };
 }
@@ -144,23 +156,23 @@ function mapExam(r) {
   return {
     id:                    _getField(r, ['ID']) || String(r.__rowIndex || ''),
     title:                 _getField(r, ['Title', 'Exam Name']),
-    exam_type:             _getField(r, ['Exam Type', 'Type']),
+    examType:             _getField(r, ['Exam Type', 'Type']),
     test_date:             _getField(r, ['Test Date', 'Date']),
-    registration_deadline: _getField(r, ['Registration Deadline']),
-    apply_link:            _getField(r, ['Apply Link', 'Link', 'URL']),
+    registrationDeadline: _getField(r, ['Registration Deadline']),
+    applyLink:            _getField(r, ['Apply Link', 'Link', 'URL']),
     // New columns
-    conducting_body:  _getField(r, ['Conducting Body', 'Authority']),
-    fee:              _getField(r, ['Fee', 'Registration Fee']),
+    conductingBody:  _getField(r, ['Conducting Body', 'Authority']),
+    fee:              _num(_getField(r, ['Fee', 'Registration Fee']), _getField(r, ['Fee', 'Registration Fee'])),
     eligibility:      _getField(r, ['Eligibility']),
-    syllabus_link:    _getField(r, ['Syllabus Link']),
-    past_papers_link: _getField(r, ['Past Papers Link', 'Past Papers']),
+    syllabusLink:    _getField(r, ['Syllabus Link']),
+    pastPapersLink: _getField(r, ['Past Papers Link', 'Past Papers']),
     tags:             _getField(r, ['Tags']),
     province:         _getField(r, ['Province']),
-    short_description:_getField(r, ['Short Description', 'Summary']),
-    is_featured:      _bool(_getField(r, ['Is Featured', 'Featured'])),
-    posted_date:      _getField(r, ['Posted Date', 'Date Added']),
+    shortDescription:_getField(r, ['Short Description', 'Summary']),
+    isFeatured:      _bool(_getField(r, ['Is Featured', 'Featured'])),
+    postedDate:      _getField(r, ['Posted Date', 'Date Added']),
     category:         _getField(r, ['Category']),
-    image_url:        _getField(r, ['Image Link', 'Image URL', 'Image']),
+    imageUrl:        _getField(r, ['Image Link', 'Image URL', 'Image']),
     ..._mapRichContentFields(r),
   };
 }
@@ -170,21 +182,21 @@ function mapBook(r) {
     id:                _getField(r, ['ID']) || String(r.__rowIndex || ''),
     title:             _getField(r, ['Title', 'Book Title']),
     author:            _getField(r, ['Author']),
-    exam_type:         _getField(r, ['Exam Type', 'For Exam']),
-    price:             _getField(r, ['Price']),
-    apply_link:        _getField(r, ['Apply Link', 'Link', 'URL']),
+    examType:         _getField(r, ['Exam Type', 'For Exam']),
+    price:             _num(_getField(r, ['Price']), _getField(r, ['Price'])),
+    applyLink:        _getField(r, ['Apply Link', 'Link', 'URL']),
     // New columns
     category:          _getField(r, ['Category']),
     language:          _getField(r, ['Language']),
-    pages:             _getField(r, ['Pages']),
+    pages:             _num(_getField(r, ['Pages']), null),
     edition:           _getField(r, ['Edition']),
-    is_free:           _bool(_getField(r, ['Is Free', 'Free'])),
+    isFree:           _bool(_getField(r, ['Is Free', 'Free'])),
     tags:              _getField(r, ['Tags']),
-    short_description: _getField(r, ['Short Description', 'Summary']),
-    is_featured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
-    posted_date:       _getField(r, ['Posted Date', 'Date Added']),
-    download_link:     _getField(r, ['Download Link', 'PDF Download']),
-    image_url:         _getField(r, ['Image Link', 'Image URL', 'Image']),
+    shortDescription: _getField(r, ['Short Description', 'Summary']),
+    isFeatured:       _bool(_getField(r, ['Is Featured', 'Featured'])),
+    postedDate:       _date(_getField(r, ['Posted Date', 'Date Added'])),
+    downloadLink:     _getField(r, ['Download Link', 'PDF Download']),
+    imageUrl:         _getField(r, ['Image Link', 'Image URL', 'Image']),
     ..._mapRichContentFields(r),
   };
 }
@@ -195,19 +207,19 @@ function mapBlog(r) {
     title:               _getField(r, ['Title']),
     category:            _getField(r, ['Category']),
     description:         _getField(r, ['Description', 'Content', 'Details']),
-    short_description:   _getField(r, ['Short Description', 'Summary', 'Excerpt']),
-    image_url:           _getField(r, ['Image URL', 'Image Link', 'Image']),
+    shortDescription:   _getField(r, ['Short Description', 'Summary', 'Excerpt']),
+    imageUrl:           _getField(r, ['Image URL', 'Image Link', 'Image']),
     author:              _getField(r, ['Author']),
-    date:                _getField(r, ['Date', 'Published Date', 'Posted Date']),
+    date:                _date(_getField(r, ['Date', 'Published Date', 'Posted Date'])),
     tags:                _getField(r, ['Tags']),
-    is_featured:         _bool(_getField(r, ['Featured?', 'Featured', 'Is Featured'])),
-    apply_link:          _getField(r, ['Apply Link', 'Link', 'URL']),
-    pdf_link:            _getField(r, ['PDF Link', 'Document Link']),
+    isFeatured:         _bool(_getField(r, ['Featured?', 'Featured', 'Is Featured'])),
+    applyLink:          _getField(r, ['Apply Link', 'Link', 'URL']),
+    pdfLink:            _getField(r, ['PDF Link', 'Document Link']),
     // New columns
-    related_jobs_tags:   _getField(r, ['Related Jobs Tags']),
-    related_exams_tags:  _getField(r, ['Related Exams Tags']),
-    read_time:           _getField(r, ['Read Time']),
-    is_published:        _bool(_getField(r, ['Is Published', 'Published'])),
+    relatedJobsTags:   _getField(r, ['Related Jobs Tags']),
+    relatedExamsTags:  _getField(r, ['Related Exams Tags']),
+    readTime:           _getField(r, ['Read Time']),
+    isPublished:        _bool(_getField(r, ['Is Published', 'Published'])),
     ..._mapRichContentFields(r),
   };
 }
@@ -217,7 +229,10 @@ function mapNotification(r) {
     id:        _getField(r, ['ID']) || String(r.__rowIndex || ''),
     message:   _getField(r, ['Message', 'Text', 'Title']),
     link:      _getField(r, ['Link', 'URL']),
-    is_active: _bool(_getField(r, ['Is Active', 'Active', 'Show'])),
+    startDate: _date(_getField(r, ['Start Date'])),
+    endDate:   _date(_getField(r, ['End Date'])),
+    priority:  _num(_getField(r, ['Priority']), _getField(r, ['Priority'])),
+    isActive: _bool(_getField(r, ['Is Active', 'Active', 'Show'])),
   };
 }
 
@@ -246,127 +261,74 @@ function _parseCSV(text) {
     row.push(field.trim());
     if (row.some(c => c !== '')) rows.push(row);
   }
-  return rows;
+  if (!rows.length) return [];
+  const headers = rows[0].map(h => String(h || '').trim());
+  return rows.slice(1).map((r, idx) => {
+    const obj = { __rowIndex: idx + 2 };
+    headers.forEach((h, i) => { obj[h] = r[i] ?? ''; });
+    return obj;
+  });
 }
 
+// ── Normalizers / safety ──────────────────────────────────────
+function _normalizeItem(item) {
+  const out = { ...item };
 
-const CMS_FETCH_TIMEOUT_MS = 12000;
-const CMS_RETRY_ATTEMPTS = 2;
-const REQUIRED_FIELDS_BY_SHEET = {
-  Scholarships: ['title'], Jobs: ['title'], Internships: ['title'], Exams: ['title'], Books: ['title'], Blogs: ['title'], Notifications: ['message']
-};
+  if (!out.id) out.id = String(Math.random()).slice(2);
+  out.title = out.title || out.message || '';
+  out.details = out.details || out.description || '';
+  out.tags = out.tags || '';
 
-function withTimeout(promise, ms, label) {
-  return Promise.race([
-    promise,
-    new Promise((_, reject) => setTimeout(() => reject(new Error(`${label} timeout after ${ms}ms`)), ms)),
-  ]);
-}
+  if (!Array.isArray(out.pdfLinks)) out.pdfLinks = out.pdfLinks ? [out.pdfLinks] : [];
+  if (!Array.isArray(out.imageLinks)) out.imageLinks = out.imageLinks ? [out.imageLinks] : [];
+  if (!Array.isArray(out.mediaLinks)) out.mediaLinks = out.mediaLinks ? [out.mediaLinks] : [];
 
-async function fetchWithRetry(url, options, attempts, label) {
-  let lastError;
-  for (let i = 0; i <= attempts; i++) {
-    try {
-      return await withTimeout(fetch(url, options), CMS_FETCH_TIMEOUT_MS, label);
-    } catch (err) {
-      lastError = err;
-      if (i === attempts) break;
-      await new Promise((r) => setTimeout(r, 250 * (i + 1)));
-    }
-  }
-  throw lastError;
-}
-
-function validateAndNormalizeItems(sheetName, items) {
-  const required = REQUIRED_FIELDS_BY_SHEET[sheetName] || ['title'];
-  const out = [];
-  const seen = new Set();
-  for (const item of items || []) {
-    if (!item || typeof item !== 'object') continue;
-    const hasRequired = required.some((k) => String(item[k] ?? '').trim().length > 0);
-    if (!hasRequired) continue;
-    const id = String(item.id ?? '').trim();
-    const title = String(item.title ?? item.message ?? '').trim().toLowerCase();
-    const key = `${id}|${title}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push(item);
-  }
   return out;
 }
 
-// ── Load a single sheet ───────────────────────────────────────
-async function loadSheetData(sheetConfig) {
-  try {
-    // ✅ BUG FIX #7 — removed '&_t=' + Date.now() and cache: 'no-store'
-    // cache: 'default' lets the browser + Vercel CDN cache the response
-    const response = await fetchWithRetry(sheetConfig.csvUrl, { cache: 'default' }, CMS_RETRY_ATTEMPTS, sheetConfig.name);
-    
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-    const text = await response.text();
-
-    if (!text || text.trim().startsWith('<!') || text.trim().startsWith('{')) {
-      console.warn('[CMS] Bad response for', sheetConfig.name, text.slice(0, 80));
-      window.CMS_DATA[sheetConfig.name] = [];
-      return [];
-    }
-
-    const rows = _parseCSV(text);
-    if (rows.length < 2) { window.CMS_DATA[sheetConfig.name] = []; return []; }
-
-    const headers = rows[0].map(h => h.trim());
-    const objects = rows.slice(1).map((row, idx) => {
-      const obj = {};
-      headers.forEach((h, i) => { obj[h] = (row[i] || '').trim(); });
-      obj.__rowIndex = idx + 1;
-      return obj;
-    }).filter(obj => headers.some(h => obj[h] !== ''));
-
-    const mappedData = validateAndNormalizeItems(sheetConfig.name, objects.map(sheetConfig.mapper));
-    window.CMS_DATA[sheetConfig.name] = mappedData;
-    console.info(`[CMS] ✅ ${sheetConfig.name}: ${mappedData.length} items`);
-    return mappedData;
-  } catch (error) {
-    console.error('[CMS] Failed to load', sheetConfig.name, error.message);
-    // Keep previous data as fallback to avoid blank/flicker sections on transient failures
-    if (!Array.isArray(window.CMS_DATA[sheetConfig.name])) window.CMS_DATA[sheetConfig.name] = [];
-    return window.CMS_DATA[sheetConfig.name];
-  }
+function _dedupeByIdTitle(arr) {
+  const seen = new Set();
+  return arr.filter((it) => {
+    const key = `${it.id}::${(it.title || '').toLowerCase()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
-// ── Load all sheets in parallel ───────────────────────────────
+// ── Loader ────────────────────────────────────────────────────
+async function loadOneSheet(cfg) {
+  const res = await fetch(cfg.csvUrl, { cache: 'default' });
+  if (!res.ok) throw new Error(`${cfg.name}: HTTP ${res.status}`);
+  const text = await res.text();
+  const rows = _parseCSV(text);
+  const mapped = rows.map(cfg.mapper).map(_normalizeItem);
+  return _dedupeByIdTitle(mapped);
+}
+
 async function loadAllSheets() {
-  if (window.CMS_LOADING.global) return;
+  if (window.CMS_LOADING.global) return window.CMS_DATA;
   window.CMS_LOADING.global = true;
-  document.dispatchEvent(new CustomEvent('cmsLoading', { detail: { loading: true } }));
-  const promises = SHEETS_CONFIG.map(async (config) => {
-    window.CMS_LOADING[config.name] = true;
-    try {
-      await loadSheetData(config);
-    } finally {
-      window.CMS_LOADING[config.name] = false;
+
+  const results = await Promise.allSettled(SHEETS_CONFIG.map(loadOneSheet));
+  results.forEach((r, i) => {
+    const key = SHEETS_CONFIG[i].name;
+    if (r.status === 'fulfilled') {
+      window.CMS_DATA[key] = r.value;
+      window.CMS_DATA[key.toLowerCase()] = r.value;
+    } else {
+      console.error(`[CMS] Failed loading ${key}:`, r.reason);
+      window.CMS_DATA[key] = [];
+      window.CMS_DATA[key.toLowerCase()] = [];
     }
   });
 
-  await Promise.allSettled(promises);
-
-  if (typeof window._fireCMSReady === 'function') {
-    window._fireCMSReady();
-  } else {
-    window._CMS_READY = true;
-    document.dispatchEvent(new CustomEvent('cmsReady', { detail: window.CMS_DATA }));
-  }
-
-  window.dispatchEvent(new CustomEvent('cmsDataLoaded', { detail: { data: window.CMS_DATA } }));
-  document.dispatchEvent(new CustomEvent('cmsLoading', { detail: { loading: false } }));
   window.CMS_LOADING.global = false;
+  return window.CMS_DATA;
 }
 
-// ── Boot ──────────────────────────────────────────────────────
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadAllSheets);
-} else {
-  loadAllSheets();
-}
-
-window.loadCMSData = loadAllSheets;
+window.loadAllSheets = loadAllSheets;
+window.onCMSReady = function onCMSReady(fn) {
+  if (typeof fn !== 'function') return;
+  loadAllSheets().then(() => fn(window.CMS_DATA)).catch(() => fn(window.CMS_DATA));
+};
