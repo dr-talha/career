@@ -1488,10 +1488,16 @@ function initMenu() {
     if (e.key === 'Escape' && menuOpen) closeMenu();
   });
 
-  // On resize: rebuild correctly (close if switching breakpoints)
-  window.addEventListener('resize', () => {
-    if (menuOpen) closeMenu();
-  });
+  // On resize/orientation change: keep drawer state sane
+  let resizeTimer = null;
+  const handleViewportChange = () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (menuOpen) closeMenu();
+    }, 120);
+  };
+  window.addEventListener('resize', handleViewportChange, { passive: true });
+  window.addEventListener('orientationchange', handleViewportChange, { passive: true });
   
   // Navbar scroll shadow
   const navEl = document.getElementById('navbar');
