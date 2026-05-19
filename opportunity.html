@@ -8,18 +8,18 @@
   <meta name="theme-color" content="#0f766e"/>
   <title id="pageMetaTitle">Opportunity Detail | Career Pakistan</title>
   <meta name="description" id="pageMetaDesc" content="View full details, apply links, and PDF resources for this opportunity on Career Pakistan."/>
-  <link rel="canonical" id="pageMetaCanonical" href="https://careerpk.vercel.app/opportunity.html"/>
+  <link rel="canonical" id="pageMetaCanonical" href="https://careerpk.online/opportunity.html"/>
   <meta property="og:type" content="article" id="ogType"/>
-  <meta property="og:url" id="ogUrl" content="https://careerpk.vercel.app/opportunity.html"/>
+  <meta property="og:url" id="ogUrl" content="https://careerpk.online/opportunity.html"/>
   <meta property="og:title" id="ogTitle" content="Opportunity | Career Pakistan"/>
   <meta property="og:description" id="ogDesc" content="View full details on Career Pakistan."/>
-  <meta property="og:image" id="ogImage" content="https://careerpk.vercel.app/banner.png"/>
+  <meta property="og:image" id="ogImage" content="https://careerpk.online/banner.png"/>
   <meta property="og:site_name" content="Career Pakistan"/>
   <meta property="og:locale" content="en_PK"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" id="twTitle" content="Opportunity | Career Pakistan"/>
   <meta name="twitter:description" id="twDesc" content="View full details on Career Pakistan."/>
-  <meta name="twitter:image" id="twImage" content="https://careerpk.vercel.app/banner.png"/>
+  <meta name="twitter:image" id="twImage" content="https://careerpk.online/banner.png"/>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
   <link rel="dns-prefetch" href="https://i.ibb.co"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -36,9 +36,7 @@
   <link rel="manifest" href="manifest.json"/>
   <script src="js/cms-bootstrap.js"></script>
   <script src="js/seo.js" defer></script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-  <script defer src="/_vercel/insights/script.js"></script>
-  <style>
+<style>
     .opp-layout { display:grid; grid-template-columns:1fr 320px; gap:2rem; align-items:start; }
     @media(max-width:900px){ .opp-layout { grid-template-columns:1fr; } .opp-sidebar { order:2; } }
     .opp-main { min-width:0; }
@@ -68,6 +66,7 @@
     .opp-description p { margin-bottom:1rem; }
     .badge-new { background:#16a34a; color:#fff; font-size:.7rem; font-weight:700; padding:.2rem .55rem; border-radius:var(--radius-full); vertical-align:middle; margin-left:.4rem; }
   </style>
+  <script src="js/analytics-loader.js" defer></script>
 </head>
 <body>
 
@@ -317,7 +316,7 @@ function renderOpportunity(item, type) {
   const pageUrl = window.location.href;
   const title   = item.title || 'Opportunity';
   const desc    = item.short_description || item.details?.slice(0,160) || `View ${TYPE_LABELS[type]} details on Career Pakistan.`;
-  const img     = item.image_url || item.image_links?.[0] || 'https://careerpk.vercel.app/banner.png';
+  const img     = item.image_url || item.image_links?.[0] || 'https://careerpk.online/banner.png';
 
   setMeta('pageMetaTitle', title + ' | Career Pakistan');
   setMeta('pageMetaDesc', desc, 'content');
