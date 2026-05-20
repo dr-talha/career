@@ -8,7 +8,7 @@
 const TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 // ── Utility: fetch sheet data from live window.CMS_DATA ──────
-window.CMS_DATA = window.CMS_DATA || { Scholarships: [], Jobs: [], Internships: [], Exams: [], Books: [], Notifications: [] };
+window.CMS_DATA = window.CMS_DATA || { Scholarships: [], Jobs: [], Internships: [], Exams: [], Books: [], Notifications: [], scholarships: [], internships: [], exams: [], books: [], notifications: [], blogs: [] };
 
 function fetchSheet(sheetName) {
   return Promise.resolve((window.CMS_DATA[sheetName] || []).slice());
@@ -145,7 +145,7 @@ function isTeraBoxUrl(url) {
 function collectResourceLinks(item) {
   const fields = [
     'pdf_link', 'pdf_links', 'image_links', 'media_links', 'source_link', 'details',
-    'description', 'download_link', 'apply_link', 'registration_link', 'syllabus_link', 'past_papers_link'
+    'description', 'download_link', 'applyLink', 'registration_link', 'syllabus_link', 'past_papers_link'
   ];
   const urls = [];
   fields.forEach((field) => {
@@ -460,7 +460,7 @@ function openCardPost(id, type) {
 // ── Card renderers ───────────────────────────────────────────
 function cardScholarship(s) {
   const fav = isFav(s.id, 'scholarship');
-  const src = imgSrc(s.image_url, 'scholarship');
+  const src = imgSrc(s.imageUrl, 'scholarship');
   const imgHTML = src
     ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(s.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
     : '';
@@ -469,7 +469,7 @@ function cardScholarship(s) {
     <div class="card-img">
       ${imgHTML}
       <div class="card-img-placeholder" style="${src ? 'display:none' : ''}">🎓</div>
-      ${s.is_featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      ${s.isFeatured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
       ${urgencyBadge(s.deadline)}
     </div>
     <div class="card-body">
@@ -495,14 +495,14 @@ function cardScholarship(s) {
 
 function cardJob(j) {
   const fav = isFav(j.id, 'job');
-  const src = imgSrc(j.image_url, 'job');
+  const src = imgSrc(j.imageUrl, 'job');
   const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(j.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
   return `
   <div class="card" data-id="${j.id}" data-type="job" role="button" tabindex="0" aria-label="View details for ${escapeHtml(j.title)}">
     <div class="card-img">
       ${imgHTML}
       <div class="card-img-placeholder" style="${src ? 'display:none' : ''}">💼</div>
-      ${j.is_featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      ${j.isFeatured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
       ${urgencyBadge(j.deadline)}
     </div>
     <div class="card-body">
@@ -528,7 +528,7 @@ function cardJob(j) {
 
 function cardInternship(i) {
   const fav = isFav(i.id, 'internship');
-  const src = imgSrc(i.image_url, 'internship');
+  const src = imgSrc(i.imageUrl, 'internship');
   const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(i.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
   const paidClass = (i.type || '').toLowerCase() === 'paid' ? 'paid' : 'unpaid';
   return `
@@ -536,7 +536,7 @@ function cardInternship(i) {
     <div class="card-img">
       ${imgHTML}
       <div class="card-img-placeholder" style="${src ? 'display:none' : ''}">🚀</div>
-      ${i.is_featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      ${i.isFeatured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
       ${urgencyBadge(i.deadline)}
     </div>
     <div class="card-body">
@@ -565,21 +565,22 @@ function cardInternship(i) {
 
 function cardExam(e) {
   const fav = isFav(e.id, 'exam');
-  const src = imgSrc(e.image_url, 'exam');
+  const src = imgSrc(e.imageUrl, 'exam');
   const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(e.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
   return `
   <div class="card" data-id="${e.id}" data-type="exam" role="button" tabindex="0" aria-label="View details for ${escapeHtml(e.title)}">
     <div class="card-img">
       ${imgHTML}
       <div class="card-img-placeholder" style="${src ? 'display:none' : ''}">📋</div>
-      ${urgencyBadge(e.test_date)}
+      ${e.isFeatured === true ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      ${urgencyBadge(e.testDate)}
     </div>
     <div class="card-body">
-      <div class="card-meta">${renderMetaTags([e.exam_type, e.fee])}</div>
+      <div class="card-meta">${renderMetaTags([e.examType, e.fee])}</div>
       <h3 class="card-title">${escapeHtml(e.title)}</h3>
       <div class="card-details">
-        ${e.test_date ? `<span><i class="fa fa-calendar"></i> Test: <span class="deadline-date">${formatDate(e.test_date)}</span></span>` : ''}
-        ${e.conducting_body ? `<span><i class="fa fa-building"></i> ${escapeHtml(e.conducting_body)}</span>` : ''}
+        ${e.testDate ? `<span><i class="fa fa-calendar"></i> Test: <span class="deadline-date">${formatDate(e.testDate)}</span></span>` : ''}
+        ${e.conductingBody ? `<span><i class="fa fa-building"></i> ${escapeHtml(e.conductingBody)}</span>` : ''}
       </div>
     </div>
     <div class="card-footer exam-links">
@@ -597,17 +598,18 @@ function cardExam(e) {
 
 function cardBook(b) {
   const fav = isFav(b.id, 'book');
-  const src = imgSrc(b.image_url, 'book');
+  const src = imgSrc(b.imageUrl, 'book');
   const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
   return `
   <div class="card" data-id="${b.id}" data-type="book" role="button" tabindex="0" aria-label="View details for ${escapeHtml(b.title)}">
     <div class="card-img">
       ${imgHTML}
       <div class="card-img-placeholder" style="${src ? 'display:none' : ''}">📚</div>
-      ${b.is_free ? '<span class="featured-badge free-badge">📥 Free PDF</span>' : ''}
+      ${b.isFeatured === true ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      ${b.isFree ? '<span class="featured-badge free-badge">📥 Free PDF</span>' : ''}
     </div>
     <div class="card-body">
-      <div class="card-meta">${renderMetaTags([b.exam_type, b.language])}</div>
+      <div class="card-meta">${renderMetaTags([b.examType, b.language])}</div>
       <h3 class="card-title">${escapeHtml(b.title)}</h3>
       <div class="card-details">
         ${b.author ? `<span><i class="fa fa-user"></i> ${escapeHtml(b.author)}</span>` : ''}
@@ -688,7 +690,7 @@ function openCardDetails(item, type) {
   const image = document.getElementById('cardDetailImage');
   const fallback = document.getElementById('cardDetailImageFallback');
   const title = text(item.title);
-  const src = imgSrc(item.image_url, type);
+  const src = imgSrc(item.imageUrl, type);
   document.getElementById('cardDetailType').textContent = (type || '').toUpperCase();
   document.getElementById('cardDetailTitle').textContent = title;
   document.getElementById('cardDetailSummary').textContent = text(item.description || item.details || 'Verified opportunity details are listed below.');
@@ -725,13 +727,13 @@ function openCardDetails(item, type) {
     fields.push(detailField('Stipend', item.stipend, 'fa-money-bill'));
     fields.push(detailField('Deadline', formatDate(item.deadline), 'fa-calendar'));
   } else if (type === 'exam') {
-    fields.push(detailField('Exam Type', item.exam_type, 'fa-book'));
+    fields.push(detailField('Exam Type', item.examType, 'fa-book'));
     fields.push(detailField('Fee', item.fee, 'fa-money-bill'));
-    fields.push(detailField('Test Date', formatDate(item.test_date), 'fa-calendar'));
+    fields.push(detailField('Test Date', formatDate(item.testDate), 'fa-calendar'));
     fields.push(detailField('Eligibility', item.eligibility, 'fa-user-check'));
-    fields.push(detailField('Conducting Body', item.conducting_body, 'fa-building'));
+    fields.push(detailField('Conducting Body', item.conductingBody, 'fa-building'));
   } else if (type === 'book') {
-    fields.push(detailField('Exam', item.exam_type, 'fa-book'));
+    fields.push(detailField('Exam', item.examType, 'fa-book'));
     fields.push(detailField('Author', item.author, 'fa-user'));
     fields.push(detailField('Edition', item.edition, 'fa-book-open'));
     fields.push(detailField('Language', item.language, 'fa-language'));
@@ -740,7 +742,7 @@ function openCardDetails(item, type) {
   document.getElementById('cardDetailFields').innerHTML = fields.filter(Boolean).join('');
 
   const actions = [
-    detailAction('Apply Now', item.apply_link, true),
+    detailAction('Apply Now', item.applyLink, true),
     detailAction('Register', item.registration_link, true),
     detailAction('Download', item.download_link, true),
     detailAction('Buy Book', item.buy_link),
@@ -826,7 +828,7 @@ function detectPageTopic(type) {
 }
 
 function getTimelineValue(item) {
-  return item?.deadline || item?.test_date || item?.posted_date || '';
+  return item?.deadline || item?.testDate || item?.posted_date || '';
 }
 
 function shortTitle(value, max = 44) {
@@ -842,7 +844,7 @@ function isBookTopic(topic) {
 function getExamGroupName(exam) {
   const category = text(exam?.category).trim();
   if (category) return category;
-  const type = text(exam?.exam_type).trim();
+  const type = text(exam?.examType).trim();
   if (type) return type;
   return 'Other';
 }
@@ -850,7 +852,7 @@ function getExamGroupName(exam) {
 function getBookGroupName(book) {
   const category = text(book?.category).trim();
   if (category) return category;
-  const examType = text(book?.exam_type).trim();
+  const examType = text(book?.examType).trim();
   if (examType) return examType;
   return 'General';
 }
@@ -887,7 +889,7 @@ function renderSEOLinks(items) {
     .slice(0, 6)
     .map((item) => {
       const title = escapeHtml(item.title || 'Opportunity');
-      const url = safeUrl(item.apply_link || item.source_link || item.registration_link || item.download_link || '#');
+      const url = safeUrl(item.applyLink || item.source_link || item.registration_link || item.download_link || '#');
       if (url === '#') return `<li>${title}</li>`;
       return `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></li>`;
     })
@@ -957,7 +959,7 @@ function updateListSchema(items, type) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.title || `${topic.label} listing`,
-      url: safeUrl(item.apply_link || item.source_link || item.registration_link || item.download_link || window.location.href)
+      url: safeUrl(item.applyLink || item.source_link || item.registration_link || item.download_link || window.location.href)
     }))
   });
   document.head.appendChild(script);
@@ -1030,8 +1032,8 @@ function sortItems(items, sort) {
   const arr = [...items];
   if (sort === 'deadline') {
     arr.sort((a, b) => {
-      const da = a.deadline || a.test_date || '9999';
-      const db = b.deadline || b.test_date || '9999';
+      const da = a.deadline || a.testDate || '9999';
+      const db = b.deadline || b.testDate || '9999';
       return new Date(da) - new Date(db);
     });
   } else if (sort === 'oldest') {
@@ -1189,7 +1191,7 @@ const container = document.getElementById(containerId);
   const deduped = [];
   const seen = new Set();
   (sortItems(rows || [], sortMode)).forEach((item) => {
-    const key = `${text(item.title).toLowerCase()}|${text(item.test_date || item.deadline || item.posted_date)}`;
+    const key = `${text(item.title).toLowerCase()}|${text(item.testDate || item.deadline || item.posted_date)}`;
     if (seen.has(key)) return;
     seen.add(key);
     deduped.push(item);
@@ -1213,8 +1215,8 @@ const container = document.getElementById(containerId);
     else if (type === 'internship') groupName = text(item.type || item.duration || 'Internship');
     const dateLabel = type === 'book' ? 'Updated' : 'Deadline';
     const dateValue = type === 'book'
-      ? (item.posted_date || item.deadline || item.test_date)
-      : (item.deadline || item.test_date || item.posted_date);
+      ? (item.posted_date || item.deadline || item.testDate)
+      : (item.deadline || item.testDate || item.posted_date);
     const d = daysUntil(dateValue);
     const urgencyBadgeHTML = (type !== 'book' && d >= 0 && d <= urgentThresholdDays)
       ? '<span class="badge badge-urgent">Closing Soon</span>'
@@ -1238,7 +1240,7 @@ const container = document.getElementById(containerId);
 function loadNotifications() {
   const track = document.getElementById('notifTrack');
   if (!track) return;
-  const notifs = (window.CMS_DATA.Notifications || []).filter(n => n.is_active);
+  const notifs = (window.CMS_DATA.Notifications || []).filter(n => n.isActive);
   if (notifs.length === 0) return;
   const html = notifs.map(n =>
     `<a href="${safeUrl(n.link)}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">${escapeHtml(n.message)}</a>`
@@ -1548,7 +1550,7 @@ function showPopup() {
   document.getElementById('popupTitle').textContent = text(urgent.title);
   document.getElementById('popupDesc').textContent = text(urgent.description);
   document.getElementById('popupDeadline').textContent = formatDate(urgent.deadline);
-  document.getElementById('popupLink').href = safeUrl(urgent.apply_link);
+  document.getElementById('popupLink').href = safeUrl(urgent.applyLink);
   document.getElementById('popupOverlay').style.display = 'block';
   document.getElementById('popupModal').style.display = 'block';
 }
@@ -1635,7 +1637,7 @@ function loadFavoritesPage() {
 }
 
 function storeFavoriteDeadline(item, type) {
-  const deadline = item?.deadline || item?.test_date;
+  const deadline = item?.deadline || item?.testDate;
   if (!deadline) return;
   const key = `${type}:${item.id}`;
   const current = JSON.parse(localStorage.getItem('ch_fav_deadlines') || '{}');
