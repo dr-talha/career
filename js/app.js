@@ -1292,13 +1292,10 @@ function ensureChatbotLoaded() {
 }
 
 // ── Menu System ─────────────────────────────────────────────────
-// Strategy:
-//   Mobile (<768px) : hamburger opens #navLinks as left-side drawer
-//   Desktop (>=768px): hamburger opens #navDrawer as right-side panel
-//
+// Unified responsive navbar behavior
 let menuOpen = false;
 
-function isMobile() { return window.innerWidth < 768; }
+function isMobile() { return window.innerWidth <= 768; }
 
 // ── Overlay ──────────────────────────────────────────────────────
 function getOverlay() {
@@ -1327,98 +1324,6 @@ function hideOverlay() {
   setTimeout(() => { o.style.display = ''; }, 350);
 }
 
-// ── Desktop Drawer (#navDrawer) ──────────────────────────────────
-function buildDesktopDrawer() {
-  let drawer = document.getElementById('navDrawer');
-  if (drawer) return drawer;
-
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
-
-  function isActive(href) {
-    return href === currentPage || (currentPage === '' && href === 'index.html');
-  }
-
-  const items = [
-    { label: 'Home', href: 'index.html' },
-    { label: 'Scholarships', href: 'scholarships.html', children: [
-      { label: 'National Scholarships', href: 'scholarships-national.html' },
-      { label: 'International Scholarships', href: 'scholarships-international.html' },
-    ]},
-    { label: 'Jobs', href: 'jobs.html', children: [
-      { label: 'Government Jobs', href: 'jobs-government.html' },
-      { label: 'Private / NGO Jobs', href: 'jobs-private.html' },
-    ]},
-    { label: 'Internships', href: 'internships.html' },
-    { label: 'Exams', href: 'exams.html', children: [
-      { label: 'MDCAT', href: 'exams-mdcat.html' },
-      { label: 'CSS', href: 'exams-css.html' },
-      { label: 'PPSC', href: 'exams-ppsc.html' },
-    ]},
-    { label: 'Blog', href: 'blog.html' },
-    { label: 'Books', href: 'books.html' },
-    { label: 'About Us', href: 'about.html', section: 'More' },
-    { label: 'Contact', href: 'contact.html' },
-    { label: 'Favorites', href: 'favorites.html' },
-    { label: 'Privacy Policy', href: 'privacy.html' },
-    { label: 'Terms of Use', href: 'terms.html' },
-  ];
-
-  drawer = document.createElement('div');
-  drawer.id = 'navDrawer';
-  drawer.setAttribute('role', 'navigation');
-  drawer.setAttribute('aria-label', 'Site navigation drawer');
-
-  let html = '<div class="drawer-header"></div>';
-  html += '<div class="drawer-close"><span>Navigation</span><button aria-label="Close menu" onclick="closeMenu()"><i class="fa fa-times"></i></button></div>';
-  html += '<ul>';
-
-  let inMoreSection = false;
-  items.forEach((item) => {
-    if (item.section && !inMoreSection) {
-      html += `<li class="drawer-section">${item.section}</li>`;
-      inMoreSection = true;
-    }
-    if (item.children) {
-      const active = item.children.some(c => isActive(c.href)) || isActive(item.href);
-      html += `<li class="has-sub${active ? ' open' : ''}">
-        <a href="${item.href}"${isActive(item.href) ? ' class="active"' : ''}>
-          ${item.label}<i class="fa fa-chevron-down drawer-chevron"></i>
-        </a>
-        <ul class="drawer-sub${active ? ' open' : ''}">`;
-      item.children.forEach(c => {
-        html += `<li><a href="${c.href}"${isActive(c.href) ? ' class="active"' : ''}>${c.label}</a></li>`;
-      });
-      html += '</ul></li>';
-    } else {
-      html += `<li><a href="${item.href}"${isActive(item.href) ? ' class="active"' : ''}>${item.label}</a></li>`;
-    }
-  });
-
-  html += '</ul>';
-  drawer.innerHTML = html;
-  document.body.appendChild(drawer);
-
-  // Accordion for sub-menus
-  drawer.querySelectorAll('.has-sub > a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const li = link.parentElement;
-      const sub = li.querySelector('.drawer-sub');
-      const isOpen = li.classList.contains('open');
-      drawer.querySelectorAll('.has-sub.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.drawer-sub').classList.remove('open');
-      });
-      if (!isOpen) {
-        li.classList.add('open');
-        sub.classList.add('open');
-      }
-    });
-  });
-
-  return drawer;
-}
-
 // ── Open / Close ─────────────────────────────────────────────────
 function openMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -1430,21 +1335,13 @@ function openMenu() {
   showOverlay();
   document.body.style.overflow = 'hidden';
 
-  if (isMobile()) {
-    // Mobile: slide in #navLinks from left
-    const navLinks = document.getElementById('navLinks');
-    if (navLinks) navLinks.classList.add('active');
-  } else {
-    // Desktop: slide in #navDrawer from right
-    const drawer = buildDesktopDrawer();
-    requestAnimationFrame(() => drawer.classList.add('active'));
-  }
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks && isMobile()) navLinks.classList.add('active');
 }
 
 function closeMenu() {
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  const drawer = document.getElementById('navDrawer');
 
   menuOpen = false;
 
@@ -1458,9 +1355,6 @@ function closeMenu() {
     navLinks.classList.remove('active');
     navLinks.querySelectorAll('.has-dropdown.accordion-open').forEach(el => el.classList.remove('accordion-open'));
   }
-
-  // Desktop: close navDrawer
-  if (drawer) drawer.classList.remove('active');
 
   hideOverlay();
   document.body.style.overflow = '';
@@ -1513,10 +1407,8 @@ function initMenu() {
   // Close on outside click
   document.addEventListener('click', (e) => {
     if (!menuOpen) return;
-    const drawer = document.getElementById('navDrawer');
     const inNavbar = navbar.contains(e.target);
-    const inDrawer = drawer && drawer.contains(e.target);
-    if (!inNavbar && !inDrawer) closeMenu();
+    if (!inNavbar) closeMenu();
   });
 
   // Close on Escape
