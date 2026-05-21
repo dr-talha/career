@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="author" content="Career Pakistan"/>
+  <meta name="theme-color" content="#0f766e"/>
+  <title id="pageMetaTitle">Opportunity Detail | Career Pakistan</title>
+  <meta name="description" id="pageMetaDesc" content="View full details, apply links, and PDF resources for this opportunity on Career Pakistan."/>
+  <link rel="canonical" id="pageMetaCanonical" href="https://careerpk.online/opportunity.html"/>
+  <meta property="og:type" content="article" id="ogType"/>
+  <meta property="og:url" id="ogUrl" content="https://careerpk.online/opportunity.html"/>
+  <meta property="og:title" id="ogTitle" content="Opportunity | Career Pakistan"/>
+  <meta property="og:description" id="ogDesc" content="View full details on Career Pakistan."/>
+  <meta property="og:image" id="ogImage" content="https://careerpk.online/banner.png"/>
+  <meta property="og:site_name" content="Career Pakistan"/>
+  <meta property="og:locale" content="en_PK"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" id="twTitle" content="Opportunity | Career Pakistan"/>
+  <meta name="twitter:description" id="twDesc" content="View full details on Career Pakistan."/>
+  <meta name="twitter:image" id="twImage" content="https://careerpk.online/banner.png"/>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="dns-prefetch" href="https://i.ibb.co"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://i.ibb.co" crossorigin/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/cms-additions.css"/>
+  <link rel="stylesheet" href="css/design-enhancements.css"/>
+  <link rel="stylesheet" href="css/perf-improvements.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="logo.png" type="image/webp"/>
+  <link rel="apple-touch-icon" href="logo.webp"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="js/cms-bootstrap.js"></script>
+  <script src="js/seo.js" defer></script>
+<style>
+    .opp-layout { display:grid; grid-template-columns:1fr 320px; gap:2rem; align-items:start; }
+    @media(max-width:900px){ .opp-layout { grid-template-columns:1fr; } .opp-sidebar { order:2; } }
+    .opp-main { min-width:0; }
+    .opp-sidebar { position:sticky; top:70px; }
+    .opp-hero-img { width:100%; max-height:380px; object-fit:cover; border-radius:var(--radius-md); margin:1.25rem 0; }
+    .detail-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.75rem; margin:1.25rem 0; }
+    .detail-box { background:var(--bg-alt); border-radius:var(--radius-sm); padding:.85rem 1rem; }
+    .detail-box .label { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin-bottom:.25rem; }
+    .detail-box .value { font-size:.95rem; font-weight:600; color:var(--text-main); }
+    .pdf-card { display:flex; align-items:center; gap:.75rem; background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--radius-sm); padding:.85rem 1rem; margin-bottom:.5rem; }
+    .pdf-card .pdf-icon { font-size:1.4rem; color:#dc2626; flex-shrink:0; }
+    .pdf-card .pdf-name { flex:1; font-size:.9rem; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .share-row { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.25rem; }
+    .share-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem 1rem; border-radius:var(--radius-full); font-size:.82rem; font-weight:600; border:none; cursor:pointer; transition:opacity .2s; }
+    .share-btn:hover { opacity:.85; }
+    .sidebar-widget { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.1rem; margin-bottom:1.1rem; }
+    .sidebar-widget h3 { font-size:.9rem; font-weight:700; margin:0 0 .85rem; color:var(--text-main); border-bottom:2px solid var(--primary); padding-bottom:.5rem; }
+    .sidebar-item { display:flex; gap:.65rem; padding:.55rem 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+    .sidebar-item:last-child { border-bottom:none; padding-bottom:0; }
+    .sidebar-item img { width:44px; height:44px; border-radius:var(--radius-sm); object-fit:cover; flex-shrink:0; background:var(--bg-alt); }
+    .sidebar-item-text .title { font-size:.83rem; font-weight:600; color:var(--text-main); line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .sidebar-item-text .meta { font-size:.73rem; color:var(--text-muted); margin-top:.2rem; }
+    .countdown-box { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; border-radius:var(--radius-md); padding:1.1rem; margin-bottom:1.1rem; text-align:center; }
+    .countdown-box .days { font-size:2.2rem; font-weight:800; line-height:1; }
+    .deadline-urgent { color:#dc2626; font-weight:700; }
+    .opp-description { line-height:1.8; color:var(--text-secondary); font-size:.97rem; }
+    .opp-description p { margin-bottom:1rem; }
+    .badge-new { background:#16a34a; color:#fff; font-size:.7rem; font-weight:700; padding:.2rem .55rem; border-radius:var(--radius-full); vertical-align:middle; margin-left:.4rem; }
+  </style>
+  <script src="js/analytics-loader.js" defer></script>
+
+  <link rel="stylesheet" href="css/main-enhanced.css"/>
+  <link rel="stylesheet" href="css/premium-upgrades.css"/>
+</head>
+<body>
+
+<!-- ── Navbar ────────────────────────────────────────────────── -->
+<div class="notif-bar" id="notifBar" style="display:none">
+  <div class="notif-track" id="notifTrack"></div>
+  <button class="notif-close" onclick="this.parentElement.style.display='none'" aria-label="Close"><i class="fa fa-times"></i></button>
+</div>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><img src="logo.webp" alt="Career Pakistan" width="44" height="44" fetchpriority="high"/></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown"><a href="scholarships.html">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="scholarships-national.html">National</a></li><li><a href="scholarships-international.html">International</a></li></ul></li>
+      <li class="has-dropdown"><a href="jobs.html">Jobs <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="jobs-government.html">Government Jobs</a></li><li><a href="jobs-private.html">Private / NGO</a></li></ul></li>
+      <li><a href="internships.html">Internships</a></li>
+      <li class="has-dropdown"><a href="exams.html">Exams <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+        <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search"><i class="fa fa-search"></i></button>
+      <a href="favorites.html" class="nav-icon-btn" aria-label="Saved"><i class="fa fa-bookmark"></i><span class="fav-count" id="favCount" style="display:none">0</span></a>
+      <button class="nav-icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Toggle dark mode"><i class="fa fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="nav-search" id="navSearch">
+    <div class="nav-container">
+      <form action="search.html" method="GET" class="search-form-nav">
+        <i class="fa fa-search"></i><input type="text" name="q" id="navSearchInput" placeholder="Search..."/><button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Breadcrumb ────────────────────────────────────────────── -->
+<div style="background:var(--bg-alt);border-bottom:1px solid var(--border);padding:.6rem 0;font-size:.83rem">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;color:var(--text-muted)">
+        <li><a href="index.html" style="color:var(--primary)">Home</a></li>
+        <li><i class="fa fa-chevron-right fa-xs" style="margin:0 .25rem"></i></li>
+        <li id="breadcrumbCat"><a href="#" id="breadcrumbCatLink" style="color:var(--primary)">—</a></li>
+        <li><i class="fa fa-chevron-right fa-xs" style="margin:0 .25rem"></i></li>
+        <li id="breadcrumbTitle" style="color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px">Loading...</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- ── Loading / Error States ────────────────────────────────── -->
+<div id="oppLoading" class="container" style="padding:4rem 1rem;text-align:center">
+  <div class="skeleton-card" style="height:280px;margin-bottom:1rem"></div>
+  <div class="skeleton-card" style="height:60px;margin-bottom:.5rem"></div>
+  <div class="skeleton-card" style="height:60px"></div>
+</div>
+<div id="oppError" style="display:none;padding:4rem 1rem;text-align:center">
+  <i class="fa fa-triangle-exclamation" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:1rem;display:block"></i>
+  <h2 style="font-size:1.25rem;margin-bottom:.5rem">Post not found</h2>
+  <p style="color:var(--text-secondary);margin-bottom:1.5rem">This post may have been removed or the link is incorrect.</p>
+  <a href="index.html" class="btn">← Back to Home</a>
+</div>
+
+<!-- ── Main Content ──────────────────────────────────────────── -->
+<main class="section" id="oppContent" style="display:none">
+  <div class="container">
+    <div class="opp-layout">
+
+      <!-- Main Column -->
+      <article class="opp-main">
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.75rem">
+          <span id="oppTypeBadge" class="chip" style="font-size:.75rem;font-weight:700"></span>
+          <span id="oppFeaturedBadge" style="display:none;background:#f59e0b;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:var(--radius-full)">⭐ Featured</span>
+          <span id="oppNewBadge" class="badge-new" style="display:none">NEW</span>
+          <span id="oppUrgency" style="margin-left:auto"></span>
+        </div>
+
+        <h1 id="oppTitle" style="font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.3;margin-bottom:.75rem"></h1>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--text-muted);margin-bottom:1rem;align-items:center">
+          <span id="oppOrg"><i class="fa fa-building" style="color:var(--primary);margin-right:.3rem"></i><span id="oppOrgText"></span></span>
+          <span id="oppLocWrap"><i class="fa fa-location-dot" style="color:var(--primary);margin-right:.3rem"></i><span id="oppLoc"></span></span>
+          <span><i class="fa fa-calendar" style="color:var(--primary);margin-right:.3rem"></i>Posted: <span id="oppPosted"></span></span>
+          <span id="oppDeadlineRow"><i class="fa fa-clock" style="color:var(--primary);margin-right:.3rem"></i>Deadline: <span id="oppDeadline" class="deadline-urgent"></span></span>
+        </div>
+
+        <!-- Hero Image -->
+        <div id="oppImgWrap" style="display:none">
+          <img id="oppImg" class="opp-hero-img" src="" alt="" loading="lazy" decoding="async" onerror="this.closest('div').style.display='none'"/>
+        </div>
+
+        <!-- Detail Grid -->
+        <div class="detail-grid" id="oppDetailGrid"></div>
+
+        <!-- Apply Button -->
+        <div style="margin:1.25rem 0;display:flex;flex-wrap:wrap;gap:.75rem">
+          <a id="oppApplyBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn" style="min-width:160px;display:none"><i class="fa fa-arrow-up-right-from-square"></i> Apply Now</a>
+          <a id="oppSourceBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display:none"><i class="fa fa-link"></i> Source Link</a>
+          <button id="oppBookmarkBtn" class="btn btn-secondary" onclick="oppToggleFav()"><i class="fa fa-bookmark"></i> <span id="oppBookmarkText">Save</span></button>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--border);margin:1.5rem 0"/>
+
+        <!-- Description -->
+        <div id="oppDescription" class="opp-description"></div>
+
+        <!-- PDF Downloads -->
+        <div id="oppPDFs" style="display:none;margin-top:1.5rem">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem"><i class="fa fa-file-pdf" style="color:#dc2626;margin-right:.4rem"></i>Downloads &amp; Attachments</h3>
+          <div id="oppPDFList"></div>
+        </div>
+
+        <!-- Share -->
+        <hr style="border:none;border-top:1px solid var(--border);margin:1.5rem 0"/>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem">Share this post</h3>
+        <div class="share-row">
+          <button class="share-btn" style="background:#25d366;color:#fff" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button class="share-btn" style="background:#1877f2;color:#fff" onclick="shareFacebook()"><i class="fab fa-facebook"></i> Facebook</button>
+          <button class="share-btn" style="background:#000;color:#fff" onclick="shareTwitter()"><i class="fab fa-x-twitter"></i> X/Twitter</button>
+          <button class="share-btn" style="background:var(--bg-alt);color:var(--text-main);border:1px solid var(--border)" onclick="copyLink()"><i class="fa fa-copy"></i> <span id="copyLinkText">Copy Link</span></button>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="opp-sidebar">
+        <!-- Countdown -->
+        <div id="countdownBox" class="countdown-box" style="display:none">
+          <div style="font-size:.8rem;opacity:.9;margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">⏰ Deadline in</div>
+          <div class="days" id="countdownDays">—</div>
+          <div style="font-size:.8rem;opacity:.85;margin-top:.3rem">days remaining</div>
+        </div>
+
+        <!-- Related Same Type -->
+        <div class="sidebar-widget" id="relatedSameWidget" style="display:none">
+          <h3 id="relatedSameTitle">More Like This</h3>
+          <div id="relatedSameList"></div>
+        </div>
+
+        <!-- Related Exams -->
+        <div class="sidebar-widget" id="relatedExamsWidget" style="display:none">
+          <h3><i class="fa fa-file-alt" style="color:var(--primary);margin-right:.4rem"></i>Related Exams</h3>
+          <div id="relatedExamsList"></div>
+          <a href="exams.html" style="font-size:.8rem;color:var(--primary);font-weight:600;display:block;margin-top:.5rem">View all exams →</a>
+        </div>
+
+        <!-- Related Scholarships -->
+        <div class="sidebar-widget" id="relatedScholarshipsWidget" style="display:none">
+          <h3><i class="fa fa-graduation-cap" style="color:var(--primary);margin-right:.4rem"></i>Related Scholarships</h3>
+          <div id="relatedScholarshipsList"></div>
+          <a href="scholarships.html" style="font-size:.8rem;color:var(--primary);font-weight:600;display:block;margin-top:.5rem">View all →</a>
+        </div>
+
+        <!-- Related Books -->
+        <div class="sidebar-widget" id="relatedBooksWidget" style="display:none">
+          <h3><i class="fa fa-book" style="color:var(--primary);margin-right:.4rem"></i>Study Resources</h3>
+          <div id="relatedBooksList"></div>
+          <a href="books.html" style="font-size:.8rem;color:var(--primary);font-weight:600;display:block;margin-top:.5rem">View all books →</a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-widget">
+          <h3>Quick Links</h3>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <a href="jobs.html" style="font-size:.88rem;color:var(--text-main);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">💼 All Jobs <i class="fa fa-chevron-right fa-xs" style="color:var(--text-muted)"></i></a>
+            <a href="scholarships.html" style="font-size:.88rem;color:var(--text-main);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">🎓 Scholarships <i class="fa fa-chevron-right fa-xs" style="color:var(--text-muted)"></i></a>
+            <a href="exams.html" style="font-size:.88rem;color:var(--text-main);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">📝 Exams <i class="fa fa-chevron-right fa-xs" style="color:var(--text-muted)"></i></a>
+            <a href="books.html" style="font-size:.88rem;color:var(--text-main);padding:.4rem 0;display:flex;justify-content:space-between;align-items:center">📚 Books <i class="fa fa-chevron-right fa-xs" style="color:var(--text-muted)"></i></a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<section class="section" id="moreLikeSection" style="display:none;padding-top:0;border-top:1px solid var(--border)">
+  <div class="container" style="padding-top:2rem">
+    <h2 id="moreLikeTitle" style="font-size:1.1rem;font-weight:700;margin:0 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--primary)">More Opportunities</h2>
+    <div class="cards-grid" id="moreLikeGrid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Career <span>Pakistan</span></a>
+        <p>Pakistan's trusted platform for students and professionals — scholarships, jobs, internships, exams, and books updated daily.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://facebook.com/careerpakistan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/careerpakistan" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="scholarships.html">Scholarships</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="internships.html">Internships</a></li><li><a href="books.html">Books</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Exam Hub</h4><ul><li><a href="exams.html">All Exams</a></li><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="search.html">Search</a></li><li><a href="favorites.html">Saved Items</a></li><li><a href="resume-builder.html">Resume Builder</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Career Pakistan. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="index.html" class="mob-nav-item"><i class="fa fa-home"></i><span>Home</span></a>
+  <a href="scholarships.html" class="mob-nav-item"><i class="fa fa-graduation-cap"></i><span>Scholarships</span></a>
+  <a href="jobs.html" class="mob-nav-item"><i class="fa fa-briefcase"></i><span>Jobs</span></a>
+  <a href="exams.html" class="mob-nav-item"><i class="fa fa-file-alt"></i><span>Exams</span></a>
+  <a href="books.html" class="mob-nav-item"><i class="fa fa-book"></i><span>Books</span></a>
+</nav>
+
+<script src="js/google-sheet-loader.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/comprehensive-fix.js"></script>
+<script src="js/cms-auto-refresh-listener.js"></script>
+<script src="js/ai-chatbot-global.js" defer></script>
+<script>
+// ── Opportunity Detail Page Logic ─────────────────────────────
+let _currentItem = null;
+let _currentType = null;
+
+const TYPE_LABELS = { job:'Job', scholarship:'Scholarship', internship:'Internship', exam:'Exam', book:'Book', blog:'Blog Post' };
+const TYPE_PAGES  = { job:'jobs.html', scholarship:'scholarships.html', internship:'internships.html', exam:'exams.html', book:'books.html', blog:'blog.html' };
+
+document.addEventListener('DOMContentLoaded', () => {
+  initDarkMode();
+  updateFavCount();
+  initMenu();
+  onCMSReady(loadOpportunity);
+});
+
+function getUrlParams() {
+  const p = new URLSearchParams(window.location.search);
+  return { type: p.get('type') || '', id: p.get('id') || '' };
+}
+
+function loadOpportunity() {
+  const { type, id } = getUrlParams();
+  if (!type || !id) { showError(); return; }
+
+  const dataMap = {
+    job:          window.CMS_DATA.Jobs          || [],
+    scholarship:  window.CMS_DATA.Scholarships  || [],
+    internship:   window.CMS_DATA.Internships   || [],
+    exam:         window.CMS_DATA.Exams         || [],
+    book:         window.CMS_DATA.Books         || [],
+    blog:         window.CMS_DATA.Blogs         || window.CMS_DATA.blogs || [],
+  };
+
+  const list = dataMap[type];
+  if (!list) { showError(); return; }
+  const item = list.find(i => String(i.id) === String(id));
+  if (!item) { showError(); return; }
+
+  _currentItem = item;
+  _currentType = type;
+  renderOpportunity(item, type);
+}
+
+function renderOpportunity(item, type) {
+  // Update meta tags dynamically for social sharing
+  const pageUrl = window.location.href;
+  const title   = item.title || 'Opportunity';
+  const desc    = item.short_description || item.details?.slice(0,160) || `View ${TYPE_LABELS[type]} details on Career Pakistan.`;
+  const img     = item.image_url || item.image_links?.[0] || 'https://careerpk.online/banner.png';
+
+  setMeta('pageMetaTitle', title + ' | Career Pakistan');
+  setMeta('pageMetaDesc', desc, 'content');
+  setHref('pageMetaCanonical', pageUrl);
+  setMeta('ogUrl', pageUrl, 'content');
+  setMeta('ogTitle', title + ' | Career Pakistan', 'content');
+  setMeta('ogDesc', desc, 'content');
+  setMeta('ogImage', img, 'content');
+  setMeta('twTitle', title + ' | Career Pakistan', 'content');
+  setMeta('twDesc', desc, 'content');
+  setMeta('twImage', img, 'content');
+  document.title = title + ' | Career Pakistan';
+
+  // Breadcrumb
+  const catLink = document.getElementById('breadcrumbCatLink');
+  if (catLink) { catLink.textContent = TYPE_LABELS[type] + 's'; catLink.href = TYPE_PAGES[type] || '#'; }
+  const bc = document.getElementById('breadcrumbTitle');
+  if (bc) bc.textContent = title;
+  const bcCat = document.getElementById('breadcrumbCat');
+  if (bcCat) bcCat.querySelector('a') && (bcCat.querySelector('a').href = TYPE_PAGES[type] || '#');
+
+  // Badges
+  setText('oppTypeBadge', TYPE_LABELS[type]);
+  const featuredBadge = document.getElementById('oppFeaturedBadge');
+  if (featuredBadge) featuredBadge.style.display = item.is_featured ? 'inline' : 'none';
+
+  // Check if posted today
+  const isNew = item.posted_date && daysUntil(item.posted_date) >= -1;
+  const newBadge = document.getElementById('oppNewBadge');
+  if (newBadge) newBadge.style.display = isNew ? 'inline' : 'none';
+
+  // Urgency
+  setText('oppUrgency', urgencyBadge(item.deadline || item.testDate || item.test_date || item.registrationDeadline || item.registration_deadline || ''));
+
+  // Title
+  setText('oppTitle', title);
+
+  const org = item.organization || item.university || item.conductingBody || item.conducting_body || item.author || '';
+  const orgWrap = document.getElementById('oppOrg');
+  if (orgWrap) orgWrap.style.display = org ? 'flex' : 'none';
+  setText('oppOrgText', org);
+
+  const loc = item.location || item.country || item.province || '';
+  const locWrap = document.getElementById('oppLocWrap');
+  if (locWrap) locWrap.style.display = loc ? 'flex' : 'none';
+  setText('oppLoc', loc);
+
+  setText('oppPosted', formatDate(item.postedDate || item.posted_date || item.date || ''));
+
+  const deadline = item.deadline || item.testDate || item.test_date || item.registrationDeadline || item.registration_deadline || '';
+  const dlRow = document.getElementById('oppDeadlineRow');
+  if (dlRow) dlRow.style.display = deadline ? 'flex' : 'none';
+  setText('oppDeadline', formatDate(deadline));
+
+  // Hero image
+  const imageUrl = item.imageUrl || item.image_url || (item.imageLinks&&item.imageLinks[0]) || (item.image_links&&item.image_links[0]) || '';
+  if (imageUrl) {
+    document.getElementById('oppImg').src = imageUrl;
+    document.getElementById('oppImg').alt = title;
+    document.getElementById('oppImgWrap').style.display = 'block';
+  }
+
+  // Apply buttons
+  const applyBtn = document.getElementById('oppApplyBtn');
+  const applyLink = safeUrl(item.applyLink || item.apply_link || item.sourceLink || item.source_link || '');
+  if (applyBtn && applyLink && applyLink !== '#') { applyBtn.href = applyLink; applyBtn.style.display = 'inline-flex'; }
+
+  const srcBtn = document.getElementById('oppSourceBtn');
+  const srcLink = safeUrl(item.source_link || item.sourceLink || '');
+  if (srcBtn && srcLink && srcLink !== '#' && srcLink !== applyLink) { srcBtn.href = srcLink; srcBtn.style.display = 'inline-flex'; }
+
+  // Detail grid
+  const details = buildDetailGrid(item, type);
+  document.getElementById('oppDetailGrid').innerHTML = details;
+
+  // Bookmark state
+  updateBookmarkState();
+
+  // Description
+  const descEl = document.getElementById('oppDescription');
+  if (descEl) {
+    const rawDesc = item.details || item.description || item.short_description || '';
+    descEl.innerHTML = rawDesc
+      ? rawDesc.split(/\n\n|\n/).filter(p => p.trim()).map(p => `<p>${escapeHtml(p.trim())}</p>`).join('')
+      : '<p style="color:var(--text-muted)">No description available.</p>';
+  }
+
+  // PDF links
+  const pdfs = item.pdf_links || (item.pdf_link ? [item.pdf_link] : []);
+  const downloadLink = item.download_link || '';
+  const allPDFs = [...new Set([...pdfs, downloadLink ? downloadLink : ''].filter(Boolean))];
+  if (allPDFs.length) {
+    document.getElementById('oppPDFs').style.display = 'block';
+    document.getElementById('oppPDFList').innerHTML = allPDFs.map((url, i) => `
+      <div class="pdf-card">
+        <i class="fa fa-file-pdf pdf-icon"></i>
+        <span class="pdf-name">Document ${i + 1}</span>
+        <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:.4rem .85rem;font-size:.8rem;margin-left:auto;white-space:nowrap">
+          <i class="fa fa-download"></i> Download
+        </a>
+      </div>`).join('');
+  }
+
+  // Sidebar related content
+  buildSidebar(item, type);
+
+  // "More Like This" grid below content
+  setTimeout(() => {
+    const allData = {
+      job:window.CMS_DATA.Jobs||[], scholarship:window.CMS_DATA.Scholarships||[],
+      internship:window.CMS_DATA.Internships||[], exam:window.CMS_DATA.Exams||[],
+      book:window.CMS_DATA.Books||[], blog:window.CMS_DATA.Blogs||window.CMS_DATA.blogs||[]
+    };
+    const renderers = {
+      job:cardJob, scholarship:cardScholarship, internship:cardInternship,
+      exam:cardExam, book:cardBook, blog:typeof cardBlog==='function'?cardBlog:()=>''
+    };
+    const moreItems = (allData[type]||[]).filter(i=>String(i.id)!==String(item.id)).slice(0,4);
+    const sec = document.getElementById('moreLikeSection');
+    const grid = document.getElementById('moreLikeGrid');
+    const title = document.getElementById('moreLikeTitle');
+    if (sec && grid && moreItems.length && renderers[type]) {
+      sec.style.display = 'block';
+      if (title) title.textContent = 'More ' + (TYPE_LABELS[type]||type) + 's';
+      grid.innerHTML = moreItems.map(renderers[type]).join('');
+      grid.querySelectorAll('.card').forEach(c => { c.style.opacity='1'; c.style.transform='translateY(0)'; });
+    }
+  }, 100);
+
+  // Show content
+  document.getElementById('oppLoading').style.display = 'none';
+  document.getElementById('oppContent').style.display = 'block';
+}
+
+function buildDetailGrid(item, type) {
+  const boxes = [];
+  const add = (label, value) => {
+    if (!value && value !== 0) return;
+    boxes.push(`<div class="detail-box"><div class="label">${label}</div><div class="value">${escapeHtml(String(value))}</div></div>`);
+  };
+  if (type === 'job') {
+    add('Organization', item.organization);
+    add('Location', item.location);
+    add('Province', item.province);
+    add('Salary', item.salary);
+    add('Type', item.type);
+    add('Category', item.category);
+    add('Experience', item.experience);
+    add('Education', item.education);
+    add('Deadline', formatDate(item.deadline));
+  } else if (type === 'scholarship') {
+    add('Country', item.country);
+    add('Province', item.province);
+    add('Funding', item.funding);
+    add('Type', item.type);
+    add('Level', item.level);
+    add('Field', item.field);
+    add('University', item.university);
+    add('Deadline', formatDate(item.deadline));
+    add('Eligibility', item.eligibility);
+  } else if (type === 'internship') {
+    add('Organization', item.organization);
+    add('Location', item.location);
+    add('Stipend', item.stipend);
+    add('Duration', item.duration);
+    add('Type', item.type);
+    add('Category', item.category);
+    add('Education Level', item.educationLevel||item.education_level);
+    add('Deadline', formatDate(item.deadline));
+  } else if (type === 'exam') {
+    add('Conducting Body', item.conductingBody||item.conducting_body);
+    add('Exam Type', item.examType||item.exam_type);
+    add('Province', item.province);
+    add('Fee', item.fee);
+    add('Test Date', formatDate(item.testDate||item.test_date));
+    add('Reg. Deadline', formatDate(item.registrationDeadline||item.registration_deadline));
+    add('Eligibility', item.eligibility);
+  } else if (type === 'book') {
+    add('Author', item.author);
+    add('Category', item.category);
+    add('Exam / Subject', item.examType||item.exam_type);
+    add('Language', item.language);
+    add('Pages', item.pages);
+    add('Edition', item.edition);
+    add('Price', item.price);
+    add('Format', (item.isFree||item.is_free) ? '✅ Free PDF' : 'Paid');
+  } else if (type === 'blog') {
+    add('Author', item.author);
+    add('Category', item.category);
+    add('Read Time', item.readTime||item.read_time);
+    add('Published', formatDate(item.date||item.postedDate||item.posted_date));
+  }
+  return boxes.join('');
+}
+
+function buildSidebar(item, type) {
+  const tags = (item.tags || '').toLowerCase().split(',').map(t => t.trim()).filter(Boolean);
+
+  function scoreRelated(list) {
+    return (list || [])
+      .filter(i => String(i.id) !== String(item.id))
+      .map(i => {
+        const iTags = (i.tags || '').toLowerCase().split(',').map(t => t.trim());
+        const score = tags.filter(t => iTags.includes(t)).length;
+        return { ...i, _score: score };
+      })
+      .sort((a, b) => b._score - a._score || new Date(b.postedDate||b.posted_date||b.date||0) - new Date(a.postedDate||a.posted_date||a.date||0));
+  }
+
+  function sItem(i, linkType, icon) {
+    const img = i.imageUrl || i.image_url || (i.imageLinks&&i.imageLinks[0]) || '';
+    const dl  = i.deadline || i.testDate || i.test_date || i.registrationDeadline || i.date || i.postedDate || '';
+    return `<div class="sidebar-item">
+      ${img ? `<img src="${escapeHtml(img)}" alt="" loading="lazy" style="width:44px;height:44px;border-radius:8px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">` : `<span style="width:44px;height:44px;border-radius:8px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">${icon}</span>`}
+      <div class="sidebar-item-text">
+        <a class="title" href="opportunity.html?type=${linkType}&id=${encodeURIComponent(i.id)}" style="color:var(--text-main)">${escapeHtml(i.title||'')}</a>
+        <div class="meta">${dl ? formatDate(dl) : (i.country||i.location||'')}</div>
+      </div>
+    </div>`;
+  }
+
+  const allData = {
+    scholarship: window.CMS_DATA.Scholarships || [],
+    job:         window.CMS_DATA.Jobs         || [],
+    internship:  window.CMS_DATA.Internships  || [],
+    exam:        window.CMS_DATA.Exams        || [],
+    book:        window.CMS_DATA.Books        || [],
+    blog:        window.CMS_DATA.Blogs        || window.CMS_DATA.blogs || [],
+  };
+  const icons = { scholarship:'🎓', job:'💼', internship:'🚀', exam:'📝', book:'📚', blog:'✍️' };
+
+  // Widget: Same type — most relevant
+  const sameTypeWidget = document.getElementById('relatedSameWidget');
+  const sameTypeList   = document.getElementById('relatedSameList');
+  const sameTypeTitle  = document.getElementById('relatedSameTitle');
+  const sameItems = scoreRelated(allData[type]).slice(0, 4);
+  if (sameTypeWidget && sameItems.length) {
+    sameTypeWidget.style.display = 'block';
+    if (sameTypeTitle) sameTypeTitle.textContent = 'More ' + (TYPE_LABELS[type]||type) + 's';
+    if (sameTypeList) sameTypeList.innerHTML = sameItems.map(i => sItem(i, type, icons[type]||'📌')).join('');
+  }
+
+  // Widget: Related Exams (if not already on exam page)
+  if (type !== 'exam') {
+    const rel = scoreRelated(allData.exam).filter(i => i._score > 0).slice(0, 3);
+    if (rel.length) {
+      const w = document.getElementById('relatedExamsWidget');
+      const l = document.getElementById('relatedExamsList');
+      if (w) w.style.display = 'block';
+      if (l) l.innerHTML = rel.map(i => sItem(i, 'exam', '📝')).join('');
+    }
+  }
+
+  // Widget: Related Scholarships
+  if (type !== 'scholarship') {
+    const rel = scoreRelated(allData.scholarship).filter(i => i._score > 0).slice(0, 3);
+    if (rel.length) {
+      const w = document.getElementById('relatedScholarshipsWidget');
+      const l = document.getElementById('relatedScholarshipsList');
+      if (w) w.style.display = 'block';
+      if (l) l.innerHTML = rel.map(i => sItem(i, 'scholarship', '🎓')).join('');
+    }
+  }
+
+  // Widget: Related Books
+  if (type !== 'book') {
+    const rel = scoreRelated(allData.book).slice(0, 3);
+    if (rel.length) {
+      const w = document.getElementById('relatedBooksWidget');
+      const l = document.getElementById('relatedBooksList');
+      if (w) w.style.display = 'block';
+      if (l) l.innerHTML = rel.map(i => sItem(i, 'book', '📚')).join('');
+    }
+  }
+
+  // Countdown
+  const dl = item.deadline || item.testDate || item.test_date || item.registrationDeadline || item.registration_deadline || '';
+  if (dl) {
+    const d = daysUntil(dl);
+    const box = document.getElementById('countdownBox');
+    if (box && typeof d === 'number' && d >= 0 && d <= 60) {
+      box.style.display = 'block';
+      setText('countdownDays', d);
+    }
+  }
+}
+
+function updateBookmarkState() {
+  if (!_currentItem || !_currentType) return;
+  const favs = getFavs();
+  const saved = favs.some(f => String(f.id) === String(_currentItem.id) && f.type === _currentType);
+  const bookmarkText = document.getElementById('oppBookmarkText');
+  const btn = document.getElementById('oppBookmarkBtn');
+  if (bookmarkText) bookmarkText.textContent = saved ? 'Saved ✓' : 'Save';
+  if (btn) btn.style.background = saved ? 'var(--primary-bg)' : '';
+}
+
+function oppToggleFav() {
+  if (!_currentItem || !_currentType) return;
+  toggleFav(String(_currentItem.id), _currentItem.title || '', _currentType);
+  updateFavCount();
+  updateBookmarkState();
+}
+
+function shareWhatsApp() {
+  window.open('https://wa.me/?text=' + encodeURIComponent(document.title + '\n' + window.location.href), '_blank');
+}
+function shareFacebook() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+}
+function shareTwitter() {
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href), '_blank');
+}
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const el = document.getElementById('copyLinkText');
+    if (el) { el.textContent = 'Copied!'; setTimeout(() => { el.textContent = 'Copy Link'; }, 2000); }
+  });
+}
+
+function showError() {
+  document.getElementById('oppLoading').style.display = 'none';
+  document.getElementById('oppError').style.display = 'block';
+}
+
+// Helpers
+function setText(id, val) { const el = document.getElementById(id); if (el) el.innerHTML = val || ''; }
+function setMeta(id, val, attr) { const el = document.getElementById(id); if (el) el[attr || 'textContent'] = val || ''; }
+function setHref(id, val) { const el = document.getElementById(id); if (el) el.href = val; }
+</script>
+<script src="js/image-optimizer.js" defer></script>
+</body>
+</html>

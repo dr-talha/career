@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="author" content="Career Pakistan"/>
+  <meta name="theme-color" content="#0f766e"/>
+  <title>Blog — Jobs, Scholarships &amp; Exam Updates Pakistan | Career Pakistan</title>
+  <meta name="description" content="Read the latest career guides, scholarship tips, job alerts, and exam updates for Pakistani students and professionals on Career Pakistan Blog."/>
+  <meta name="keywords" content="career pakistan blog, scholarship guides, jobs pakistan, css exam tips, career advice pakistan"/>
+  <link rel="canonical" href="https://careerpk.online/blog.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://careerpk.online/blog.html"/>
+  <meta property="og:title" content="Blog | Career Pakistan"/>
+  <meta property="og:description" content="Career guides, scholarship tips, job alerts, and exam updates for Pakistani students."/>
+  <meta property="og:image" content="https://careerpk.online/banner.png"/>
+  <meta property="og:site_name" content="Career Pakistan"/>
+  <meta property="og:locale" content="en_PK"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Blog | Career Pakistan"/>
+  <meta name="twitter:description" content="Career guides, scholarship tips, job alerts, and exam updates."/>
+  <meta name="twitter:image" content="https://careerpk.online/banner.png"/>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="dns-prefetch" href="https://i.ibb.co"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://i.ibb.co" crossorigin/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/cms-additions.css"/>
+  <link rel="stylesheet" href="css/design-enhancements.css"/>
+  <link rel="stylesheet" href="css/blog.css"/>
+  <link rel="stylesheet" href="css/perf-improvements.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="logo.webp" type="image/png"/>
+  <link rel="apple-touch-icon" href="logo.webp"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="js/cms-bootstrap.js"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/analytics-loader.js" defer></script>
+
+  <link rel="stylesheet" href="css/main-enhanced.css"/>
+  <link rel="stylesheet" href="css/premium-upgrades.css"/>
+</head>
+<body>
+
+<div class="notif-bar" id="notifBar" style="display:none">
+  <div class="notif-track" id="notifTrack"></div>
+  <button class="notif-close" onclick="this.parentElement.style.display='none'" aria-label="Close"><i class="fa fa-times"></i></button>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><img src="logo.webp" alt="Career Pakistan" width="44" height="44" fetchpriority="high"/></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown"><a href="scholarships.html">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="scholarships-national.html">National</a></li><li><a href="scholarships-international.html">International</a></li></ul></li>
+      <li class="has-dropdown"><a href="jobs.html">Jobs <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="jobs-government.html">Government Jobs</a></li><li><a href="jobs-private.html">Private / NGO</a></li></ul></li>
+      <li><a href="internships.html">Internships</a></li>
+      <li class="has-dropdown"><a href="exams.html">Exams <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+        <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search"><i class="fa fa-search"></i></button>
+      <a href="favorites.html" class="nav-icon-btn" aria-label="Saved"><i class="fa fa-bookmark"></i><span class="fav-count" id="favCount" style="display:none">0</span></a>
+      <button class="nav-icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Toggle dark mode"><i class="fa fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="nav-search" id="navSearch"><div class="nav-container"><form action="search.html" method="GET" class="search-form-nav"><i class="fa fa-search"></i><input type="text" name="q" id="navSearchInput" placeholder="Search blog..."/><button type="submit">Search</button></form></div></div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa fa-chevron-right fa-xs"></i> <span>Blog</span></div>
+    <h1 class="page-title">📝 Career Pakistan Blog</h1>
+    <p class="page-subtitle">Career guides, scholarship tips, job alerts, and exam updates — written for Pakistani students and professionals</p>
+  </div>
+</div>
+
+<!-- Category filter pills -->
+<div class="filter-bar">
+  <div class="container">
+    <div style="display:flex;gap:.5rem;overflow-x:auto;padding:.75rem 0;-webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:center">
+      <button class="cat-pill active" id="catAll" onclick="filterBlogCat('',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--primary);background:var(--primary);color:#fff">All Posts</button>
+      <button class="cat-pill" onclick="filterBlogCat('Jobs',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary)">💼 Jobs</button>
+      <button class="cat-pill" onclick="filterBlogCat('Scholarships',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary)">🎓 Scholarships</button>
+      <button class="cat-pill" onclick="filterBlogCat('Exams',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary)">📝 Exams</button>
+      <button class="cat-pill" onclick="filterBlogCat('Internships',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary)">🚀 Internships</button>
+      <button class="cat-pill" onclick="filterBlogCat('Career',this)" style="border-radius:var(--radius-full);padding:.4rem 1rem;font-size:.83rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary)">🌟 Career Tips</button>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:.5rem">
+      <span id="blogResultsCount" style="font-size:.85rem;color:var(--text-muted)">Loading...</span>
+      <select class="filter-select" id="blogSort" onchange="applyBlogFilters()" style="font-size:.82rem;padding:.4rem .75rem">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+      </select>
+    </div>
+    <div class="cards-grid" id="blogGrid">
+      <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+      <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+    </div>
+    <div class="empty-state" id="blogEmpty" style="display:none">
+      <i class="fa fa-newspaper"></i><h3>No blog posts found</h3><p>Try a different category or check back soon.</p>
+      <button class="btn btn-secondary" onclick="filterBlogCat('',document.getElementById('catAll'))">Show All</button>
+    </div>
+    <div class="error-state" id="blogError" style="display:none">
+      <i class="fa fa-triangle-exclamation"></i><h3>Could not load blog posts</h3>
+      <button class="btn btn-primary" onclick="loadBlogData()">Retry</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Career <span>Pakistan</span></a>
+        <p>Pakistan's trusted platform for students and professionals — scholarships, jobs, internships, exams, and books updated daily.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://facebook.com/careerpakistan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/careerpakistan" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="scholarships.html">Scholarships</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="internships.html">Internships</a></li><li><a href="books.html">Books</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Exam Hub</h4><ul><li><a href="exams.html">All Exams</a></li><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="search.html">Search</a></li><li><a href="favorites.html">Saved Items</a></li><li><a href="resume-builder.html">Resume Builder</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Career Pakistan. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="index.html" class="mob-nav-item"><i class="fa fa-home"></i><span>Home</span></a>
+  <a href="scholarships.html" class="mob-nav-item"><i class="fa fa-graduation-cap"></i><span>Scholarships</span></a>
+  <a href="jobs.html" class="mob-nav-item"><i class="fa fa-briefcase"></i><span>Jobs</span></a>
+  <a href="exams.html" class="mob-nav-item"><i class="fa fa-file-alt"></i><span>Exams</span></a>
+  <a href="books.html" class="mob-nav-item"><i class="fa fa-book"></i><span>Books</span></a>
+</nav>
+
+<script src="js/google-sheet-loader.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/comprehensive-fix.js"></script>
+<script src="js/cms-auto-refresh-listener.js"></script>
+<script src="js/ai-chatbot-global.js" defer></script>
+<script>
+let _allBlogPosts = [];
+let _blogCat = '';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initDarkMode();
+  updateFavCount();
+  initMenu();
+  // Wait for CMS with 8s fallback
+  Promise.race([
+    new Promise(resolve => {
+      if (window._CMS_READY && window.CMS_DATA && (window.CMS_DATA.Blogs||[]).length) return resolve();
+      onCMSReady(resolve);
+      document.addEventListener('cmsReady', resolve, { once: true });
+    }),
+    new Promise(resolve => setTimeout(resolve, 8000))
+  ]).then(loadBlogData);
+  if (typeof initializeAutoRefreshListeners === 'function') initializeAutoRefreshListeners();
+});
+
+function loadBlogData() {
+  try {
+    const posts = window.CMS_DATA && Array.isArray(window.CMS_DATA.Blogs) ? window.CMS_DATA.Blogs : [];
+    if (posts.length === 0) {
+      document.getElementById('blogError').style.display = 'flex';
+      document.getElementById('blogGrid').innerHTML = '';
+      return;
+    }
+    _allBlogPosts = posts.filter(p => p.title && p.title.trim());
+    applyBlogFilters();
+  } catch(e) {
+    document.getElementById('blogError').style.display = 'flex';
+    console.error('[Blog]', e);
+  }
+}
+
+function filterBlogCat(cat, btn) {
+  _blogCat = cat;
+  document.querySelectorAll('.cat-pill').forEach(b => {
+    b.style.background = 'var(--bg-card)';
+    b.style.color = 'var(--text-secondary)';
+    b.style.borderColor = 'var(--border)';
+  });
+  btn.style.background = 'var(--primary)';
+  btn.style.color = '#fff';
+  btn.style.borderColor = 'var(--primary)';
+  applyBlogFilters();
+}
+
+function applyBlogFilters() {
+  const sort = document.getElementById('blogSort').value;
+  let items = _blogCat ? _allBlogPosts.filter(p => (p.category||'').toLowerCase().includes(_blogCat.toLowerCase())) : _allBlogPosts.slice();
+  items.sort((a,b) => {
+    const da = new Date(a.date||0).getTime(), db = new Date(b.date||0).getTime();
+    return sort === 'oldest' ? da - db : db - da;
+  });
+
+  document.getElementById('blogResultsCount').textContent = `${items.length} post${items.length !== 1 ? 's' : ''}`;
+  const grid = document.getElementById('blogGrid');
+  const empty = document.getElementById('blogEmpty');
+  if (items.length === 0) { grid.innerHTML = ''; empty.style.display = 'flex'; return; }
+  empty.style.display = 'none';
+  grid.innerHTML = items.map(p => renderBlogCard(p)).join('');
+  grid.querySelectorAll('.card').forEach(c => { c.style.opacity='1'; c.style.visibility='visible'; c.classList.add('visible'); });
+}
+
+function renderBlogCard(p) {
+  const img = escapeHtml(p.image_url || 'banner.png');
+  const url = `blog-post.html?id=${encodeURIComponent(p.id)}`;
+  const cat = p.category || 'Blog';
+  const dateStr = p.date ? formatDate(p.date) : '';
+  const readTime = p.read_time || '';
+  const excerpt = p.short_description || (p.description || '').slice(0, 130);
+  return `<article class="card blog-card">
+    <a href="${url}" style="display:block;text-decoration:none;color:inherit">
+      <div class="card-img" style="height:190px;overflow:hidden">
+        <img src="${img}" alt="${escapeHtml(p.title||'')}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" onerror="this.src='banner.png'"/>
+      </div>
+    </a>
+    <div class="card-body">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap">
+        <span class="chip" style="font-size:.72rem">${escapeHtml(cat)}</span>
+        ${dateStr ? `<span style="font-size:.75rem;color:var(--text-muted)">${dateStr}</span>` : ''}
+        ${readTime ? `<span style="font-size:.75rem;color:var(--text-muted)">· ${escapeHtml(readTime)}</span>` : ''}
+      </div>
+      <h2 style="font-size:1rem;line-height:1.35;margin-bottom:.5rem;font-weight:700">
+        <a href="${url}" style="color:var(--text-main);text-decoration:none">${escapeHtml(p.title||'')}</a>
+      </h2>
+      ${excerpt ? `<p style="font-size:.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${escapeHtml(excerpt)}</p>` : ''}
+      ${p.author ? `<p style="font-size:.78rem;color:var(--text-muted);margin-bottom:.75rem"><i class="fa fa-user" style="color:var(--primary);margin-right:.25rem"></i>${escapeHtml(p.author)}</p>` : ''}
+      <a href="${url}" class="btn btn-secondary" style="font-size:.82rem;padding:.5rem 1rem;border-radius:var(--radius-full)">Read Article →</a>
+    </div>
+  </article>`;
+}
+</script>
+<script src="js/image-optimizer.js" defer></script>
+</body>
+</html>

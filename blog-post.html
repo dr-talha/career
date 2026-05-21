@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="author" content="Career Pakistan"/>
+  <meta name="theme-color" content="#0f766e"/>
+  <title id="pageMetaTitle">Blog Post | Career Pakistan</title>
+  <meta name="description" id="pageMetaDesc" content="Read the latest career articles, scholarship tips, and exam guides on Career Pakistan Blog."/>
+  <link rel="canonical" id="pageMetaCanonical" href="https://careerpk.online/blog-post.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" id="ogUrl" content="https://careerpk.online/blog-post.html"/>
+  <meta property="og:title" id="ogTitle" content="Blog Post | Career Pakistan"/>
+  <meta property="og:description" id="ogDesc" content="Read the latest career articles on Career Pakistan."/>
+  <meta property="og:image" id="ogImage" content="https://careerpk.online/banner.webp"/>
+  <meta property="og:site_name" content="Career Pakistan"/>
+  <meta property="og:locale" content="en_PK"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" id="twTitle" content="Blog Post | Career Pakistan"/>
+  <meta name="twitter:description" id="twDesc" content="Read the latest career articles on Career Pakistan."/>
+  <meta name="twitter:image" id="twImage" content="https://careerpk.online/banner.webp"/>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/main-enhanced.css"/>
+  <link rel="stylesheet" href="css/perf-improvements.css"/>
+  <link rel="stylesheet" href="css/premium-upgrades.css"/>
+  <link rel="stylesheet" href="css/blog.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="logo.webp" type="image/webp"/>
+  <link rel="apple-touch-icon" href="logo.webp"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="js/cms-bootstrap.js"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/analytics-loader.js" defer></script>
+</head>
+<body>
+
+<div class="notif-bar" id="notifBar" style="display:none">
+  <div class="notif-track" id="notifTrack"></div>
+  <button class="notif-close" onclick="this.parentElement.style.display='none'" aria-label="Close"><i class="fa fa-times"></i></button>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><img src="logo.webp" alt="Career Pakistan" width="44" height="44" fetchpriority="high"/></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown"><a href="scholarships.html">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="scholarships-national.html">National</a></li><li><a href="scholarships-international.html">International</a></li></ul></li>
+      <li class="has-dropdown"><a href="jobs.html">Jobs <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="jobs-government.html">Government Jobs</a></li><li><a href="jobs-private.html">Private / NGO</a></li></ul></li>
+      <li><a href="internships.html">Internships</a></li>
+      <li class="has-dropdown"><a href="exams.html">Exams <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search"><i class="fa fa-search"></i></button>
+      <a href="favorites.html" class="nav-icon-btn" aria-label="Saved"><i class="fa fa-bookmark"></i><span class="fav-count" id="favCount" style="display:none">0</span></a>
+      <button class="nav-icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Toggle dark mode"><i class="fa fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="nav-search" id="navSearch">
+    <div class="nav-container">
+      <form action="search.html" method="GET" class="search-form-nav">
+        <i class="fa fa-search"></i><input type="text" name="q" id="navSearchInput" placeholder="Search blog..."/><button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id="postLoading" class="container" style="padding:4rem 1rem;text-align:center">
+  <div class="skeleton-card" style="height:280px;margin-bottom:1rem"></div>
+  <div class="skeleton-card" style="height:60px;margin-bottom:.5rem"></div>
+  <div class="skeleton-card" style="height:60px"></div>
+</div>
+<div id="postError" style="display:none;padding:4rem 1rem;text-align:center">
+  <i class="fa fa-triangle-exclamation" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:1rem;display:block"></i>
+  <h2 style="font-size:1.25rem;margin-bottom:.5rem">Post not found</h2>
+  <p style="color:var(--text-secondary);margin-bottom:1.5rem">This post may have been removed or the link is incorrect.</p>
+  <a href="blog.html" class="btn">← Back to Blog</a>
+</div>
+
+<main class="section" id="postContent" style="display:none">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 290px;gap:2rem;align-items:start">
+      <article>
+        <div style="margin-bottom:.75rem">
+          <a href="blog.html" style="font-size:.83rem;color:var(--primary);font-weight:600"><i class="fa fa-arrow-left fa-xs"></i> Back to Blog</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.75rem">
+          <span id="postCatBadge" class="chip" style="font-size:.75rem;font-weight:700"></span>
+        </div>
+        <h1 id="postTitle" style="font-size:clamp(1.4rem,3.5vw,2.1rem);line-height:1.3;margin-bottom:.75rem"></h1>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--text-muted);margin-bottom:1.25rem">
+          <span id="postAuthorRow" style="display:none"><i class="fa fa-user" style="color:var(--primary);margin-right:.3rem"></i><span id="postAuthor"></span></span>
+          <span id="postDateRow" style="display:none"><i class="fa fa-calendar" style="color:var(--primary);margin-right:.3rem"></i><span id="postDate"></span></span>
+          <span id="postReadRow" style="display:none"><i class="fa fa-clock" style="color:var(--primary);margin-right:.3rem"></i><span id="postReadTime"></span></span>
+        </div>
+        <div id="postImgWrap" style="display:none;margin-bottom:1.5rem">
+          <img id="postImg" src="" alt="" style="width:100%;max-height:400px;object-fit:cover;border-radius:var(--radius-md)" loading="lazy" decoding="async" onerror="this.closest('div').style.display='none'"/>
+        </div>
+        <div id="postBody" style="line-height:1.85;color:var(--text-secondary);font-size:.98rem"></div>
+        <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+          <p style="font-size:.85rem;font-weight:700;margin-bottom:.65rem">Share this article</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+            <button class="btn" style="background:#25d366;color:#fff;font-size:.82rem;padding:.5rem 1rem" onclick="window.open('https://wa.me/?text='+encodeURIComponent(document.title+' '+location.href),'_blank')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            <button class="btn" style="background:#1877f2;color:#fff;font-size:.82rem;padding:.5rem 1rem" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'_blank')"><i class="fab fa-facebook"></i> Facebook</button>
+            <button class="btn btn-secondary" style="font-size:.82rem;padding:.5rem 1rem" onclick="navigator.clipboard.writeText(location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>this.innerHTML='<i class=\'fa fa-copy\'></i> Copy Link',2000)})"><i class="fa fa-copy"></i> Copy Link</button>
+          </div>
+        </div>
+      </article>
+      <aside style="position:sticky;top:75px;display:flex;flex-direction:column;gap:1.1rem">
+        <div class="sw">
+          <p class="sw-h">⏰ Closing Soon</p>
+          <div id="pgSbDeadlines"><div class="skeleton-card" style="height:48px;margin-bottom:.35rem"></div><div class="skeleton-card" style="height:48px"></div></div>
+        </div>
+        <div class="sw">
+          <p class="sw-h">⭐ Featured</p>
+          <div id="pgSbFeatured"><div class="skeleton-card" style="height:48px"></div></div>
+        </div>
+        <div class="sw">
+          <p class="sw-h">🔗 Quick Links</p>
+          <nav>
+            <a href="scholarships.html" class="sw-ql"><i class="fa fa-graduation-cap fa-fw"></i> Scholarships</a>
+            <a href="jobs.html" class="sw-ql"><i class="fa fa-briefcase fa-fw"></i> Jobs</a>
+            <a href="internships.html" class="sw-ql"><i class="fa fa-rocket fa-fw"></i> Internships</a>
+            <a href="exams.html" class="sw-ql"><i class="fa fa-file-alt fa-fw"></i> Exams</a>
+            <a href="books.html" class="sw-ql"><i class="fa fa-book fa-fw"></i> Books</a>
+            <a href="blog.html" class="sw-ql"><i class="fa fa-pen fa-fw"></i> Blog</a>
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Career <span>Pakistan</span></a>
+        <p>Pakistan's trusted platform for students and professionals — scholarships, jobs, internships, exams, and books updated daily.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://facebook.com/careerpakistan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/careerpakistan" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="scholarships.html">Scholarships</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="internships.html">Internships</a></li><li><a href="books.html">Books</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Exam Hub</h4><ul><li><a href="exams.html">All Exams</a></li><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="search.html">Search</a></li><li><a href="favorites.html">Saved Items</a></li><li><a href="resume-builder.html">Resume Builder</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Career Pakistan. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="index.html" class="mob-nav-item"><i class="fa fa-home"></i><span>Home</span></a>
+  <a href="scholarships.html" class="mob-nav-item"><i class="fa fa-graduation-cap"></i><span>Scholarships</span></a>
+  <a href="jobs.html" class="mob-nav-item"><i class="fa fa-briefcase"></i><span>Jobs</span></a>
+  <a href="exams.html" class="mob-nav-item"><i class="fa fa-file-alt"></i><span>Exams</span></a>
+  <a href="books.html" class="mob-nav-item"><i class="fa fa-book"></i><span>Books</span></a>
+</nav>
+
+<script src="js/google-sheet-loader.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/image-optimizer.js" defer></script>
+<script src="js/ai-chatbot-global.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if(typeof initDarkMode==='function') initDarkMode();
+  if(typeof updateFavCount==='function') updateFavCount();
+  if(typeof initMenu==='function') initMenu();
+  onCMSReady(() => {
+    loadPost();
+    _fillSubSidebar();
+  });
+});
+
+function loadPost() {
+  const id = new URLSearchParams(location.search).get('id');
+  if (!id) { showPostError(); return; }
+  const posts = window.CMS_DATA && Array.isArray(window.CMS_DATA.Blogs) ? window.CMS_DATA.Blogs : [];
+  const post = posts.find(p => String(p.id) === String(id));
+  if (!post) { showPostError(); return; }
+  renderPost(post);
+}
+
+function renderPost(p) {
+  document.title = (p.title || 'Blog Post') + ' | Career Pakistan';
+  const setId = (id, val) => { const el=document.getElementById(id); if(el) el.textContent=val||''; };
+  const setHtml = (id, val) => { const el=document.getElementById(id); if(el) el.innerHTML=val||''; };
+
+  setId('postCatBadge', p.category || 'Blog');
+  setId('postTitle', p.title || '');
+
+  const authorRow = document.getElementById('postAuthorRow');
+  if (p.author && authorRow) { authorRow.style.display='flex'; setId('postAuthor', p.author); }
+
+  const dateRow = document.getElementById('postDateRow');
+  if (p.date && dateRow) { dateRow.style.display='flex'; setId('postDate', typeof formatDate==='function'?formatDate(p.date):p.date); }
+
+  const readRow = document.getElementById('postReadRow');
+  if ((p.read_time||p.readTime) && readRow) { readRow.style.display='flex'; setId('postReadTime', p.read_time||p.readTime); }
+
+  if (p.image_url) {
+    document.getElementById('postImg').src = p.image_url;
+    document.getElementById('postImg').alt = p.title || '';
+    document.getElementById('postImgWrap').style.display = 'block';
+  }
+
+  const body = p.details || p.description || p.short_description || '';
+  setHtml('postBody', body
+    ? body.split(/
+
+|
+/).filter(t=>t.trim()).map(t=>`<p>${typeof escapeHtml==='function'?escapeHtml(t.trim()):t.trim()}</p>`).join('')
+    : '<p style="color:var(--text-muted)">No content available.</p>'
+  );
+
+  document.getElementById('postLoading').style.display = 'none';
+  document.getElementById('postContent').style.display = 'block';
+}
+
+function showPostError() {
+  document.getElementById('postLoading').style.display = 'none';
+  document.getElementById('postError').style.display = 'block';
+}
+
+function _fillSubSidebar() {
+  const all = [
+    ...(window.CMS_DATA.Scholarships||[]).map(i=>({...i,_t:'scholarship'})),
+    ...(window.CMS_DATA.Jobs||[]).map(i=>({...i,_t:'job'})),
+    ...(window.CMS_DATA.Internships||[]).map(i=>({...i,_t:'internship'})),
+    ...(window.CMS_DATA.Exams||[]).map(i=>({...i,_t:'exam'})),
+  ];
+  const icons = {scholarship:'🎓',job:'💼',internship:'🚀',exam:'📝'};
+  const now = new Date();
+  const soon = all
+    .map(i => { const raw=i.deadline||i.registrationDeadline||i.registration_deadline||i.testDate||i.test_date||''; return {...i,_dl:raw?new Date(raw):null,_dlRaw:raw}; })
+    .filter(i=>i._dl&&i._dl>now).sort((a,b)=>a._dl-b._dl).slice(0,6);
+  const dlEl=document.getElementById('pgSbDeadlines');
+  if(dlEl) dlEl.innerHTML=soon.length?soon.map(i=>`<a class="sw-item" href="opportunity.html?type=${i._t}&id=${encodeURIComponent(i.id)}"><span class="sw-icon">${icons[i._t]||'📌'}</span><span class="sw-body"><span class="sw-title">${typeof escapeHtml==='function'?escapeHtml(i.title||''):i.title||''}</span><span class="sw-meta urgent"><i class="fa fa-clock fa-xs"></i> ${typeof formatDate==='function'?formatDate(i._dlRaw):i._dlRaw}</span></span></a>`).join(''):'<p class="sw-empty">No upcoming deadlines.</p>';
+  const featured=all.filter(i=>i.isFeatured===true||i.is_featured===true).slice(0,5);
+  const ftEl=document.getElementById('pgSbFeatured');
+  if(ftEl) ftEl.innerHTML=featured.length?featured.map(i=>`<a class="sw-item" href="opportunity.html?type=${i._t}&id=${encodeURIComponent(i.id)}"><span class="sw-icon">⭐</span><span class="sw-body"><span class="sw-title">${typeof escapeHtml==='function'?escapeHtml(i.title||''):i.title||''}</span><span class="sw-meta">${i._t}</span></span></a>`).join(''):'<p class="sw-empty">No featured items yet.</p>';
+}
+</script>
+</body>
+</html>
