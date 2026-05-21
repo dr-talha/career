@@ -6,6 +6,7 @@
 // ============================================================
 
 const TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+const GENERIC_IMAGE_FALLBACK = 'banner.webp';
 
 // ── Utility: fetch sheet data from live window.CMS_DATA ──────
 window.CMS_DATA = window.CMS_DATA || { Scholarships: [], Jobs: [], Internships: [], Exams: [], Books: [], Notifications: [], scholarships: [], internships: [], exams: [], books: [], notifications: [], blogs: [] };
@@ -484,7 +485,7 @@ function openCardPost(id, type) {
 function cardScholarship(s) {
   const fav = isFav(s.id, 'scholarship');
   const src = getCardImage(s, 'scholarship');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(s.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(s.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   const loc = s.country || s.province || '';
   return `
   <div class="card" data-id="${s.id}" data-type="scholarship" role="button" tabindex="0" aria-label="View ${escapeHtml(s.title)}">
@@ -520,7 +521,7 @@ function cardScholarship(s) {
 function cardJob(j) {
   const fav = isFav(j.id, 'job');
   const src = getCardImage(j, 'job');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(j.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(j.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   return `
   <div class="card" data-id="${j.id}" data-type="job" role="button" tabindex="0" aria-label="View ${escapeHtml(j.title)}">
     <div class="card-img">
@@ -555,7 +556,7 @@ function cardJob(j) {
 function cardInternship(i) {
   const fav = isFav(i.id, 'internship');
   const src = getCardImage(i, 'internship');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(i.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(i.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   const paidCls = (i.type||'').toLowerCase()==='paid' ? 'paid' : 'unpaid';
   return `
   <div class="card" data-id="${i.id}" data-type="internship" role="button" tabindex="0" aria-label="View ${escapeHtml(i.title)}">
@@ -591,7 +592,7 @@ function cardInternship(i) {
 function cardExam(e) {
   const fav = isFav(e.id, 'exam');
   const src = getCardImage(e, 'exam');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(e.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(e.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   return `
   <div class="card" data-id="${e.id}" data-type="exam" role="button" tabindex="0" aria-label="View ${escapeHtml(e.title)}">
     <div class="card-img">
@@ -625,7 +626,7 @@ function cardExam(e) {
 function cardBook(b) {
   const fav = isFav(b.id, 'book');
   const src = getCardImage(b, 'book');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   return `
   <div class="card" data-id="${b.id}" data-type="book" role="button" tabindex="0" aria-label="View ${escapeHtml(b.title)}">
     <div class="card-img">
@@ -660,7 +661,7 @@ function cardBook(b) {
 function cardBlog(b) {
   const fav = isFav(b.id, 'blog');
   const src = getCardImage(b, 'blog');
-  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const imgHTML = src ? `<img src="${TRANSPARENT_PLACEHOLDER}" data-src="${escapeHtml(src)}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(GENERIC_IMAGE_FALLBACK)}';this.classList.remove('img-loading');this.classList.add('img-loaded');if(this.nextElementSibling){this.nextElementSibling.style.display='none';}">` : '';
   return `
   <div class="card" data-id="${b.id}" data-type="blog" role="button" tabindex="0" aria-label="Read ${escapeHtml(b.title)}">
     <div class="card-img">
@@ -1158,8 +1159,8 @@ function loadHomePageData() {
 
 function initHomeCardSliders() {
   if (!document.body.classList.contains('home-page')) return;
-  const sliderIds = ['scholarshipsGrid', 'jobsGrid', 'internshipsGrid'];
-
+  const sliderIds = ['scholarshipsGrid', 'jobsGrid', 'internshipsGrid', 'blogsGrid', 'examsGrid', 'booksGrid'];
+  
   sliderIds.forEach((id) => {
     const grid = document.getElementById(id);
     if (!grid || grid.children.length < 2) return;
@@ -1503,19 +1504,27 @@ function toggleSearch() {
 }
 
 // ── Dark mode ─────────────────────────────────────────────────
+function syncThemeButton() {
+  const btn = document.getElementById('themeBtn');
+  if (!btn) return;
+  const isDark = document.body.classList.contains('dark');
+  btn.innerHTML = isDark ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+  btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
 function toggleDarkMode() {
   document.body.classList.toggle('dark');
   const isDark = document.body.classList.contains('dark');
-  localStorage.setItem('ch_dark', isDark);
-  const btn = document.getElementById('themeBtn');
-  if (btn) btn.innerHTML = isDark ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+  localStorage.setItem('ch_dark', isDark ? 'true' : 'false');
+  syncThemeButton();
 }
 function initDarkMode() {
-  if (localStorage.getItem('ch_dark') === 'true') {
-    document.body.classList.add('dark');
-    const btn = document.getElementById('themeBtn');
-    if (btn) btn.innerHTML = '<i class="fa fa-sun"></i>';
-  }
+  const pref = localStorage.getItem('ch_dark');
+  const shouldUseDark = pref === null
+    ? !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    : pref === 'true';
+  document.body.classList.toggle('dark', shouldUseDark);
+  syncThemeButton();
 }
 
 // ── Popup modal ───────────────────────────────────────────────
