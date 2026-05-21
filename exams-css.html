@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <title>Exams Css | Career Pakistan</title>
+  <meta name="description" content="Category listing page for Career Pakistan."/>
+  <link rel="canonical" href="https://careerpk.online/exams-css.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://careerpk.online/exams-css.html"/>
+  <meta property="og:title" content="Exams Css | Career Pakistan"/>
+  <meta property="og:description" content="Category listing page for Career Pakistan."/>
+  <meta property="og:image" content="https://careerpk.online/banner.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/main-enhanced.css"/>
+  <link rel="stylesheet" href="css/perf-improvements.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="js/cms-bootstrap.js"></script>
+  <script src="js/analytics-loader.js" defer></script>
+
+  <link rel="stylesheet" href="css/premium-upgrades.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="nav-container"><a href="index.html" class="nav-logo"><img src="logo.webp" alt="Career Pakistan" width="44" height="44"/></a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="scholarships.html">Scholarships</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="internships.html">Internships</a></li><li><a href="exams.html">Exams</a></li><li><a href="books.html">Books</a></li><li><a href="blog.html">Blog</a></li></ul>    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search"><i class="fa fa-search"></i></button>
+      <a href="favorites.html" class="nav-icon-btn" aria-label="Saved"><i class="fa fa-bookmark"></i><span class="fav-count" id="favCount" style="display:none">0</span></a>
+      <button class="nav-icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Toggle dark mode"><i class="fa fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+    </div></div><div class="nav-search" id="navSearch"><div class="nav-container"><form action="search.html" method="GET" class="search-form-nav"><i class="fa fa-search"></i><input type="text" name="q" id="navSearchInput" placeholder="Search jobs, scholarships, exams..."/><button type="submit">Search</button></form></div></div></nav>
+<main class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 290px;gap:2rem;align-items:start">
+      <div>
+        <div class="page-header" style="margin-bottom:1.5rem">
+          <h1 class="page-title">📜 CSS / PMS Exam Updates</h1>
+          <p class="page-subtitle">Central Superior Services exam dates, syllabus, and preparation</p>
+        </div>
+        <div id="resultsCount" class="results-count" style="margin-bottom:.75rem;font-size:.84rem;color:var(--text-muted)">Loading…</div>
+        <div class="cards-grid" id="resultsGrid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+        <div id="emptyState" style="display:none;text-align:center;padding:3rem 1rem">
+          <i class="fa fa-inbox" style="font-size:2rem;color:var(--text-muted);margin-bottom:.5rem;display:block"></i>
+          <p>No results found. Try adjusting filters.</p>
+        </div>
+      </div>
+      <aside style="position:sticky;top:75px;display:flex;flex-direction:column;gap:1.1rem">
+        <div class="sw">
+          <p class="sw-h">⏰ Closing Soon</p>
+          <div id="pgSbDeadlines"><div class="skeleton-card" style="height:48px;margin-bottom:.35rem"></div><div class="skeleton-card" style="height:48px"></div></div>
+        </div>
+        <div class="sw">
+          <p class="sw-h">⭐ Featured</p>
+          <div id="pgSbFeatured"><div class="skeleton-card" style="height:48px"></div></div>
+        </div>
+        <div class="sw">
+          <p class="sw-h">🔗 Quick Links</p>
+          <nav>
+            <a href="scholarships.html" class="sw-ql"><i class="fa fa-graduation-cap fa-fw"></i> Scholarships</a>
+            <a href="jobs.html" class="sw-ql"><i class="fa fa-briefcase fa-fw"></i> Jobs</a>
+            <a href="internships.html" class="sw-ql"><i class="fa fa-rocket fa-fw"></i> Internships</a>
+            <a href="exams.html" class="sw-ql"><i class="fa fa-file-alt fa-fw"></i> Exams</a>
+            <a href="books.html" class="sw-ql"><i class="fa fa-book fa-fw"></i> Books</a>
+            <a href="blog.html" class="sw-ql"><i class="fa fa-pen fa-fw"></i> Blog</a>
+            <a href="search.html" class="sw-ql"><i class="fa fa-search fa-fw"></i> Search All</a>
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main><script>function _renderPage(){const m={'scholarships':'Scholarships','scholarships-national':'Scholarships','scholarships-international':'Scholarships','internships':'Internships','exams':'Exams','exams-css':'Exams','exams-mdcat':'Exams','exams-ppsc':'Exams','jobs-government':'Jobs','jobs-private':'Jobs'};const key='exams-css';let items=(window.CMS_DATA[m[key]]||[]).slice();if(key==='scholarships-national')items=items.filter(i=>scholarshipMatchesCountry(i,'Pakistan'));if(key==='scholarships-international')items=items.filter(i=>scholarshipMatchesCountry(i,'International'));if(key==='exams-css')items=items.filter(i=>/css/i.test((i.exam_type||'')+' '+(i.tags||'')));if(key==='exams-mdcat')items=items.filter(i=>/mdcat/i.test((i.exam_type||'')+' '+(i.tags||'')));if(key==='exams-ppsc')items=items.filter(i=>/ppsc/i.test((i.exam_type||'')+' '+(i.tags||'')));if(key==='jobs-government')items=items.filter(i=>isGovernmentType(i.type)||/government/i.test(i.category||''));if(key==='jobs-private')items=items.filter(i=>!isGovernmentType(i.type));items=sortItems(items,'newest');resultsCount.textContent=items.length+' results';resultsGrid.innerHTML=items.map(i=>m[key]==='Jobs'?cardJob(i):m[key]==='Scholarships'?cardScholarship(i):m[key]==='Internships'?cardInternship(i):cardExam(i)).join('');}document.addEventListener('DOMContentLoaded',()=>onCMSReady(_renderPage));</script>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Career <span>Pakistan</span></a>
+        <p>Pakistan's trusted platform for students and professionals — scholarships, jobs, internships, exams, and books updated daily.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://facebook.com/careerpakistan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/careerpakistan" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="scholarships.html">Scholarships</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="internships.html">Internships</a></li><li><a href="books.html">Books</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Exam Hub</h4><ul><li><a href="exams.html">All Exams</a></li><li><a href="exams-mdcat.html">MDCAT</a></li><li><a href="exams-css.html">CSS</a></li><li><a href="exams-ppsc.html">PPSC</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="search.html">Search</a></li><li><a href="favorites.html">Saved Items</a></li><li><a href="resume-builder.html">Resume Builder</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Career Pakistan. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<nav class="mobile-bottom-nav"><a href="index.html" class="mob-nav-item"><i class="fa fa-home"></i><span>Home</span></a><a href="scholarships.html" class="mob-nav-item"><i class="fa fa-graduation-cap"></i><span>Scholarships</span></a><a href="jobs.html" class="mob-nav-item"><i class="fa fa-briefcase"></i><span>Jobs</span></a><a href="exams.html" class="mob-nav-item"><i class="fa fa-file-alt"></i><span>Exams</span></a><a href="books.html" class="mob-nav-item"><i class="fa fa-book"></i><span>Books</span></a></nav>
+<script src="js/google-sheet-loader.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/image-optimizer.js" defer></script>
+<script src="js/ai-chatbot-global.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if(typeof initDarkMode==='function') initDarkMode();
+  if(typeof updateFavCount==='function') updateFavCount();
+  if(typeof initMenu==='function') initMenu();
+  onCMSReady(() => {
+    _renderPage();
+    _fillSubSidebar();
+  });
+});
+
+function _fillSubSidebar() {
+  const all = [
+    ...(window.CMS_DATA.Scholarships||[]).map(i=>({...i,_t:'scholarship'})),
+    ...(window.CMS_DATA.Jobs||[]).map(i=>({...i,_t:'job'})),
+    ...(window.CMS_DATA.Internships||[]).map(i=>({...i,_t:'internship'})),
+    ...(window.CMS_DATA.Exams||[]).map(i=>({...i,_t:'exam'})),
+  ];
+  const icons = {scholarship:'🎓',job:'💼',internship:'🚀',exam:'📝'};
+
+  const now = new Date();
+  const soon = all
+    .map(i => {
+      const raw = i.deadline||i.registrationDeadline||i.registration_deadline||i.testDate||i.test_date||'';
+      return {...i, _dl: raw ? new Date(raw) : null, _dlRaw: raw};
+    })
+    .filter(i => i._dl && i._dl > now)
+    .sort((a,b) => a._dl - b._dl)
+    .slice(0,6);
+
+  const dlEl = document.getElementById('pgSbDeadlines');
+  if (dlEl) dlEl.innerHTML = soon.length ? soon.map(i=>`
+    <a class="sw-item" href="opportunity.html?type=${i._t}&id=${encodeURIComponent(i.id)}">
+      <span class="sw-icon">${icons[i._t]||'📌'}</span>
+      <span class="sw-body">
+        <span class="sw-title">${typeof escapeHtml==='function'?escapeHtml(i.title||''):i.title||''}</span>
+        <span class="sw-meta urgent"><i class="fa fa-clock fa-xs"></i> ${typeof formatDate==='function'?formatDate(i._dlRaw):i._dlRaw}</span>
+      </span>
+    </a>`).join('') : '<p class="sw-empty">No upcoming deadlines.</p>';
+
+  const featured = all.filter(i=>i.isFeatured===true||i.is_featured===true).slice(0,5);
+  const ftEl = document.getElementById('pgSbFeatured');
+  if (ftEl) ftEl.innerHTML = featured.length ? featured.map(i=>`
+    <a class="sw-item" href="opportunity.html?type=${i._t}&id=${encodeURIComponent(i.id)}">
+      <span class="sw-icon">⭐</span>
+      <span class="sw-body">
+        <span class="sw-title">${typeof escapeHtml==='function'?escapeHtml(i.title||''):i.title||''}</span>
+        <span class="sw-meta">${i._t}</span>
+      </span>
+    </a>`).join('') : '<p class="sw-empty">No featured items yet.</p>';
+}
+</script>
+</body>
+</html>
