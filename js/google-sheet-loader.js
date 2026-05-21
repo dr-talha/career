@@ -4,14 +4,24 @@
 // isActive on notifications, _fireCMSReady()
 // ============================================================
 const SHEETS_BASE_URL='/api/sheets';
+const DIRECT_SHEET_URLS={
+  Scholarships:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRdaG_r04rwKR63qkpha0v-REFHkI2M7aXIGNQZf7zmduv8tvV1k4TRBlafEIKKgI8QbXuL6r3rTuMo/pub?output=csv',
+  Jobs:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfOHaqq2H2iBXWn90i11S0bfbPUa--m4Hrkvh34TC11KDTyZymdcTCryAnckRZ8MjeAUb7Bh1-6i4s/pub?output=csv',
+  Internships:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRrDPiwb4Ow0LwD2RJWpATk0b3Blrd_PR21vBn3IPes1EC6Uf9YqDucsF5jWwFrlVB_kA7oaca8uMCS/pub?output=csv',
+  Exams:'https://docs.google.com/spreadsheets/d/e/2PACX-1vR1ISsMtV-TMyTQleaS7sxDXAkrGHgk-MobAwOgHry2PLpKaZDQSJbu3JtiaYEYMDQW3M7cFAJO6IPp/pub?output=csv',
+  Books:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTUvgf_xYBH5igPoaGKEWTvk9MxA_VJ7a8104rnB1GJz0ef-zpjy05CjF5_XSlOEDAXh_2CzQOqn9ww/pub?output=csv',
+  Notifications:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQlGJdIw3YLBDWCXA7xnDyruQXlsDzm8KJ1cEqrjjwy-0G4leIFOp2yQF6FMhbw9hBnbajs0qb-dsrB/pub?output=csv',
+  Blogs:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRciVbiyyI9Kk7LS99tAB3fAYMmMebHCAAi4WdpzKwPLKh0xb57GHRr99sN1audsiOqP2Ix_kx3Ocmo/pub?output=csv',
+};
+
 const SHEETS_CONFIG=[
-  {name:'Books',        csvUrl:`${SHEETS_BASE_URL}?sheet=Books`,        mapper:mapBook},
-  {name:'Notifications',csvUrl:`${SHEETS_BASE_URL}?sheet=Notifications`,mapper:mapNotification},
-  {name:'Exams',        csvUrl:`${SHEETS_BASE_URL}?sheet=Exams`,        mapper:mapExam},
-  {name:'Scholarships', csvUrl:`${SHEETS_BASE_URL}?sheet=Scholarships`, mapper:mapScholarship},
-  {name:'Blogs',        csvUrl:`${SHEETS_BASE_URL}?sheet=Blogs`,        mapper:mapBlog},
-  {name:'Internships',  csvUrl:`${SHEETS_BASE_URL}?sheet=Internships`,  mapper:mapInternship},
-  {name:'Jobs',         csvUrl:`${SHEETS_BASE_URL}?sheet=Jobs`,         mapper:mapJob},
+  {name:'Books',        csvUrl:`${SHEETS_BASE_URL}?sheet=Books`,        fallbackUrl:DIRECT_SHEET_URLS.Books, mapper:mapBook},
+  {name:'Notifications',csvUrl:`${SHEETS_BASE_URL}?sheet=Notifications`,fallbackUrl:DIRECT_SHEET_URLS.Notifications, mapper:mapNotification},
+  {name:'Exams',        csvUrl:`${SHEETS_BASE_URL}?sheet=Exams`,        fallbackUrl:DIRECT_SHEET_URLS.Exams, mapper:mapExam},
+  {name:'Scholarships', csvUrl:`${SHEETS_BASE_URL}?sheet=Scholarships`, fallbackUrl:DIRECT_SHEET_URLS.Scholarships, mapper:mapScholarship},
+  {name:'Blogs',        csvUrl:`${SHEETS_BASE_URL}?sheet=Blogs`,        fallbackUrl:DIRECT_SHEET_URLS.Blogs, mapper:mapBlog},
+  {name:'Internships',  csvUrl:`${SHEETS_BASE_URL}?sheet=Internships`,  fallbackUrl:DIRECT_SHEET_URLS.Internships, mapper:mapInternship},
+  {name:'Jobs',         csvUrl:`${SHEETS_BASE_URL}?sheet=Jobs`,         fallbackUrl:DIRECT_SHEET_URLS.Jobs, mapper:mapJob},
 ];
 window.CMS_DATA=window.CMS_DATA||{};
 window.CMS_LOADING=window.CMS_LOADING||{};
@@ -189,12 +199,32 @@ function _dedupe(arr){
   return arr.filter(it=>{const k=`${it.id}::${(it.title||'').toLowerCase()}`;if(s.has(k))return false;s.add(k);return true;});
 }
 
-async function loadOneSheet(cfg){
-  const res=await fetch(cfg.csvUrl,{cache:'default'});
+async function _readCsv(url,cfg){
+  const res=await fetch(url,{cache:'default'});
   if(!res.ok)throw new Error(`${cfg.name}: HTTP ${res.status}`);
   const text=await res.text();
-  if(!text.trim())return[];
-  return _dedupe(_parseCSV(text).map(cfg.mapper).map(_normalize));
+  const trimmed=text.trim();
+  if(!trimmed)return'';
+  if(trimmed.startsWith('{')&&trimmed.includes('error')){
+    try{const payload=JSON.parse(trimmed);throw new Error(payload.error||`${cfg.name}: API error`);}
+    catch(e){throw new Error(e.message||`${cfg.name}: API error`);}
+  }
+  if(trimmed.startsWith('<!')||trimmed.includes('Host not in allowlist'))throw new Error(`${cfg.name}: non-CSV response`);
+  return text;
+}
+
+async function loadOneSheet(cfg){
+  try{
+    const text=await _readCsv(cfg.csvUrl,cfg);
+    if(!text.trim())return[];
+    return _dedupe(_parseCSV(text).map(cfg.mapper).map(_normalize));
+  }catch(primaryErr){
+    if(!cfg.fallbackUrl)throw primaryErr;
+    console.warn(`[CMS] Proxy failed for ${cfg.name}; trying direct sheet URL.`,primaryErr?.message||primaryErr);
+    const text=await _readCsv(`${cfg.fallbackUrl}&_t=${Date.now()}`,cfg);
+    if(!text.trim())return[];
+    return _dedupe(_parseCSV(text).map(cfg.mapper).map(_normalize));
+  }
 }
 
 async function loadAllSheets(){
