@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="author" content="Career Pakistan"/>
+  <meta name="theme-color" content="#0f766e"/>
+  <title>Career Pakistan — Scholarships, Jobs, Internships, Exams &amp; Books</title>
+  <meta name="description" content="Career Pakistan helps students and professionals discover scholarships, jobs, internships, exam dates, and study books — all in one trusted place for Pakistan."/>
+  <meta name="keywords" content="career pakistan, scholarships pakistan, jobs pakistan, internships pakistan, exam updates, career guidance pakistan, mdcat, css exam, ppsc"/>
+  <link rel="canonical" href="https://careerpk.online/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://careerpk.online/"/>
+  <meta property="og:title" content="Career Pakistan — Scholarships, Jobs, Internships, Exams &amp; Books"/>
+  <meta property="og:description" content="Pakistan's trusted career platform — scholarships, jobs, internships, exams and books updated daily."/>
+  <meta property="og:image" content="https://careerpk.online/banner.webp"/>
+  <meta property="og:site_name" content="Career Pakistan"/>
+  <meta property="og:locale" content="en_PK"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Career Pakistan — Scholarships, Jobs, Internships, Exams &amp; Books"/>
+  <meta name="twitter:description" content="Pakistan's trusted career platform — updated daily for students and professionals."/>
+  <meta name="twitter:image" content="https://careerpk.online/banner.webp"/>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Career Pakistan","url":"https://careerpk.online/","description":"Pakistan's trusted career platform for scholarships, jobs, internships, exams and books.","potentialAction":{"@type":"SearchAction","target":"https://careerpk.online/search.html?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+
+  <!-- DNS / Preconnect -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Preloads -->
+  <link rel="preload" as="image" href="logo.webp" type="image/webp" fetchpriority="high"/>
+  <link rel="preload" as="image" href="banner.webp" type="image/webp" fetchpriority="high"/>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/cms-additions.css"/>
+  <link rel="stylesheet" href="css/design-enhancements.css"/>
+  <link rel="stylesheet" href="css/main-enhanced.css"/>
+  <link rel="stylesheet" href="css/premium-upgrades.css"/>
+  <link rel="stylesheet" href="css/perf-improvements.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Favicon / PWA -->
+  <link rel="icon" href="logo.webp" type="image/webp"/>
+  <link rel="apple-touch-icon" href="logo.webp"/>
+  <link rel="manifest" href="manifest.json"/>
+
+  <!-- CMS bootstrap must be synchronous -->
+  <script src="js/cms-bootstrap.js"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/analytics-loader.js" defer></script>
+
+  <style>
+/* ════════════════════════════════════════════════
+   HOME PAGE — SCOPED STYLES
+   All rules prefixed or scoped to .home-page
+════════════════════════════════════════════════ */
+
+/* ── Premium Hero ── */
+.home-hero{
+  position:relative;overflow:hidden;min-height:92vh;
+  display:flex;align-items:center;
+  background:radial-gradient(circle at 18% 12%,#0a3a44,#02070c 60%,#010305);
+  padding:clamp(80px,10vw,120px) 0;
+}
+.hero-noise{position:absolute;inset:0;background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");opacity:.04;z-index:1;pointer-events:none;}
+.hero-grid-anim{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,220,.05)1px,transparent 1px),linear-gradient(90deg,rgba(0,255,220,.05)1px,transparent 1px);background-size:80px 80px;animation:hgMove 20s linear infinite;z-index:1;pointer-events:none;}
+@keyframes hgMove{from{transform:translateY(0);}to{transform:translateY(80px);}}
+.hero-glow-a{position:absolute;border-radius:50%;filter:blur(140px);opacity:.22;z-index:1;pointer-events:none;width:420px;height:420px;background:#00ffe1;top:-120px;left:-120px;animation:hgFloat 10s ease-in-out infinite;}
+.hero-glow-b{position:absolute;border-radius:50%;filter:blur(140px);opacity:.18;z-index:1;pointer-events:none;width:350px;height:350px;background:#0077ff;bottom:-100px;right:-100px;animation:hgFloat 10s ease-in-out infinite 3s;}
+.hero-glow-c{position:absolute;border-radius:50%;filter:blur:120px;opacity:.15;z-index:1;pointer-events:none;width:250px;height:250px;background:#8a2be2;top:40%;left:58%;animation:hgFloat 12s ease-in-out infinite 6s;}
+@keyframes hgFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.08);}}
+.fdot{position:absolute;width:8px;height:8px;background:#6fffee;border-radius:50%;box-shadow:0 0 14px #6fffee;animation:fdRise 7s infinite;z-index:1;pointer-events:none;}
+.fdot1{top:20%;left:10%;}
+.fdot2{top:70%;right:8%;animation-delay:2s;}
+.fdot3{top:40%;right:35%;animation-delay:4s;}
+.fdot4{top:60%;left:50%;animation-delay:1s;}
+@keyframes fdRise{0%{transform:translateY(0);opacity:0;}50%{opacity:1;}100%{transform:translateY(-90px);opacity:0;}}
+.hero-inner-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:center;padding:0 clamp(20px,5vw,80px);}
+.hero-logo-side{display:flex;justify-content:center;align-items:center;position:relative;}
+.hero-logo-img{width:100%;max-width:400px;animation:logoFloat 6s ease-in-out infinite;filter:drop-shadow(0 0 32px rgba(0,255,220,.38));}
+@keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+.hero-logo-ring{position:absolute;width:110%;height:110%;border-radius:50%;border:1px solid rgba(0,255,220,.14);animation:ringSpin 14s linear infinite;}
+@keyframes ringSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.hero-content-side{color:#fff;}
+.hero-badge-new{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1.1rem;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(0,255,220,.22);color:#7fffea;font-size:.76rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.3rem;backdrop-filter:blur(12px);}
+.hero-h1-new{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:900;line-height:1.08;margin:0 0 1.1rem;color:#fff;}
+.hero-h1-new span{background:linear-gradient(90deg,#00ffe1,#00a8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub-new{color:rgba(255,255,255,.75);line-height:1.78;max-width:580px;margin:0 0 1.8rem;font-size:1.02rem;}
+.hero-search-new{display:flex;gap:10px;margin-bottom:1.75rem;}
+.hero-search-new input{flex:1;padding:1rem 1.1rem;border-radius:14px;border:1px solid rgba(0,255,220,.18);background:rgba(255,255,255,.06);color:#fff;outline:none;font-size:.97rem;transition:.25s;}
+.hero-search-new input:focus{border-color:#00ffe1;box-shadow:0 0 22px rgba(0,255,220,.18);}
+.hero-search-new input::placeholder{color:rgba(255,255,255,.4);}
+.hero-search-new button{padding:1rem 1.6rem;border:none;border-radius:14px;background:linear-gradient(135deg,#00ffe1,#008cff);color:#02070c;font-weight:800;cursor:pointer;font-size:.95rem;white-space:nowrap;transition:.25s;}
+.hero-search-new button:hover{transform:translateY(-2px);box-shadow:0 0 26px rgba(0,255,220,.35);}
+.hero-stats-new{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;}
+.hstat{padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(0,255,220,.1);backdrop-filter:blur(10px);transition:.25s;}
+.hstat:hover{transform:translateY(-5px);border-color:#00ffe1;}
+.hstat h2{color:#6fffee;font-size:1.65rem;font-weight:800;margin:0 0 2px;}
+.hstat span{color:rgba(255,255,255,.65);font-size:.78rem;}
+.hero-pills-new{display:flex;flex-wrap:wrap;gap:.5rem;}
+.hero-pill-new{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);border-radius:999px;padding:.36rem .95rem;font-size:.84rem;font-weight:600;text-decoration:none;transition:.2s;backdrop-filter:blur(4px);}
+.hero-pill-new:hover{background:rgba(0,255,220,.14);border-color:#00ffe1;color:#fff;}
+@media(max-width:900px){
+  .hero-inner-grid{grid-template-columns:1fr;text-align:center;gap:32px;}
+  .hero-logo-img{max-width:200px;}
+  .hero-stats-new{grid-template-columns:repeat(3,1fr);}
+  .hero-search-new{flex-direction:column;}
+  .hero-pills-new{justify-content:center;}
+}
+@media(max-width:480px){
+  .hero-stats-new{grid-template-columns:1fr;}
+  .home-hero{min-height:auto;padding:80px 0 60px;}
+}
+
+/* ── Stats Ribbon ── */
+.stats-ribbon{background:var(--bg-card,#fff);border-bottom:2px solid var(--border,#e2e8f0);padding:.85rem 0;}
+.stats-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;}
+.stat-pill{display:flex;flex-direction:column;align-items:center;padding:.3rem 1.2rem;}
+.stat-num{font-size:1.45rem;font-weight:800;color:var(--primary,#0f766e);line-height:1;}
+.stat-lbl{font-size:.7rem;color:var(--text-muted,#94a3b8);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:.15rem;}
+.stat-sep{width:1px;height:38px;background:var(--border,#e2e8f0);}
+
+/* ── Page shell ── */
+.home-shell{display:grid;grid-template-columns:1fr 296px;gap:2.25rem;align-items:start;}
+@media(max-width:1100px){.home-shell{grid-template-columns:1fr;}}
+.home-sidebar{position:sticky;top:72px;}
+@media(max-width:1100px){.home-sidebar{position:static;}}
+
+/* ── Section header ── */
+.section-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;gap:.75rem;}
+.section-hd-left{display:flex;align-items:center;gap:.55rem;}
+.section-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.section-h2{font-size:1.08rem;font-weight:700;margin:0;color:var(--text-main,#1e293b);}
+.section-count{font-size:.75rem;color:var(--text-muted,#94a3b8);background:var(--bg-body,#f8fafc);border:1px solid var(--border,#e2e8f0);border-radius:999px;padding:.15rem .65rem;font-weight:600;}
+.view-all-link{font-size:.82rem;color:var(--primary,#0f766e);font-weight:700;text-decoration:none;display:flex;align-items:center;gap:.3rem;white-space:nowrap;flex-shrink:0;}
+.view-all-link:hover{text-decoration:underline;}
+
+/* ── Slider row ── */
+.slider-wrap{position:relative;}
+.slider-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.slider-row .card,.slider-row .exam-card{min-width:0;}
+
+/* Hidden extra cards — shown via JS */
+.slider-extra{display:none;}
+.slider-extra.revealed{display:contents;}
+
+/* Show-more button */
+.show-more-btn{
+  display:block;width:100%;margin-top:.85rem;
+  padding:.58rem 1rem;border:1.5px dashed var(--border,#e2e8f0);
+  background:transparent;border-radius:10px;
+  color:var(--text-secondary,#64748b);font-size:.84rem;font-weight:600;
+  cursor:pointer;text-align:center;transition:all .2s;
+}
+.show-more-btn:hover{border-color:var(--primary,#0f766e);color:var(--primary,#0f766e);background:rgba(15,118,110,.04);}
+.show-more-btn i{margin-left:.35rem;transition:transform .2s;}
+.show-more-btn.open i{transform:rotate(180deg);}
+
+/* ── Home section block ── */
+.home-block{margin-bottom:2.75rem;}
+
+/* ── Sidebar Widgets ── */
+.sw{background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:14px;padding:1.1rem;margin-bottom:1.2rem;}
+.sw-h{font-size:.86rem;font-weight:700;color:var(--text-main,#1e293b);margin:0 0 .8rem;padding-bottom:.65rem;border-bottom:1px solid var(--border,#e2e8f0);}
+.sw-item{display:flex;gap:.6rem;align-items:flex-start;text-decoration:none;padding:.42rem 0;border-bottom:1px solid var(--border,#e2e8f0);}
+.sw-item:last-child{border-bottom:none;}
+.sw-item:hover .sw-title{color:var(--primary,#0f766e);}
+.sw-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;line-height:1;}
+.sw-body{min-width:0;}
+.sw-title{font-size:.81rem;font-weight:600;color:var(--text-main,#1e293b);line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;transition:color .15s;}
+.sw-meta{font-size:.7rem;color:var(--text-muted,#94a3b8);margin-top:.12rem;}
+.sw-meta.urgent{color:#ef4444;font-weight:600;}
+.sw-all{display:inline-block;margin-top:.6rem;font-size:.77rem;color:var(--primary,#0f766e);font-weight:700;text-decoration:none;}
+.sw-all:hover{text-decoration:underline;}
+.sw-ql{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:var(--text-secondary,#64748b);text-decoration:none;padding:.32rem 0;font-weight:500;transition:color .15s;}
+.sw-ql:hover{color:var(--primary,#0f766e);}
+.sw-ql i{width:14px;text-align:center;flex-shrink:0;}
+.sw-empty{font-size:.79rem;color:var(--text-muted,#94a3b8);text-align:center;padding:.4rem 0;}
+
+/* ── AI Chatbot ── */
+.ai-fab{
+  position:fixed;bottom:80px;right:20px;z-index:999;
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#0f766e 0%,#0284c7 100%);
+  border:none;color:#fff;font-size:1.25rem;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.ai-fab:hover{transform:scale(1.08);box-shadow:0 8px 30px rgba(0,0,0,.32);}
+.ai-fab-dot{position:absolute;top:-1px;right:-1px;width:15px;height:15px;background:#22c55e;border-radius:50%;border:2px solid #fff;animation:fabPulse 2s ease-in-out infinite;}
+@keyframes fabPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+.ai-panel{
+  position:fixed;bottom:150px;right:20px;z-index:998;
+  width:340px;background:var(--bg-card,#fff);
+  border:1px solid var(--border,#e2e8f0);border-radius:18px;
+  box-shadow:0 20px 72px rgba(0,0,0,.16);
+  display:none;flex-direction:column;overflow:hidden;
+  max-height:500px;
+}
+.ai-panel.is-open{display:flex;}
+.ai-panel-head{
+  background:linear-gradient(135deg,#0f766e,#0284c7);
+  color:#fff;padding:.9rem 1rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.ai-avatar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ai-info{flex:1;min-width:0;}
+.ai-name{font-size:.88rem;font-weight:700;line-height:1;}
+.ai-status{font-size:.7rem;opacity:.82;margin-top:.1rem;display:flex;align-items:center;gap:.3rem;}
+.ai-status-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;}
+.ai-close{background:rgba(255,255,255,.18);border:none;color:#fff;border-radius:50%;width:30px;height:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0;transition:background .15s;}
+.ai-close:hover{background:rgba(255,255,255,.3);}
+.ai-msgs{flex:1;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.6rem;}
+.ai-msg{max-width:86%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.55;}
+.ai-msg.bot{background:var(--bg-body,#f8fafc);border:1px solid var(--border,#e2e8f0);color:var(--text-main,#1e293b);align-self:flex-start;border-radius:14px 14px 14px 4px;}
+.ai-msg.user{background:var(--primary,#0f766e);color:#fff;align-self:flex-end;border-radius:14px 14px 4px 14px;}
+.ai-typing{display:flex;gap:4px;align-items:center;}
+.ai-typing span{width:7px;height:7px;background:var(--text-muted,#94a3b8);border-radius:50%;animation:aDot 1.2s ease-in-out infinite;}
+.ai-typing span:nth-child(2){animation-delay:.2s;}
+.ai-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes aDot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+.ai-input-row{display:flex;gap:.4rem;padding:.7rem;border-top:1px solid var(--border,#e2e8f0);}
+.ai-input{flex:1;border:1.5px solid var(--border,#e2e8f0);border-radius:999px;padding:.5rem .95rem;font-size:.82rem;outline:none;background:var(--bg-body,#f8fafc);color:var(--text-main,#1e293b);transition:border .18s;}
+.ai-input:focus{border-color:var(--primary,#0f766e);}
+.ai-send{background:var(--primary,#0f766e);border:none;color:#fff;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:background .18s;}
+.ai-send:hover{background:#0e6b63;}
+
+/* Mobile responsiveness */
+@media(max-width:768px){
+  .ai-panel{width:min(90vw,340px);right:12px;bottom:132px;max-height:min(65vh,460px);}
+  .ai-fab{right:12px;bottom:78px;}
+  .slider-row{grid-template-columns:1fr;}
+}
+@media(min-width:769px) and (max-width:1100px){
+  .slider-row{grid-template-columns:repeat(2,1fr);}
+}
+  </style>
+</head>
+<body class="home-page">
+
+<!-- ── Notification Bar ──────────────────────────────────── -->
+<div class="notif-bar" id="notifBar" style="display:none">
+  <div class="notif-track" id="notifTrack">
+    <span>🇵🇰 Welcome to Career Pakistan — Loading opportunities…</span>
+  </div>
+  <button class="notif-close" onclick="document.getElementById('notifBar').style.display='none'" aria-label="Close">
+    <i class="fa fa-times"></i>
+  </button>
+</div>
+
+<!-- ── Navbar ────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <picture>
+        <source srcset="logo.webp" type="image/webp">
+        <img src="logo.webp" alt="Career Pakistan" width="44" height="44" fetchpriority="high" decoding="async"/>
+      </picture>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="has-dropdown">
+        <a href="scholarships.html">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a>
+        <ul class="dropdown">
+          <li><a href="scholarships-national.html">National</a></li>
+          <li><a href="scholarships-international.html">International</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="jobs.html">Jobs <i class="fa fa-chevron-down fa-xs"></i></a>
+        <ul class="dropdown">
+          <li><a href="jobs-government.html">Government Jobs</a></li>
+          <li><a href="jobs-private.html">Private / NGO</a></li>
+        </ul>
+      </li>
+      <li><a href="internships.html">Internships</a></li>
+      <li class="has-dropdown">
+        <a href="exams.html">Exams <i class="fa fa-chevron-down fa-xs"></i></a>
+        <ul class="dropdown">
+          <li><a href="exams-mdcat.html">MDCAT</a></li>
+          <li><a href="exams-css.html">CSS</a></li>
+          <li><a href="exams-ppsc.html">PPSC</a></li>
+        </ul>
+      </li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search"><i class="fa fa-search"></i></button>
+      <a href="favorites.html" class="nav-icon-btn" aria-label="Saved items">
+        <i class="fa fa-bookmark"></i>
+        <span class="fav-count" id="favCount" style="display:none">0</span>
+      </a>
+      <button class="nav-icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Toggle dark mode"><i class="fa fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="nav-search" id="navSearch">
+    <div class="nav-container">
+      <form action="search.html" method="GET" class="search-form-nav">
+        <i class="fa fa-search"></i>
+        <input type="text" name="q" id="navSearchInput" placeholder="Search jobs, scholarships, exams, books…"/>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="home-hero" aria-label="Hero">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-grid-anim" aria-hidden="true"></div>
+  <div class="hero-glow-a" aria-hidden="true"></div>
+  <div class="hero-glow-b" aria-hidden="true"></div>
+  <div class="hero-glow-c" aria-hidden="true"></div>
+  <span class="fdot fdot1" aria-hidden="true"></span>
+  <span class="fdot fdot2" aria-hidden="true"></span>
+  <span class="fdot fdot3" aria-hidden="true"></span>
+  <span class="fdot fdot4" aria-hidden="true"></span>
+  <div class="container">
+    <div class="hero-inner-grid">
+      <!-- Logo side -->
+      <div class="hero-logo-side">
+        <picture>
+          <source srcset="logo.webp" type="image/webp">
+          <img src="logo.webp" alt="Career Pakistan" class="hero-logo-img" fetchpriority="high" decoding="async"/>
+        </picture>
+        <div class="hero-logo-ring" aria-hidden="true"></div>
+      </div>
+      <!-- Content side -->
+      <div class="hero-content-side">
+        <span class="hero-badge-new">🇵🇰 Pakistan's Smart Career Ecosystem</span>
+        <h1 class="hero-h1-new">Discover <span>Scholarships</span>,<br>Jobs &amp; Career Growth</h1>
+        <p class="hero-sub-new">Find verified scholarships, internships, jobs, exam updates, and study books across Pakistan — all in one powerful platform.</p>
+        <div class="hero-search-new">
+          <input type="search" id="heroSearchInput" placeholder="Search opportunities, exams, books…" aria-label="Search Career Pakistan" onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+encodeURIComponent(this.value)}"/>
+          <button onclick="window.location.href='search.html?q='+encodeURIComponent(document.getElementById('heroSearchInput').value)">Explore →</button>
+        </div>
+        <div class="hero-stats-new">
+          <div class="hstat"><h2 id="sS">—</h2><span>Scholarships</span></div>
+          <div class="hstat"><h2 id="sJ">—</h2><span>Jobs</span></div>
+          <div class="hstat"><h2 id="sI">—</h2><span>Internships</span></div>
+        </div>
+        <div class="hero-pills-new">
+          <a href="scholarships.html" class="hero-pill-new">🎓 Scholarships</a>
+          <a href="jobs.html" class="hero-pill-new">💼 Jobs</a>
+          <a href="internships.html" class="hero-pill-new">🚀 Internships</a>
+          <a href="exams.html" class="hero-pill-new">📝 Exams</a>
+          <a href="books.html" class="hero-pill-new">📚 Books</a>
+          <a href="blog.html" class="hero-pill-new">✍️ Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats ribbon (Exams, Books, Blog remain visible below hero) -->
+<div class="stats-ribbon" id="statsBar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-pill"><div class="stat-num" id="sE">—</div><div class="stat-lbl">Exams</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat-pill"><div class="stat-num" id="sBk">—</div><div class="stat-lbl">Books</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat-pill"><div class="stat-num" id="sBl">—</div><div class="stat-lbl">Blog Posts</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main Content ─────────────────────────────────────── -->
+<div class="section">
+  <div class="container">
+    <div class="home-shell">
+
+      <!-- ════ LEFT: Section Blocks ════ -->
+      <main>
+
+        <!-- ① SCHOLARSHIPS -->
+        <div class="home-block" id="block-scholarships">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#dcfce7;color:#16a34a">🎓</div>
+              <h2 class="section-h2">Latest Scholarships</h2>
+              <span class="section-count" id="cnt-scholarships">—</span>
+            </div>
+            <a href="scholarships.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-scholarships">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-scholarships"></div>
+          <button class="show-more-btn" id="more-scholarships" onclick="toggleExtra('scholarships',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- ② JOBS -->
+        <div class="home-block" id="block-jobs">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#dbeafe;color:#2563eb">💼</div>
+              <h2 class="section-h2">Latest Jobs</h2>
+              <span class="section-count" id="cnt-jobs">—</span>
+            </div>
+            <a href="jobs.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-jobs">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-jobs"></div>
+          <button class="show-more-btn" id="more-jobs" onclick="toggleExtra('jobs',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- ③ INTERNSHIPS -->
+        <div class="home-block" id="block-internships">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#fef3c7;color:#d97706">🚀</div>
+              <h2 class="section-h2">Latest Internships</h2>
+              <span class="section-count" id="cnt-internships">—</span>
+            </div>
+            <a href="internships.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-internships">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-internships"></div>
+          <button class="show-more-btn" id="more-internships" onclick="toggleExtra('internships',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- ④ EXAMS -->
+        <div class="home-block" id="block-exams">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#fce7f3;color:#db2777">📝</div>
+              <h2 class="section-h2">Upcoming Exams</h2>
+              <span class="section-count" id="cnt-exams">—</span>
+            </div>
+            <a href="exams.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-exams">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-exams"></div>
+          <button class="show-more-btn" id="more-exams" onclick="toggleExtra('exams',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- ⑤ BOOKS -->
+        <div class="home-block" id="block-books">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#ede9fe;color:#7c3aed">📚</div>
+              <h2 class="section-h2">Study Books</h2>
+              <span class="section-count" id="cnt-books">—</span>
+            </div>
+            <a href="books.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-books">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-books"></div>
+          <button class="show-more-btn" id="more-books" onclick="toggleExtra('books',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- ⑥ BLOG -->
+        <div class="home-block" id="block-blogs">
+          <div class="section-hd">
+            <div class="section-hd-left">
+              <div class="section-icon" style="background:#e0f2fe;color:#0284c7">✍️</div>
+              <h2 class="section-h2">Latest Blog Posts</h2>
+              <span class="section-count" id="cnt-blogs">—</span>
+            </div>
+            <a href="blog.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
+          </div>
+          <div class="slider-row" id="grid-blogs">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+          <div class="slider-extra" id="extra-blogs"></div>
+          <button class="show-more-btn" id="more-blogs" onclick="toggleExtra('blogs',this)" style="display:none">
+            Show More <i class="fa fa-chevron-down"></i>
+          </button>
+        </div>
+
+      </main>
+
+      <!-- ════ RIGHT: Sidebar ════ -->
+      <aside class="home-sidebar" aria-label="Sidebar">
+
+        <!-- Closing Soon -->
+        <div class="sw">
+          <p class="sw-h">⏰ Closing Soon</p>
+          <div id="sw-deadlines">
+            <div class="skeleton-card" style="height:50px;margin-bottom:.4rem"></div>
+            <div class="skeleton-card" style="height:50px"></div>
+          </div>
+        </div>
+
+        <!-- Featured -->
+        <div class="sw">
+          <p class="sw-h">⭐ Featured</p>
+          <div id="sw-featured">
+            <div class="skeleton-card" style="height:50px;margin-bottom:.4rem"></div>
+            <div class="skeleton-card" style="height:50px"></div>
+          </div>
+        </div>
+
+        <!-- Exam Dates -->
+        <div class="sw">
+          <p class="sw-h">📝 Exam Dates</p>
+          <div id="sw-exams"><div class="skeleton-card" style="height:50px"></div></div>
+          <a href="exams.html" class="sw-all">View all exams →</a>
+        </div>
+
+        <!-- Recent Blog Posts -->
+        <div class="sw">
+          <p class="sw-h">✍️ Recent Posts</p>
+          <div id="sw-blogs"><div class="skeleton-card" style="height:50px"></div></div>
+          <a href="blog.html" class="sw-all">View all posts →</a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sw">
+          <p class="sw-h">🔗 Quick Links</p>
+          <nav aria-label="Quick links">
+            <a href="scholarships-national.html" class="sw-ql"><i class="fa fa-flag fa-fw"></i> National Scholarships</a>
+            <a href="scholarships-international.html" class="sw-ql"><i class="fa fa-globe fa-fw"></i> International Scholarships</a>
+            <a href="jobs-government.html" class="sw-ql"><i class="fa fa-building fa-fw"></i> Government Jobs</a>
+            <a href="jobs-private.html" class="sw-ql"><i class="fa fa-briefcase fa-fw"></i> Private / NGO Jobs</a>
+            <a href="exams-mdcat.html" class="sw-ql"><i class="fa fa-stethoscope fa-fw"></i> MDCAT</a>
+            <a href="exams-css.html" class="sw-ql"><i class="fa fa-landmark fa-fw"></i> CSS Exam</a>
+            <a href="exams-ppsc.html" class="sw-ql"><i class="fa fa-university fa-fw"></i> PPSC</a>
+            <a href="resume-builder.html" class="sw-ql"><i class="fa fa-file-alt fa-fw"></i> Resume Builder</a>
+            <a href="favorites.html" class="sw-ql"><i class="fa fa-bookmark fa-fw"></i> Saved Items</a>
+            <a href="search.html" class="sw-ql"><i class="fa fa-search fa-fw"></i> Advanced Search</a>
+          </nav>
+        </div>
+
+      </aside>
+
+    </div><!-- /home-shell -->
+  </div>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Career <span>Pakistan</span></a>
+        <p>Pakistan's trusted platform for students and professionals — scholarships, jobs, internships, exams, and books updated daily.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://facebook.com/careerpakistan" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/careerpakistan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="internships.html">Internships</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Exam Hub</h4>
+        <ul>
+          <li><a href="exams.html">All Exams</a></li>
+          <li><a href="exams-mdcat.html">MDCAT</a></li>
+          <li><a href="exams-css.html">CSS</a></li>
+          <li><a href="exams-ppsc.html">PPSC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="favorites.html">Saved Items</a></li>
+          <li><a href="resume-builder.html">Resume Builder</a></li>
+          <li><a href="scholarships-national.html">National Scholarships</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Career Pakistan. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Mobile Bottom Nav ──────────────────────────────────── -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="index.html" class="mob-nav-item active"><i class="fa fa-home"></i><span>Home</span></a>
+  <a href="scholarships.html" class="mob-nav-item"><i class="fa fa-graduation-cap"></i><span>Scholarships</span></a>
+  <a href="jobs.html" class="mob-nav-item"><i class="fa fa-briefcase"></i><span>Jobs</span></a>
+  <a href="exams.html" class="mob-nav-item"><i class="fa fa-file-alt"></i><span>Exams</span></a>
+  <a href="books.html" class="mob-nav-item"><i class="fa fa-book"></i><span>Books</span></a>
+</nav>
+
+<!-- ── AI Chatbot (visible on ALL pages) ─────────────────── -->
+<button class="ai-fab" id="aiFab" onclick="toggleAI()" aria-label="Open AI Career Assistant" title="Ask our AI Career Assistant">
+  <i class="fa fa-robot" id="aiFabIcon"></i>
+  <span class="ai-fab-dot"></span>
+</button>
+
+<div class="ai-panel" id="aiPanel" role="dialog" aria-modal="true" aria-label="AI Career Assistant">
+  <div class="ai-panel-head">
+    <div class="ai-avatar"><i class="fa fa-robot"></i></div>
+    <div class="ai-info">
+      <div class="ai-name">Career AI Assistant</div>
+      <div class="ai-status"><span class="ai-status-dot"></span> Online — Ask me anything</div>
+    </div>
+    <button class="ai-close" onclick="toggleAI()" aria-label="Close chat"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs">
+    <div class="ai-msg bot">👋 Hi! I'm your <strong>Career Pakistan AI</strong>.<br>Ask me about scholarships, jobs, exams, internships, or books available in Pakistan!</div>
+  </div>
+  <div class="ai-input-row">
+    <input type="text" class="ai-input" id="aiInput" placeholder="Ask something…" aria-label="Your question" onkeydown="if(event.key==='Enter')sendAI()"/>
+    <button class="ai-send" onclick="sendAI()" aria-label="Send"><i class="fa fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ── Scripts ────────────────────────────────────────────── -->
+<script src="js/google-sheet-loader.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/comprehensive-fix.js" defer></script>
+<script src="js/cms-auto-refresh-listener.js" defer></script>
+<script src="js/chatbot-loader.js" defer></script>
+
+<script>
+/* ════════════════════════════════════════════════
+   HOME PAGE CONTROLLER
+   - Reads all 7 CMS sheets (Books, Notifications,
+     Exams, Scholarships, Blogs, Internships, Jobs)
+   - Renders 3 cards visible + "Show More" for each
+   - Populates sidebar (deadlines, featured, exams,
+     blog posts, quick links)
+   - Notification bar from Notifications sheet
+   - Sticky navbar scroll class
+   - AI chatbot panel with /api/gemini-chat
+════════════════════════════════════════════════ */
+
+// ── Per-section config ────────────────────────────────────
+const SECTIONS = [
+  { key:'scholarships', sheet:'Scholarships', sort:'newest',   renderer: i => cardScholarship(i), type:'scholarship' },
+  { key:'jobs',         sheet:'Jobs',         sort:'newest',   renderer: i => cardJob(i),         type:'job'         },
+  { key:'internships',  sheet:'Internships',  sort:'newest',   renderer: i => cardInternship(i),  type:'internship'  },
+  { key:'exams',        sheet:'Exams',        sort:'deadline', renderer: i => cardExam(i),        type:'exam'        },
+  { key:'books',        sheet:'Books',        sort:'newest',   renderer: i => cardBook(i),        type:'book'        },
+  { key:'blogs',        sheet:'Blogs',        sort:'newest',
+    filter: items => items.filter(b => b.isPublished !== false && b.is_published !== false),
+    renderer: i => (typeof cardBlog === 'function' ? cardBlog(i) : ''),
+    type:'blog'
+  },
+];
+const VISIBLE_INIT = 3;   // cards shown before "Show More"
+const BATCH_SIZE   = 6;   // how many more to show per click
+const _sectionState = {}; // { key: { items, shown } }
+
+document.addEventListener('DOMContentLoaded', () => {
+  initDarkMode();
+  updateFavCount();
+  initMenu();
+  if (typeof ensureChatbotLoaded === 'function') ensureChatbotLoaded();
+  onCMSReady(_homeInit);
+  if (typeof registerMultiTabRefresh === 'function') registerMultiTabRefresh(_homeInit);
+  if (typeof initializeAutoRefreshListeners === 'function') initializeAutoRefreshListeners();
+  _initNavbarScroll();
+});
+
+function _initNavbarScroll() {
+  let t = false;
+  window.addEventListener('scroll', () => {
+    if (t) return; t = true;
+    requestAnimationFrame(() => {
+      const n = document.getElementById('navbar');
+      if (n) n.classList.toggle('is-scrolled', window.scrollY > 8);
+      t = false;
+    });
+  }, { passive: true });
+}
+
+// ── Main init (called when CMS data is ready) ─────────────
+function _homeInit() {
+  try {
+    // Grab all 7 sheets
+    const D = window.CMS_DATA || {};
+    const S  = D.Scholarships  || [];
+    const J  = D.Jobs          || [];
+    const I  = D.Internships   || [];
+    const E  = D.Exams         || [];
+    const Bk = D.Books         || [];
+    const Bl = (D.Blogs || []).filter(b => b.isPublished !== false && b.is_published !== false);
+    const N  = D.Notifications || [];
+
+    // ── Stats
+    _stat('sS',  S.length);
+    _stat('sJ',  J.length);
+    _stat('sI',  I.length);
+    _stat('sE',  E.length);
+    _stat('sBk', Bk.length);
+    _stat('sBl', Bl.length);
+
+    // ── Render each section
+    _renderSection('scholarships', sortItems(S,  'newest'),   i => cardScholarship(i));
+    _renderSection('jobs',         sortItems(J,  'newest'),   i => cardJob(i));
+    _renderSection('internships',  sortItems(I,  'newest'),   i => cardInternship(i));
+    _renderSection('exams',        sortItems(E,  'deadline'), i => cardExam(i));
+    _renderSection('books',        sortItems(Bk, 'newest'),   i => cardBook(i));
+    _renderSection('blogs',        sortItems(Bl, 'newest'),   i => (typeof cardBlog === 'function' ? cardBlog(i) : ''));
+
+    // ── Sidebar: Closing Soon (deadline within 60 days, sorted soonest first)
+    const allItems = [
+      ...S.map(x=>({...x,_type:'scholarship'})),
+      ...J.map(x=>({...x,_type:'job'})),
+      ...I.map(x=>({...x,_type:'internship'})),
+      ...E.map(x=>({...x,_type:'exam'})),
+    ];
+    const now = new Date();
+    const soon = allItems
+      .map(i => {
+        const raw = i.deadline || i.registrationDeadline || i.registration_deadline || i.testDate || i.test_date || '';
+        const d = raw ? new Date(raw) : null;
+        return { ...i, _dl: d, _dlRaw: raw };
+      })
+      .filter(i => i._dl && i._dl > now)
+      .sort((a, b) => a._dl - b._dl)
+      .slice(0, 7);
+
+    const typeIcon = { scholarship:'🎓', job:'💼', internship:'🚀', exam:'📝' };
+    _swRender('sw-deadlines', soon, i => `
+      <a class="sw-item" href="${getCardDetailsUrl(i.id, i._type, i.title)}">
+        <span class="sw-icon">${typeIcon[i._type]||'📌'}</span>
+        <span class="sw-body">
+          <span class="sw-title">${escapeHtml(i.title||'')}</span>
+          <span class="sw-meta urgent"><i class="fa fa-clock fa-xs"></i> ${formatDate(i._dlRaw)}</span>
+        </span>
+      </a>`, 'No upcoming deadlines.');
+
+    // ── Sidebar: Featured
+    const featured = allItems.filter(i => i.isFeatured === true || i.is_featured === true).slice(0, 6);
+    _swRender('sw-featured', featured, i => `
+      <a class="sw-item" href="${getCardDetailsUrl(i.id, i._type, i.title)}">
+        <span class="sw-icon">⭐</span>
+        <span class="sw-body">
+          <span class="sw-title">${escapeHtml(i.title||'')}</span>
+          <span class="sw-meta">${i._type.charAt(0).toUpperCase()+i._type.slice(1)}</span>
+        </span>
+      </a>`, 'No featured items yet.');
+
+    // ── Sidebar: Exam Dates (soonest 5, show test date & conducting body)
+    const exEl = document.getElementById('sw-exams');
+    if (exEl) {
+      const upE = sortItems(E, 'deadline').slice(0, 5);
+      exEl.innerHTML = upE.length ? upE.map(e => `
+        <a class="sw-item" href="${getCardDetailsUrl(e.id,'exam',e.title)}">
+          <span class="sw-icon">📋</span>
+          <span class="sw-body">
+            <span class="sw-title">${escapeHtml(e.title||'')}</span>
+            <span class="sw-meta">${e.conductingBody ? escapeHtml(e.conductingBody)+' · ' : ''}${formatDate(e.testDate||e.test_date||e.registrationDeadline||'')}</span>
+          </span>
+        </a>`).join('') : '<p class="sw-empty">No upcoming exams.</p>';
+    }
+
+    // ── Sidebar: Recent Blog Posts (show category, author, date)
+    const blEl = document.getElementById('sw-blogs');
+    if (blEl) {
+      const recBl = sortItems(Bl, 'newest').slice(0, 4);
+      blEl.innerHTML = recBl.length ? recBl.map(b => `
+        <a class="sw-item" href="${getCardDetailsUrl(b.id,'blog',b.title)}">
+          <span class="sw-icon">✍️</span>
+          <span class="sw-body">
+            <span class="sw-title">${escapeHtml(b.title||'')}</span>
+            <span class="sw-meta">${b.category ? escapeHtml(b.category)+' · ' : ''}${formatDate(b.date||b.postedDate||b.posted_date||'')}</span>
+          </span>
+        </a>`).join('') : '<p class="sw-empty">No posts yet.</p>';
+    }
+
+    // ── Notification bar from Notifications sheet
+    const activeN = N.filter(n => n.isActive !== false && (n.message || n.title));
+    const bar = document.getElementById('notifBar');
+    const track = document.getElementById('notifTrack');
+    if (bar && track && activeN.length) {
+      const html = activeN.map(n =>
+        (n.link && n.link !== '#')
+          ? `<a href="${escapeHtml(n.link)}" target="_blank" rel="noopener" style="color:inherit">${escapeHtml(n.message||n.title)}</a>`
+          : `<span>${escapeHtml(n.message||n.title)}</span>`
+      ).join('<span style="padding:0 1.5rem;opacity:.5">|</span>');
+      track.innerHTML = `<span>${html}&nbsp;&nbsp;|&nbsp;&nbsp;${html}</span>`;
+      bar.style.display = '';
+    }
+
+  } catch(err) { console.error('[CareerPK Home]', err); }
+}
+
+// ── Section renderer ──────────────────────────────────────
+function _renderSection(key, items, renderer) {
+  const grid    = document.getElementById('grid-' + key);
+  const extra   = document.getElementById('extra-' + key);
+  const moreBtn = document.getElementById('more-' + key);
+  const cntEl   = document.getElementById('cnt-' + key);
+
+  if (!grid) return;
+
+  if (!items || items.length === 0) {
+    grid.innerHTML = `<p style="color:var(--text-muted);font-size:.9rem;grid-column:1/-1">No ${key} available yet.</p>`;
+    if (moreBtn) moreBtn.style.display = 'none';
+    if (cntEl)   cntEl.textContent = '0';
+    return;
+  }
+
+  // Count badge
+  if (cntEl) cntEl.textContent = items.length + (items.length > 1 ? ' total' : '');
+
+  // First 3 go into main grid
+  const first  = items.slice(0, VISIBLE_INIT);
+  const rest   = items.slice(VISIBLE_INIT);
+
+  grid.innerHTML = first.map(renderer).join('');
+  _activateCards(grid);
+
+  // Store state
+  _sectionState[key] = { items, shown: VISIBLE_INIT, renderer };
+
+  // Pre-render next batch into hidden extra container
+  if (rest.length > 0 && extra) {
+    extra.innerHTML = rest.slice(0, BATCH_SIZE).map(renderer).join('');
+    _activateCards(extra);
+    if (moreBtn) {
+      moreBtn.style.display = '';
+      moreBtn.dataset.nextStart = VISIBLE_INIT + BATCH_SIZE;
+      moreBtn.textContent = '';
+      moreBtn.innerHTML = `Show More (${Math.min(rest.length, BATCH_SIZE)} of ${rest.length} more) <i class="fa fa-chevron-down"></i>`;
+    }
+  }
+}
+
+// ── Show More toggle ──────────────────────────────────────
+function toggleExtra(key, btn) {
+  const extra = document.getElementById('extra-' + key);
+  const grid  = document.getElementById('grid-' + key);
+  if (!extra) return;
+
+  const state = _sectionState[key];
+  const isOpen = extra.classList.contains('revealed');
+
+  if (!isOpen) {
+    // Expand: show next batch inside extra, then move into grid
+    extra.classList.add('revealed');
+
+    // Load next batch if needed
+    const nextStart = parseInt(btn.dataset.nextStart || (state.shown + BATCH_SIZE));
+    const nextItems = state.items.slice(nextStart, nextStart + BATCH_SIZE);
+    if (nextItems.length > 0) {
+      grid.insertAdjacentHTML('beforeend', extra.innerHTML);
+      extra.innerHTML = nextItems.map(state.renderer).join('');
+      _activateCards(extra);
+      state.shown = nextStart;
+      btn.dataset.nextStart = nextStart + BATCH_SIZE;
+    } else {
+      // No more — move extra into grid and hide button
+      grid.insertAdjacentHTML('beforeend', extra.innerHTML);
+      extra.innerHTML = '';
+      _activateCards(grid);
+    }
+
+    const totalLeft = state.items.length - state.shown - BATCH_SIZE;
+    if (totalLeft <= 0) {
+      btn.style.display = 'none';
+    } else {
+      btn.innerHTML = `Show More (${Math.min(totalLeft, BATCH_SIZE)} of ${totalLeft} more) <i class="fa fa-chevron-down"></i>`;
+    }
+    _activateCards(grid);
+  } else {
+    // Already revealed, just collapse
+    extra.classList.remove('revealed');
+    btn.classList.remove('open');
+    btn.innerHTML = `Show More <i class="fa fa-chevron-down"></i>`;
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────
+function _stat(id, n) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = n > 0 ? n + '+' : '0';
+}
+
+function _swRender(id, items, tpl, emptyMsg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = items.length ? items.map(tpl).join('') : `<p class="sw-empty">${emptyMsg}</p>`;
+}
+
+function _activateCards(container) {
+  if (!container) return;
+  container.querySelectorAll('.card,.exam-card').forEach(c => {
+    c.style.opacity      = '1';
+    c.style.transform    = 'translateY(0)';
+    c.style.visibility   = 'visible';
+    c.classList.add('visible');
+  });
+}
+
+// ── AI Chatbot ────────────────────────────────────────────
+let _aiOpen = false;
+
+function toggleAI() {
+  _aiOpen = !_aiOpen;
+  const panel = document.getElementById('aiPanel');
+  const icon  = document.getElementById('aiFabIcon');
+  if (panel) panel.classList.toggle('is-open', _aiOpen);
+  if (icon)  icon.className = _aiOpen ? 'fa fa-times' : 'fa fa-robot';
+  if (_aiOpen) setTimeout(() => { const i = document.getElementById('aiInput'); if(i) i.focus(); }, 200);
+}
+
+async function sendAI() {
+  const inp  = document.getElementById('aiInput');
+  const msgs = document.getElementById('aiMsgs');
+  if (!inp || !msgs) return;
+  const q = inp.value.trim();
+  if (!q) return;
+  inp.value = '';
+  inp.disabled = true;
+
+  msgs.insertAdjacentHTML('beforeend', `<div class="ai-msg user">${escapeHtml(q)}</div>`);
+  const tid = 'ait-' + Date.now();
+  msgs.insertAdjacentHTML('beforeend', `
+    <div class="ai-msg bot" id="${tid}">
+      <span class="ai-typing"><span></span><span></span><span></span></span>
+      <span style="font-size:.7rem;opacity:.55;margin-left:.4rem">Searching web…</span>
+    </div>`);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  const D   = window.CMS_DATA || {};
+  const ctx = [
+    'Scholarships: '+(D.Scholarships||[]).slice(0,4).map(x=>x.title).filter(Boolean).join(', '),
+    'Jobs: '        +(D.Jobs||[]).slice(0,4).map(x=>x.title).filter(Boolean).join(', '),
+    'Exams: '       +(D.Exams||[]).slice(0,4).map(x=>x.title).filter(Boolean).join(', '),
+    'Internships: ' +(D.Internships||[]).slice(0,3).map(x=>x.title).filter(Boolean).join(', '),
+    'Books: '       +(D.Books||[]).slice(0,3).map(x=>x.title).filter(Boolean).join(', '),
+  ].filter(s=>!s.endsWith(': ')).join(' | ');
+
+  try {
+    const res  = await fetch('/api/gemini-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: q, context: ctx })
+    });
+    const data = await res.json();
+    const reply = data.reply || data.text || data.message || 'Sorry, I could not get a response right now.';
+    const src = data.source === 'groq' ? ' <span style="font-size:.65rem;opacity:.5">(Groq)</span>' : '';
+    const web = data.hasWebSearch ? ' <span style="font-size:.65rem;opacity:.5">🌐 web</span>' : '';
+    const el = document.getElementById(tid);
+    if (el) el.outerHTML = `<div class="ai-msg bot">${escapeHtml(reply)}${src}${web}</div>`;
+  } catch {
+    const el = document.getElementById(tid);
+    if (el) el.outerHTML = `<div class="ai-msg bot">⚠️ Connection error. Please try again.</div>`;
+  }
+
+  inp.disabled = false;
+  inp.focus();
+  msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
+
+<script src="js/image-optimizer.js" defer></script>
+<script src="js/premium-upgrades.js" defer></script>
+</body>
+</html>
