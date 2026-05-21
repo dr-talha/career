@@ -67,17 +67,17 @@
 
 /* ── Premium Hero ── */
 .home-hero{
-  position:relative;overflow:hidden;min-height:92vh;
+  position:relative;overflow:hidden;min-height:clamp(420px,60vh,480px);
   display:flex;align-items:center;
-  background:radial-gradient(circle at 18% 12%,#0a3a44,#02070c 60%,#010305);
-  padding:clamp(80px,10vw,120px) 0;
+  background:radial-gradient(circle at 14% 10%,#0d4450,#030911 58%,#02060b);
+  padding:clamp(42px,6vh,64px) 0;
 }
 .hero-noise{position:absolute;inset:0;background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");opacity:.04;z-index:1;pointer-events:none;}
-.hero-grid-anim{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,220,.05)1px,transparent 1px),linear-gradient(90deg,rgba(0,255,220,.05)1px,transparent 1px);background-size:80px 80px;animation:hgMove 20s linear infinite;z-index:1;pointer-events:none;}
+.hero-grid-anim{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,220,.035)1px,transparent 1px),linear-gradient(90deg,rgba(0,255,220,.035)1px,transparent 1px);background-size:96px 96px;animation:hgMove 26s linear infinite;z-index:1;pointer-events:none;opacity:.7;}
 @keyframes hgMove{from{transform:translateY(0);}to{transform:translateY(80px);}}
-.hero-glow-a{position:absolute;border-radius:50%;filter:blur(140px);opacity:.22;z-index:1;pointer-events:none;width:420px;height:420px;background:#00ffe1;top:-120px;left:-120px;animation:hgFloat 10s ease-in-out infinite;}
-.hero-glow-b{position:absolute;border-radius:50%;filter:blur(140px);opacity:.18;z-index:1;pointer-events:none;width:350px;height:350px;background:#0077ff;bottom:-100px;right:-100px;animation:hgFloat 10s ease-in-out infinite 3s;}
-.hero-glow-c{position:absolute;border-radius:50%;filter:blur:120px;opacity:.15;z-index:1;pointer-events:none;width:250px;height:250px;background:#8a2be2;top:40%;left:58%;animation:hgFloat 12s ease-in-out infinite 6s;}
+.hero-glow-a{position:absolute;border-radius:50%;filter:blur(92px);opacity:.16;z-index:1;pointer-events:none;width:340px;height:340px;background:#00d8ff;top:-130px;left:-100px;animation:hgFloat 12s ease-in-out infinite;}
+.hero-glow-b{position:absolute;border-radius:50%;filter:blur(86px);opacity:.14;z-index:1;pointer-events:none;width:300px;height:300px;background:#15c7b8;bottom:-120px;right:-90px;animation:hgFloat 14s ease-in-out infinite 3s;}
+.hero-glow-c{position:absolute;border-radius:50%;filter:blur(72px);opacity:.1;z-index:1;pointer-events:none;width:200px;height:200px;background:#7d8fff;top:42%;left:56%;animation:hgFloat 16s ease-in-out infinite 6s;}
 @keyframes hgFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.08);}}
 .fdot{position:absolute;width:8px;height:8px;background:#6fffee;border-radius:50%;box-shadow:0 0 14px #6fffee;animation:fdRise 7s infinite;z-index:1;pointer-events:none;}
 .fdot1{top:20%;left:10%;}
@@ -85,41 +85,53 @@
 .fdot3{top:40%;right:35%;animation-delay:4s;}
 .fdot4{top:60%;left:50%;animation-delay:1s;}
 @keyframes fdRise{0%{transform:translateY(0);opacity:0;}50%{opacity:1;}100%{transform:translateY(-90px);opacity:0;}}
-.hero-inner-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:center;padding:0 clamp(20px,5vw,80px);}
+.hero-inner-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:minmax(210px,.84fr) minmax(0,1.16fr);gap:clamp(20px,3vw,44px);align-items:center;padding:0 clamp(12px,3vw,30px);}
 .hero-logo-side{display:flex;justify-content:center;align-items:center;position:relative;}
-.hero-logo-img{width:100%;max-width:400px;animation:logoFloat 6s ease-in-out infinite;filter:drop-shadow(0 0 32px rgba(0,255,220,.38));}
+.hero-logo-img{width:100%;max-width:300px;animation:logoFloat 7s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(0,255,220,.22));}
 @keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
 .hero-logo-ring{position:absolute;width:110%;height:110%;border-radius:50%;border:1px solid rgba(0,255,220,.14);animation:ringSpin 14s linear infinite;}
 @keyframes ringSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .hero-content-side{color:#fff;}
-.hero-badge-new{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1.1rem;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(0,255,220,.22);color:#7fffea;font-size:.76rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.3rem;backdrop-filter:blur(12px);}
-.hero-h1-new{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:900;line-height:1.08;margin:0 0 1.1rem;color:#fff;}
+.hero-badge-new{display:inline-flex;align-items:center;gap:.4rem;padding:.34rem .9rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(0,255,220,.2);color:#8ffcf0;font-size:.69rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;backdrop-filter:blur(7px);}
+.hero-h1-new{font-size:clamp(1.8rem,4.2vw,3.1rem);font-weight:900;line-height:1.1;margin:0 0 .75rem;color:#fff;letter-spacing:-.02em;}
 .hero-h1-new span{background:linear-gradient(90deg,#00ffe1,#00a8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub-new{color:rgba(255,255,255,.75);line-height:1.78;max-width:580px;margin:0 0 1.8rem;font-size:1.02rem;}
-.hero-search-new{display:flex;gap:10px;margin-bottom:1.75rem;}
-.hero-search-new input{flex:1;padding:1rem 1.1rem;border-radius:14px;border:1px solid rgba(0,255,220,.18);background:rgba(255,255,255,.06);color:#fff;outline:none;font-size:.97rem;transition:.25s;}
+.hero-sub-new{color:rgba(240,251,255,.82);line-height:1.5;max-width:560px;margin:0 0 1.15rem;font-size:.96rem;}
+.hero-search-new{display:flex;gap:9px;margin-bottom:1rem;max-width:620px;padding:.32rem;border:1px solid rgba(126,243,229,.28);border-radius:14px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);}
+.hero-search-new input{flex:1;padding:.82rem 1rem;border-radius:10px;border:1px solid transparent;background:rgba(2,18,24,.42);color:#fff;outline:none;font-size:.93rem;transition:.2s;}
 .hero-search-new input:focus{border-color:#00ffe1;box-shadow:0 0 22px rgba(0,255,220,.18);}
-.hero-search-new input::placeholder{color:rgba(255,255,255,.4);}
-.hero-search-new button{padding:1rem 1.6rem;border:none;border-radius:14px;background:linear-gradient(135deg,#00ffe1,#008cff);color:#02070c;font-weight:800;cursor:pointer;font-size:.95rem;white-space:nowrap;transition:.25s;}
+.hero-search-new input::placeholder{color:rgba(233,248,252,.55);}
+.hero-search-new button{padding:.82rem 1.2rem;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffe1,#2c86ff);color:#021017;font-weight:800;cursor:pointer;font-size:.9rem;white-space:nowrap;transition:.25s;}
 .hero-search-new button:hover{transform:translateY(-2px);box-shadow:0 0 26px rgba(0,255,220,.35);}
-.hero-stats-new{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;}
-.hstat{padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(0,255,220,.1);backdrop-filter:blur(10px);transition:.25s;}
+.hero-stats-new{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:.85rem;}
+.hstat{padding:11px 12px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid rgba(0,255,220,.1);backdrop-filter:blur(6px);transition:.25s;}
 .hstat:hover{transform:translateY(-5px);border-color:#00ffe1;}
-.hstat h2{color:#6fffee;font-size:1.65rem;font-weight:800;margin:0 0 2px;}
-.hstat span{color:rgba(255,255,255,.65);font-size:.78rem;}
-.hero-pills-new{display:flex;flex-wrap:wrap;gap:.5rem;}
-.hero-pill-new{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);border-radius:999px;padding:.36rem .95rem;font-size:.84rem;font-weight:600;text-decoration:none;transition:.2s;backdrop-filter:blur(4px);}
+.hstat h2{color:#6fffee;font-size:1.24rem;font-weight:800;margin:0 0 2px;}
+.hstat span{color:rgba(255,255,255,.72);font-size:.72rem;}
+.hero-pills-new{display:flex;flex-wrap:wrap;gap:.44rem;}
+.hero-pill-new{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);border-radius:999px;padding:.28rem .8rem;font-size:.76rem;font-weight:600;text-decoration:none;transition:.2s;backdrop-filter:blur(4px);}
 .hero-pill-new:hover{background:rgba(0,255,220,.14);border-color:#00ffe1;color:#fff;}
 @media(max-width:900px){
-  .hero-inner-grid{grid-template-columns:1fr;text-align:center;gap:32px;}
-  .hero-logo-img{max-width:200px;}
-  .hero-stats-new{grid-template-columns:repeat(3,1fr);}
+  .home-hero{min-height:auto;padding:56px 0 40px;}
+  .hero-inner-grid{grid-template-columns:1fr;text-align:center;gap:20px;}
+  .hero-logo-img{max-width:145px;}
+  .hero-logo-ring{display:none;}
+  .hero-sub-new{margin-inline:auto;}
+  .hero-search-new{margin:0 auto .85rem;}
+  .hero-stats-new{grid-template-columns:repeat(3,minmax(0,1fr));}
   .hero-search-new{flex-direction:column;}
   .hero-pills-new{justify-content:center;}
+  .fdot{display:none;}
 }
 @media(max-width:480px){
-  .hero-stats-new{grid-template-columns:1fr;}
-  .home-hero{min-height:auto;padding:80px 0 60px;}
+  .home-hero{padding:46px 0 30px;}
+  .hero-h1-new{font-size:1.65rem;}
+  .hero-sub-new{font-size:.89rem;}
+  .hero-search-new{padding:.28rem;gap:7px;border-radius:12px;}
+  .hero-search-new input,.hero-search-new button{padding:.78rem .85rem;font-size:.88rem;}
+  .hero-stats-new{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .hstat{padding:9px 8px;}
+  .hstat h2{font-size:1.04rem;}
+  .hero-pill-new{font-size:.72rem;}
 }
 
 /* ── Stats Ribbon ── */
@@ -344,12 +356,12 @@
       </div>
       <!-- Content side -->
       <div class="hero-content-side">
-        <span class="hero-badge-new">🇵🇰 Pakistan's Smart Career Ecosystem</span>
-        <h1 class="hero-h1-new">Discover <span>Scholarships</span>,<br>Jobs &amp; Career Growth</h1>
-        <p class="hero-sub-new">Find verified scholarships, internships, jobs, exam updates, and study books across Pakistan — all in one powerful platform.</p>
+        <span class="hero-badge-new">🇵🇰 Pakistan's modern career hub</span>
+        <h1 class="hero-h1-new">Find <span>Scholarships, Jobs</span><br>&amp; Career Opportunities</h1>
+        <p class="hero-sub-new">Verified openings, funding programs, exam updates, and career resources—curated for ambitious talent across Pakistan.</p>
         <div class="hero-search-new">
-          <input type="search" id="heroSearchInput" placeholder="Search opportunities, exams, books…" aria-label="Search Career Pakistan" onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+encodeURIComponent(this.value)}"/>
-          <button onclick="window.location.href='search.html?q='+encodeURIComponent(document.getElementById('heroSearchInput').value)">Explore →</button>
+          <input type="search" id="heroSearchInput" placeholder="Search scholarships, jobs, internships, exams..." aria-label="Search Career Pakistan" onkeydown="if(event.key==='Enter'){window.location.href='search.html?q='+encodeURIComponent(this.value)}"/>
+          <button onclick="window.location.href='search.html?q='+encodeURIComponent(document.getElementById('heroSearchInput').value)">Search Now</button>
         </div>
         <div class="hero-stats-new">
           <div class="hstat"><h2 id="sS">—</h2><span>Scholarships</span></div>
