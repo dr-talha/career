@@ -1,0 +1,124 @@
+/*
+ * skeleton-perf.css — Career Pakistan
+ * Enhanced skeleton loader + performance CSS additions
+ * Load : after main-enhanced.css (non-critical, use print-media defer)
+ * ─────────────────────────────────────────────────────────────────────
+ */
+
+/* ══════════════════════════════════════════════════════════════════════
+   SKELETON CARD — 320px height, shimmer, dark-mode, auto-dismiss
+   Overrides the 240px min-height from main-enhanced.css for home sliders
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* Base token — shimmer colour sweep */
+@keyframes skeletonShimmer {
+  0%   { background-position:  200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Full-height skeleton for card sliders (home page) */
+.home-card-slider .skeleton-card,
+.skeleton-card.skeleton-card--full {
+  height:        320px;
+  min-height:    320px;
+  max-height:    320px;
+  border-radius: var(--radius-lg, 16px);
+  border:        1px solid var(--border, #d1d5db);
+  overflow:      hidden;
+  /* Shimmer gradient: light mode */
+  background: linear-gradient(
+    90deg,
+    var(--bg-alt, #f1f6f7)  0%,
+    #e8eef0                 40%,
+    var(--bg-alt, #f1f6f7)  60%,
+    var(--bg-alt, #f1f6f7) 100%
+  );
+  background-size:  300% 100%;
+  animation: skeletonShimmer 1.4s ease-in-out infinite;
+  /* Appear instantly; JS removes the element when real card replaces it */
+  opacity:    1;
+  transition: opacity 0.25s ease;
+  will-change: background-position;
+}
+
+/* Compact skeleton (sidebar items, 50px tall) — already inline-styled,
+   this just fixes the shimmer colour for dark mode */
+.skeleton-card {
+  will-change: background-position;
+}
+
+/* ── Dark mode ── */
+body.dark .home-card-slider .skeleton-card,
+body.dark .skeleton-card.skeleton-card--full {
+  background: linear-gradient(
+    90deg,
+    #1a2332  0%,
+    #243047 40%,
+    #1a2332 60%,
+    #1a2332 100%
+  );
+  background-size: 300% 100%;
+  border-color: #334155;
+}
+
+body.dark .skeleton-card {
+  background: linear-gradient(
+    90deg,
+    #1e293b  0%,
+    #2a3a52 40%,
+    #1e293b 60%,
+    #1e293b 100%
+  );
+  background-size: 300% 100%;
+  border-color: #334155;
+}
+
+/* ── Skeleton sub-elements (optional: internal shimmer zones) ── */
+/* These pseudo-elements simulate an image block + text lines inside
+   the skeleton, giving a realistic card shape during loading.      */
+.home-card-slider .skeleton-card::before {
+  content:       '';
+  display:       block;
+  height:        110px;           /* mirrors .card-img height in sliders */
+  background:    rgba(0,0,0,0.06);
+  border-radius: var(--radius-lg, 16px) var(--radius-lg, 16px) 0 0;
+}
+body.dark .home-card-slider .skeleton-card::before {
+  background: rgba(255,255,255,0.04);
+}
+
+/* ── Dismiss: when JS inserts a real .card, the adjacent .skeleton-card
+      fades out. Handled by JS removing the element, but the transition
+      above (opacity 0.25s) covers the visual.                        ── */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   PERFORMANCE — contain paint to card grid to reduce layout thrash
+   ══════════════════════════════════════════════════════════════════════ */
+
+.cards-grid,
+.home-card-slider {
+  contain: layout style;        /* browser can skip reflow outside this subtree */
+}
+
+/* Reserve space for stats ribbon to prevent CLS */
+.stats-ribbon {
+  min-height: 72px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 72px;
+}
+
+/* Reserve space for notif bar */
+.notif-bar {
+  min-height: 36px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 36px;
+}
+
+/* Sidebar widgets: below fold on mobile — defer paint */
+@media (max-width: 1100px) {
+  .home-sidebar {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
+}
