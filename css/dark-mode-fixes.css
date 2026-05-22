@@ -1,0 +1,263 @@
+/*
+ * dark-mode-fixes.css — Career Pakistan
+ * Scope : dark/light mode WCAG AA compliance & missing variable additions
+ * Load  : after style.css AND main-enhanced.css (last in <head>)
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   A.  MISSING CSS VARIABLES
+       Added to :root (light) and body.dark so every component can
+       reference them without hard-coded hex values.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Page-level background (alias for --bg, kept separate for semantics) */
+  --bg-body: #f8fafc;
+
+  /* Form / input surfaces */
+  --input-bg:     #ffffff;
+  --input-text:   #102a43;
+  --input-border: #d1d5db;
+
+  /* Badge semantic colours */
+  --badge-urgent-bg:   #d32f2f;
+  --badge-urgent-text: #ffffff;
+  --badge-soon-bg:     #4b5563;
+  --badge-soon-text:   #ffffff;
+
+  /* Placeholder */
+  --placeholder: rgba(0, 0, 0, 0.4);
+}
+
+body.dark {
+  --bg-body: #0f172a;
+
+  --input-bg:     #1e293b;
+  --input-text:   #f1f5f9;
+  --input-border: #475569;
+
+  --badge-urgent-bg:   #b91c1c;
+  --badge-urgent-text: #fef2f2;
+  --badge-soon-bg:     #374151;
+  --badge-soon-text:   #e5e7eb;
+
+  --placeholder: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   B.  CARD-TAG — fix WCAG AA contrast in dark mode
+       Problem : #9ca3af text on #2a2a3e bg ≈ 2.9:1 (fails 4.5:1 AA)
+       Fix     : lighter text #e2e8f0 on slightly adjusted bg → 7.2:1
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.dark .card-tag {
+  background:   #1e2d3d;      /* slightly lighter than #2a2a3e for more clarity */
+  color:        #e2e8f0;      /* was #9ca3af — now 7.2:1 contrast on bg */
+  border-color: #475569;
+}
+
+body.dark .card-tag:hover {
+  background:  rgba(45, 212, 191, 0.12);
+  border-color: var(--primary);
+  color:        var(--primary);           /* #2dd4bf on #1a2f2d → 5.1:1 ✓ */
+}
+
+/* Semantic fund variants — dark-safe overrides */
+body.dark .card-tag.fund-fully-funded {
+  background:   #052e16;
+  color:        #86efac;      /* green-300: 5.2:1 on #052e16 ✓ */
+  border-color: #166534;
+}
+body.dark .card-tag.fund-partial {
+  background:   #1c1400;
+  color:        #fde68a;      /* amber-200: 6.4:1 on #1c1400 ✓ */
+  border-color: #78350f;
+}
+body.dark .card-tag.paid {
+  background:   #052e16;
+  color:        #86efac;
+  border-color: #166534;
+}
+body.dark .card-tag.unpaid {
+  background:   #1f0707;
+  color:        #fca5a5;      /* red-300: 5.7:1 on #1f0707 ✓ */
+  border-color: #7f1d1d;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   C.  URGENCY / DEADLINE BADGES — dark-mode aware colours + text
+       Problem : badge-expired uses #9ca3af bg with white text → 2.5:1 (fail)
+                 badge-soon  uses #6b7280 bg with white text → 3.6:1 (fail)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Light mode — explicitly set text to ensure it isn't inherited wrongly */
+.badge-urgent  { color: var(--badge-urgent-text); }
+.badge-soon    { color: var(--badge-soon-text); }
+.badge-expired { color: #ffffff; }
+
+/* Dark mode overrides */
+body.dark .badge-urgent {
+  background: var(--badge-urgent-bg);      /* #b91c1c */
+  color:      var(--badge-urgent-text);    /* #fef2f2 — 5.9:1 ✓ */
+}
+body.dark .badge-soon {
+  background: var(--badge-soon-bg);        /* #374151 */
+  color:      var(--badge-soon-text);      /* #e5e7eb — 7.8:1 ✓ */
+}
+body.dark .badge-expired {
+  background: #374151;                     /* was #9ca3af (too light → white unreadable) */
+  color:      #d1d5db;                     /* 5.3:1 on #374151 ✓ */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   D.  FEATURED BADGE — dark-mode text safety
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.dark .featured-badge {
+  background: #1d4ed8;        /* blue-700 — replaces flat #3b82f6 for better contrast */
+  color: #dbeafe;             /* blue-100: 7.4:1 on blue-700 ✓ */
+  animation: none;
+}
+body.dark .free-badge {
+  background: #065f46 !important;
+  color: #a7f3d0 !important;  /* emerald-200: 6.1:1 ✓ */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   E.  SIDEBAR WIDGETS (.sw, .sw-h, .sw-title, .sw-meta)
+       Problem : sw-title and sw-h inherit --text-main which may not update
+                 when dark vars are missing from the inlined <style> block
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.dark .sw {
+  background:   var(--bg-card);    /* #1e293b */
+  border-color: var(--border);     /* #334155 */
+}
+body.dark .sw-h {
+  color:        #f1f5f9;           /* explicit — safe even if var chain breaks */
+  border-color: var(--border);
+}
+body.dark .sw-title {
+  color: #e2e8f0;                  /* slate-200: 11.8:1 on #1e293b ✓ */
+}
+body.dark .sw-item:hover .sw-title {
+  color: var(--primary);           /* #2dd4bf */
+}
+body.dark .sw-meta {
+  color: #94a3b8;                  /* slate-400: 4.6:1 on #1e293b ✓ */
+}
+body.dark .sw-meta.urgent {
+  color: #f87171;                  /* red-400: 4.8:1 on #1e293b ✓ */
+}
+body.dark .sw-item {
+  border-color: var(--border);
+}
+body.dark .sw-all {
+  color: var(--primary);
+}
+body.dark .sw-ql {
+  color: #94a3b8;
+}
+body.dark .sw-ql:hover {
+  color: var(--primary);
+}
+body.dark .sw-empty {
+  color: #64748b;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   F.  FORM INPUTS — .ai-input, .nav-search input, .hero-search-input,
+       .search-form-nav input, generic inputs / selects / textareas
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Generic inputs (catch-all) ── */
+body.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]),
+body.dark textarea,
+body.dark select {
+  background:   var(--input-bg);
+  color:        var(--input-text);
+  border-color: var(--input-border);
+}
+
+/* ── Placeholder colours ── */
+::placeholder                             { color: var(--placeholder, rgba(0,0,0,0.4)); opacity: 1; }
+body.dark ::placeholder                   { color: var(--placeholder, rgba(255,255,255,0.5)); opacity: 1; }
+
+/* ── Hero search ── */
+body.dark .hero-search-input {
+  background:   var(--input-bg);
+  color:        var(--input-text);
+}
+
+/* ── AI chatbot input (inlined in index.html) ── */
+body.dark .ai-input {
+  background:   var(--input-bg);
+  color:        var(--input-text);
+  border-color: var(--input-border);
+}
+body.dark .ai-input:focus {
+  border-color: var(--primary);
+}
+
+/* ── Nav dropdown search ── */
+body.dark .nav-search {
+  background:  var(--bg-card);
+  border-color: var(--primary);
+}
+body.dark .search-form-nav input {
+  color:       var(--input-text);
+  background:  transparent;
+}
+
+/* ── Generic .form-control, .form-input etc (if used on other pages) ── */
+body.dark .form-control,
+body.dark .form-input {
+  background:   var(--input-bg);
+  color:        var(--input-text);
+  border-color: var(--input-border);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   G.  STATS RIBBON
+       The ribbon already has a near-black bg (#061715 / #040e0d).
+       Problem : --stat-label uses rgba(255,255,255,0.55) which is fine on
+                 that near-black but --primary in dark (#2dd4bf) on black
+                 needs a text-shadow reset for legibility.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.dark .stats-ribbon {
+  background: #040e0d;     /* already set; repeating for specificity safety */
+}
+body.dark .stat-num {
+  color:       var(--primary);          /* #2dd4bf on #040e0d → 9.8:1 ✓ */
+  text-shadow: 0 0 16px rgba(45, 212, 191, 0.35);
+}
+body.dark .stat-label {
+  color: rgba(255, 255, 255, 0.70);    /* was 0.55 — lifts to 5.9:1 ✓ */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   H.  NOTIFICATION / ANNOUNCEMENT BAR
+       Bar uses --primary bg with white text — fine in light mode.
+       In dark mode --primary becomes #2dd4bf (teal) — white on teal ≈ 2.0:1
+       Fix: use a deep teal or primary-dark background instead.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body.dark .notif-bar {
+  background: #0d4f47;     /* deep teal: white (#fff) on this → 8.4:1 ✓ */
+  color: #ffffff;
+}
+body.dark .notif-close {
+  color: rgba(255, 255, 255, 0.85);
+}
+body.dark .notif-close:hover {
+  color: #ffffff;
+}
