@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(){try{var p=localStorage.getItem('ch_dark');var d=(p===null||p==='true');if(d)document.documentElement.classList.add('dark-init');}catch(e){}})();</script>
+
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="index, follow, max-image-preview:large"/>
@@ -53,7 +55,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="index.html" class="nav-logo"><img src="logo.webp" alt="Career Pakistan" width="44" height="44" fetchpriority="high"/></a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links" id="navLinks"><button class="nav-drawer-close" id="navDrawerClose" aria-label="Close navigation"><i class="fa fa-times"></i></button>
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown"><a href="scholarships.html">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="scholarships-national.html">National</a></li><li><a href="scholarships-international.html">International</a></li></ul></li>
       <li class="has-dropdown"><a href="jobs.html">Jobs <i class="fa fa-chevron-down fa-xs"></i></a><ul class="dropdown"><li><a href="jobs-government.html">Government Jobs</a></li><li><a href="jobs-private.html">Private / NGO</a></li></ul></li>
