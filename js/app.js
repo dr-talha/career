@@ -1534,7 +1534,12 @@ function toggleDarkMode() {
 function initDarkMode() {
   const pref = localStorage.getItem('ch_dark');
   const shouldUseDark = pref === null ? true : pref === 'true';
-  document.body.classList.toggle('dark', shouldUseDark);
+  const hasDarkInit = document.documentElement.classList.contains('dark-init');
+  if (hasDarkInit && pref === null) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.toggle('dark', shouldUseDark);
+  }
   if (typeof syncThemeButton === 'function') syncThemeButton();
 }
 

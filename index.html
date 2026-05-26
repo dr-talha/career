@@ -10,6 +10,15 @@
   <meta name="description" content="Career Pakistan helps students and professionals discover scholarships, jobs, internships, exam dates, and study books — all in one trusted place for Pakistan."/>
   <meta name="keywords" content="career pakistan, scholarships pakistan, jobs pakistan, internships pakistan, exam updates, career guidance pakistan, mdcat, css exam, ppsc"/>
   <link rel="canonical" href="https://careerpk.online/"/>
+  <script>
+    (function(){
+      try {
+        var p = localStorage.getItem('ch_dark');
+        var d = p === null || p === 'true';
+        if (d) document.documentElement.classList.add('dark-init');
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
@@ -100,6 +109,27 @@
   background:radial-gradient(circle at 14% 10%,#0d4450,#030911 58%,#02060b);
   padding:clamp(42px,6vh,64px) 0;
 }
+body:not(.dark) .home-hero {
+  background: linear-gradient(135deg, #e0f7f4 0%, #f0fffe 50%, #e8f5e9 100%);
+}
+body.dark .home-hero {
+  background: radial-gradient(circle at 14% 10%,#0d4450,#030911 58%,#02060b);
+}
+body:not(.dark) .hero-h1-new { color: var(--text-main); }
+body:not(.dark) .hero-h1-new span {
+  background: linear-gradient(90deg,#0f766e,#0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+body:not(.dark) .hero-sub-new { color: var(--text-secondary); }
+body:not(.dark) .hero-badge-new { background: rgba(15,118,110,0.08); border-color: rgba(15,118,110,0.3); color: var(--primary); }
+body:not(.dark) .hero-pill-new { background: rgba(15,118,110,0.06); border-color: rgba(15,118,110,0.2); color: var(--text-main); }
+body:not(.dark) .hero-search-new { background: rgba(255,255,255,0.9); border-color: rgba(15,118,110,0.25); }
+body:not(.dark) .hero-search-new input { background: #fff; color: var(--text-main); }
+body:not(.dark) .hstat { background: rgba(255,255,255,0.7); border-color: rgba(15,118,110,0.15); }
+body:not(.dark) .hero-grid-anim { opacity: 0.04; }
+body:not(.dark) .fdot { opacity: 0.04; box-shadow: 0 0 14px rgba(15,118,110,0.2); }
 .hero-noise{position:absolute;inset:0;background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");opacity:.04;z-index:1;pointer-events:none;}
 .hero-grid-anim{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,220,.035)1px,transparent 1px),linear-gradient(90deg,rgba(0,255,220,.035)1px,transparent 1px);background-size:96px 96px;animation:hgMove 26s linear infinite;z-index:1;pointer-events:none;opacity:.7;}
 @keyframes hgMove{from{transform:translateY(0);}to{transform:translateY(80px);}}
