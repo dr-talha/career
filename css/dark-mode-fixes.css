@@ -261,3 +261,54 @@ body.dark .notif-close {
 body.dark .notif-close:hover {
   color: #ffffff;
 }
+
+/* ------------------------------------------------------------------------
+   Hero section light/dark mode overrides
+------------------------------------------------------------------------ */
+body:not(.dark) .home-hero {
+  background: linear-gradient(135deg, #e0f7f4 0%, #f0fffe 50%, #e8f5e9 100%);
+}
+body:not(.dark) .hero-h1-new { color: var(--text-main); }
+body:not(.dark) .hero-h1-new span {
+  background: linear-gradient(90deg, #0f766e, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+body:not(.dark) .hero-sub-new { color: var(--text-secondary); }
+body:not(.dark) .hero-badge-new {
+  background: rgba(15,118,110,0.08);
+  border-color: rgba(15,118,110,0.3);
+  color: var(--primary);
+}
+body:not(.dark) .hero-pill-new {
+  background: rgba(15,118,110,0.06);
+  border-color: rgba(15,118,110,0.2);
+  color: var(--text-main);
+}
+body:not(.dark) .hero-search-new { background: rgba(255,255,255,0.9); border-color: rgba(15,118,110,0.25); }
+body:not(.dark) .hero-search-new input { background: #fff; color: var(--text-main); }
+body:not(.dark) .hstat { background: rgba(255,255,255,0.75); border-color: rgba(15,118,110,0.15); }
+body:not(.dark) .hero-grid-anim { opacity: .03; }
+body:not(.dark) .fdot { opacity: .04; box-shadow: 0 0 14px rgba(111,255,238,0.35); }
+body:not(.dark) .hero-glow-a { opacity: 0.08; }
+body:not(.dark) .hero-glow-b { opacity: 0.08; }
+body:not(.dark) .hero-glow-c { opacity: 0.06; }
+
+/* Section icon color themes */
+.si-scholarships { background: #dcfce7; color: #16a34a; }
+body.dark .si-scholarships { background: rgba(22,163,74,0.2); color: #4ade80; }
+.si-jobs { background: #dbeafe; color: #2563eb; }
+body.dark .si-jobs { background: rgba(59,130,246,0.16); color: #93c5fd; }
+.si-internships { background: #fef3c7; color: #d97706; }
+body.dark .si-internships { background: rgba(245,158,11,0.18); color: #fde68a; }
+.si-exams { background: #fce7f3; color: #db2777; }
+body.dark .si-exams { background: rgba(236,72,153,0.16); color: #f9a8d4; }
+.si-books { background: #ede9fe; color: #7c3aed; }
+body.dark .si-books { background: rgba(124,58,237,0.16); color: #c4b5fd; }
+.si-blogs { background: #e0f2fe; color: #0284c7; }
+body.dark .si-blogs { background: rgba(14,165,233,0.16); color: #7dd3fc; }
+
+/* Stats ribbon dark mode reinforcement */
+body.dark .stats-ribbon { background: #040e0d; border-color: #334155; }
+body.dark .stat-num { color: var(--primary); text-shadow: 0 0 16px rgba(45,212,191,0.35); }

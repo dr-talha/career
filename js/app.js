@@ -1385,6 +1385,11 @@ function openMenu() {
   menuOpen = true;
   hamburger.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
+  const icon = hamburger.querySelector('i');
+  if (icon) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-times');
+  }
   showOverlay();
   document.body.style.overflow = 'hidden';
 
@@ -1401,6 +1406,11 @@ function closeMenu() {
   if (hamburger) {
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
+    const icon = hamburger.querySelector('i');
+    if (icon) {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
   }
 
   // Mobile: close navLinks drawer
@@ -1456,6 +1466,9 @@ function initMenu() {
       if (menuOpen) closeMenu();
     });
   }
+
+  const drawerClose = document.getElementById('navDrawerClose');
+  if (drawerClose) drawerClose.addEventListener('click', closeMenu);
 
   // Close on outside click
   document.addEventListener('click', (e) => {
@@ -1516,15 +1529,13 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark');
   const isDark = document.body.classList.contains('dark');
   localStorage.setItem('ch_dark', isDark ? 'true' : 'false');
-  syncThemeButton();
+  if (typeof syncThemeButton === "function") syncThemeButton();
 }
 function initDarkMode() {
   const pref = localStorage.getItem('ch_dark');
-  const shouldUseDark = pref === null
-    ? !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    : pref === 'true';
+  const shouldUseDark = pref === null ? true : pref === 'true';
   document.body.classList.toggle('dark', shouldUseDark);
-  syncThemeButton();
+  if (typeof syncThemeButton === 'function') syncThemeButton();
 }
 
 // ── Popup modal ───────────────────────────────────────────────
@@ -2009,3 +2020,5 @@ document.addEventListener('cmsLoadFailed', function () {
     if (!grid.children.length) renderGridFallback(grid, 'Data failed to load. Please refresh.');
   });
 });
+
+window.initMenu = initMenu;
