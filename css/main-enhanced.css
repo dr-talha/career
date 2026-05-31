@@ -77,7 +77,7 @@ body.dark .card-img-placeholder { background: linear-gradient(135deg, #0b2421 0%
 .card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 .cards-grid { align-items: stretch; gap: 18px; }
-.cards-grid > .card { height: 100%; }
+.cards-grid > .card { height: 100%; min-height: 280px; max-height: none; }
 
 /* Animated top-border sweep on hover */
 .card::before {
