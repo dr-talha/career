@@ -517,7 +517,7 @@ body.home-page .cards-grid.home-card-slider {
   --n:   2;
   --gap: 16px;
   --card-h: 340px;
-  --card-w: clamp(280px, calc((100% - (var(--n) - 1) * var(--gap)) / var(--n)), 360px);
+  --card-w: clamp(240px, calc((100% - (var(--n) - 1) * var(--gap)) / var(--n)), 320px);
 
   display: flex;
   flex-wrap: nowrap;
@@ -525,16 +525,16 @@ body.home-page .cards-grid.home-card-slider {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
   align-items: stretch;
+  justify-content: flex-start;
   padding: 12px 0 16px;
   padding-inline: 16px;
   scroll-padding-inline-start: 16px;
   scroll-padding-inline-end: 16px;
-  margin-inline: 0;
 }
 body.home-page .cards-grid.home-card-slider::-webkit-scrollbar { display: none; }
 
@@ -542,7 +542,7 @@ body.home-page .cards-grid.home-card-slider > .card,
 body.home-page .cards-grid.home-card-slider > .skeleton-card {
   flex: 0 0 var(--card-w);
   width: var(--card-w);
-  min-width: 280px;
+  min-width: 240px;
   max-width: var(--card-w);
   height: var(--card-h); min-height: var(--card-h); max-height: var(--card-h);
   scroll-snap-align: start;
