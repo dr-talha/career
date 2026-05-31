@@ -93,13 +93,13 @@ body.dark {
   --primary-bg:     #042f2e;
   --bg:             #0f172a;
   --bg-card:        #1e293b;
-  --bg-alt:         #1e293b;
+  --bg-alt:         #111827;
   --bg-accent:      #042f2e;
   --border:         #334155;
   --primary-border: #0f766e;
-  --text-main:      #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted:     #64748b;
+  --text-main:      #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted:     #94a3b8;
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.30);
   --shadow-md: 0 10px 25px rgba(0,0,0,0.40);
   --shadow-lg: 0 18px 55px rgba(0,0,0,0.50);
@@ -113,6 +113,11 @@ html {
 }
 
 *, *::before, *::after { box-sizing: inherit; }
+
+body, button, input, select, textarea, .card-title, .card-desc, .section-h2, .home-hero-subtitle, .home-hero-note, .view-all-link, .view-btn, .btn {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
 body {
   margin: 0;
