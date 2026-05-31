@@ -566,6 +566,7 @@ function cardInternship(i) {
       <div class="card-meta">
         ${i.type ? `<span class="card-tag ${paidCls}">${escapeHtml(i.type)}</span>` : ''}
         ${i.category ? `<span class="card-tag">${escapeHtml(i.category)}</span>` : ''}
+        ${i.educationLevel ? `<span class="card-tag">${escapeHtml(i.educationLevel)}</span>` : ''}
         ${i.duration ? `<span class="card-tag"><i class="fa fa-hourglass-half fa-xs"></i> ${escapeHtml(i.duration)}</span>` : ''}
       </div>
       <h3 class="card-title">${escapeHtml(i.title)}</h3>
