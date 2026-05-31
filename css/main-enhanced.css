@@ -516,7 +516,7 @@ body.home-page .cards-grid.home-card-slider .card-img {
 body.home-page .cards-grid.home-card-slider {
   --gap: 16px;
   --card-h: 340px;
-  --card-w: clamp(180px, calc((100% - var(--gap)) / 2), 260px);
+  --card-w: clamp(140px, calc((100% - var(--gap)) / 2), 260px);
 
   display: flex !important;
   flex-wrap: nowrap;
@@ -554,7 +554,7 @@ body.home-page .cards-grid.home-card-slider > .skeleton-card {
   body.home-page .cards-grid.home-card-slider {
     --gap: 18px;
     --card-h: 420px;
-    --card-w: clamp(220px, calc((100% - 2 * var(--gap)) / 3), 300px);
+    --card-w: clamp(200px, calc((100% - 2 * var(--gap)) / 3), 300px);
   }
 }
 
