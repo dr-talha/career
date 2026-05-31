@@ -221,8 +221,14 @@ body:not(.dark) .fdot { opacity: 0.04; box-shadow: 0 0 14px rgba(15,118,110,0.2)
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:1rem;
+  align-items:stretch;
 }
-.slider-row .card,.slider-row .exam-card{min-width:0;}
+.slider-row .card,
+.slider-row .exam-card{
+  min-width:0;
+  height:100%;
+  max-height:none;
+}
 
 /* Hidden extra cards — shown via JS */
 .slider-extra{display:none;}

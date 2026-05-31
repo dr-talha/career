@@ -8,12 +8,8 @@
 const TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 const GENERIC_IMAGE_FALLBACK = 'banner.webp';
 
-// ── Utility: fetch sheet data from live window.CMS_DATA ──────
 window.CMS_DATA = window.CMS_DATA || { Scholarships: [], Jobs: [], Internships: [], Exams: [], Books: [], Notifications: [], scholarships: [], internships: [], exams: [], books: [], notifications: [], blogs: [] };
 
-function fetchSheet(sheetName) {
-  return Promise.resolve((window.CMS_DATA[sheetName] || []).slice());
-}
 function whenCMSReady(fn) {
   if (typeof window.onCMSReady === 'function') {
     window.onCMSReady(fn);
