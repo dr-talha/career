@@ -534,7 +534,7 @@ body.home-page .cards-grid.home-card-slider {
   padding-inline: 16px;
   scroll-padding-inline-start: 16px;
   scroll-padding-inline-end: 16px;
-  margin-inline: -16px;
+  margin-inline: 0;
 }
 body.home-page .cards-grid.home-card-slider::-webkit-scrollbar { display: none; }
 
@@ -577,7 +577,7 @@ body.home-page .home-slider-btn:disabled { opacity: 0.55; cursor: default; }
 @media (min-width: 900px) {
   body.home-page .cards-grid.home-card-slider {
     --n: 3; --gap: 18px; --card-h: 420px;
-    margin-inline: -16px;
+    margin-inline: 0;
     padding: 12px 0 16px;
     padding-inline: 16px;
   }
