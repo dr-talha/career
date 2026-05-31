@@ -218,33 +218,27 @@ body:not(.dark) .fdot { opacity: 0.04; box-shadow: 0 0 14px rgba(15,118,110,0.2)
 /* ── Slider row ── */
 .slider-wrap{position:relative;}
 .slider-row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+  display:flex;
+  flex-wrap:nowrap;
   gap:1rem;
-  align-items:stretch;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;
+  padding-bottom:.9rem;
+  margin-bottom:.9rem;
 }
-.slider-row .card,
-.slider-row .exam-card{
-  min-width:0;
+.slider-row::-webkit-scrollbar{display:none;}
+.slider-row > .card,
+.slider-row > .exam-card{
+  flex:0 0 min(320px,100%);
+  min-width:280px;
   height:100%;
   max-height:none;
+  scroll-snap-align:start;
 }
+.slider-row > .card{width:auto;}
 
-/* Hidden extra cards — shown via JS */
-.slider-extra{display:none;}
-.slider-extra.revealed{display:contents;}
-
-/* Show-more button */
-.show-more-btn{
-  display:block;width:100%;margin-top:.85rem;
-  padding:.58rem 1rem;border:1.5px dashed var(--border,#e2e8f0);
-  background:transparent;border-radius:10px;
-  color:var(--text-secondary,#64748b);font-size:.84rem;font-weight:600;
-  cursor:pointer;text-align:center;transition:all .2s;
-}
-.show-more-btn:hover{border-color:var(--primary,#0f766e);color:var(--primary,#0f766e);background:rgba(15,118,110,.04);}
-.show-more-btn i{margin-left:.35rem;transition:transform .2s;}
-.show-more-btn.open i{transform:rotate(180deg);}
+/* Hidden extra cards / show-more button no longer used on home slider */
 
 /* ── Home section block ── */
 .home-block{margin-bottom:2.75rem;}
@@ -501,15 +495,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="scholarships.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-scholarships">
+          <div class="cards-grid home-card-slider slider-row" id="grid-scholarships">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-scholarships"></div>
-          <button class="show-more-btn" id="more-scholarships" onclick="toggleExtra('scholarships',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
         <!-- ② JOBS -->
@@ -522,15 +512,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="jobs.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-jobs">
+          <div class="cards-grid home-card-slider slider-row" id="grid-jobs">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-jobs"></div>
-          <button class="show-more-btn" id="more-jobs" onclick="toggleExtra('jobs',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
         <!-- ③ INTERNSHIPS -->
@@ -543,15 +529,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="internships.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-internships">
+          <div class="cards-grid home-card-slider slider-row" id="grid-internships">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-internships"></div>
-          <button class="show-more-btn" id="more-internships" onclick="toggleExtra('internships',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
         <!-- ④ EXAMS -->
@@ -564,15 +546,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="exams.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-exams">
+          <div class="cards-grid home-card-slider slider-row" id="grid-exams">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-exams"></div>
-          <button class="show-more-btn" id="more-exams" onclick="toggleExtra('exams',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
         <!-- ⑤ BOOKS -->
@@ -585,15 +563,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="books.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-books">
+          <div class="cards-grid home-card-slider slider-row" id="grid-books">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-books"></div>
-          <button class="show-more-btn" id="more-books" onclick="toggleExtra('books',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
         <!-- ⑥ BLOG -->
@@ -606,15 +580,11 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
             </div>
             <a href="blog.html" class="view-all-link">View All <i class="fa fa-arrow-right fa-xs"></i></a>
           </div>
-          <div class="slider-row" id="grid-blogs">
+          <div class="cards-grid home-card-slider slider-row" id="grid-blogs">
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
             <div class="skeleton-card"></div>
           </div>
-          <div class="slider-extra" id="extra-blogs"></div>
-          <button class="show-more-btn" id="more-blogs" onclick="toggleExtra('blogs',this)" style="display:none">
-            Show More <i class="fa fa-chevron-down"></i>
-          </button>
         </div>
 
       </main>
