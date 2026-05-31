@@ -514,10 +514,9 @@ body.home-page .cards-grid.home-card-slider .card-img {
   Cards are fixed width — never shrink/grow.
 */
 body.home-page .cards-grid.home-card-slider {
-  --n: 2;
   --gap: 16px;
   --card-h: 340px;
-  --card-w: clamp(220px, calc((100% - var(--gap)) / 2), 280px);
+  --card-w: clamp(180px, calc((100% - var(--gap)) / 2), 260px);
 
   display: flex !important;
   flex-wrap: nowrap;
@@ -542,7 +541,7 @@ body.home-page .cards-grid.home-card-slider > .card,
 body.home-page .cards-grid.home-card-slider > .skeleton-card {
   flex: 0 0 var(--card-w);
   width: var(--card-w);
-  min-width: 220px;
+  min-width: var(--card-w);
   max-width: var(--card-w);
   height: var(--card-h); min-height: var(--card-h); max-height: var(--card-h);
   scroll-snap-align: start;
@@ -553,7 +552,6 @@ body.home-page .cards-grid.home-card-slider > .skeleton-card {
 
 @media (min-width: 900px) {
   body.home-page .cards-grid.home-card-slider {
-    --n: 3;
     --gap: 18px;
     --card-h: 420px;
     --card-w: clamp(220px, calc((100% - 2 * var(--gap)) / 3), 300px);
