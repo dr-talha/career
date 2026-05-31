@@ -3,12 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "description": "Career Pakistan static site and Vercel serverless APIs",
+  "main": "server.js",
   "type": "commonjs",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "build": "echo 'No build step required for static site'",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build",
+    "start": "node server.js"
   }
 }
