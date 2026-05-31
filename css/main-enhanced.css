@@ -516,7 +516,7 @@ body.home-page .cards-grid.home-card-slider .card-img {
 body.home-page .cards-grid.home-card-slider {
   --gap: 16px;
   --card-h: 340px;
-  --card-w: clamp(140px, calc((100% - var(--gap)) / 2), 260px);
+  --card-w: max(160px, min(260px, calc((100% - var(--gap)) / 2)));
 
   display: flex !important;
   flex-wrap: nowrap;
@@ -535,6 +535,7 @@ body.home-page .cards-grid.home-card-slider {
   scroll-padding-inline-start: 16px;
   scroll-padding-inline-end: 16px;
 }
+body.home-page .home-block { grid-template-columns: 1fr; }
 body.home-page .cards-grid.home-card-slider::-webkit-scrollbar { display: none; }
 
 body.home-page .cards-grid.home-card-slider > .card,
@@ -554,7 +555,7 @@ body.home-page .cards-grid.home-card-slider > .skeleton-card {
   body.home-page .cards-grid.home-card-slider {
     --gap: 18px;
     --card-h: 420px;
-    --card-w: clamp(200px, calc((100% - 2 * var(--gap)) / 3), 300px);
+    --card-w: max(200px, min(300px, calc((100% - 2 * var(--gap)) / 3)));
   }
 }
 
