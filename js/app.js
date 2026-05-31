@@ -1333,9 +1333,9 @@ function loadNotifications() {
 
 // ── AI chatbot fallback loader (ensures toggle on every page) ─
 function ensureChatbotLoaded() {
-  if (document.querySelector('script[src*="gemini-chatbot.js"]')) return;
+  if (document.querySelector('.ai-fab, .cp-ai-fab, #aiFab, #cpAiFab') || document.querySelector('script[src*="ai-chatbot-global.js"]')) return;
   const script = document.createElement('script');
-  script.src = 'js/gemini-chatbot.js';
+  script.src = 'js/ai-chatbot-global.js';
   script.defer = true;
   (document.body || document.head || document.documentElement).appendChild(script);
 }

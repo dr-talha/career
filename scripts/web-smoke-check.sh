@@ -29,7 +29,7 @@ ROUTES=(
   "/exams.html"
   "/blog.html"
   "/search.html"
-  "/api/sheets"
+  "/api/sheets?sheet=Scholarships"
 )
 
 RED='\033[0;31m'

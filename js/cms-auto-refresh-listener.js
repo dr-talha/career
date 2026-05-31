@@ -74,6 +74,11 @@
   // Public API exposure (single source of truth).
   window.registerAutoRefreshSection = registerAutoRefreshSection;
   window.registerMultiTabRefresh = registerMultiTabRefresh;
+  window.initializeAutoRefreshListeners = function () {
+    // No-op: CMS auto-refresh is handled automatically via the cmsRefresh event.
+    // This stub exists so pages can call initializeAutoRefreshListeners() safely.
+    return;
+  };
 
   // Optional introspection helpers for debugging/maintenance.
   window._CMS_AUTO_REFRESH_DEBUG = {
