@@ -525,16 +525,16 @@ body.home-page .cards-grid.home-card-slider {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
   align-items: stretch;
-  padding: 12px 0;
-  scroll-padding-inline: 16px;
-  margin: 0 -8px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 12px 0 16px;
+  padding-inline: 16px;
+  scroll-padding-inline-start: 16px;
+  scroll-padding-inline-end: 16px;
+  margin-inline: -16px;
 }
 body.home-page .cards-grid.home-card-slider::-webkit-scrollbar { display: none; }
 
@@ -577,7 +577,9 @@ body.home-page .home-slider-btn:disabled { opacity: 0.55; cursor: default; }
 @media (min-width: 900px) {
   body.home-page .cards-grid.home-card-slider {
     --n: 3; --gap: 18px; --card-h: 420px;
-    margin: 0; padding: 12px 0;
+    margin-inline: -16px;
+    padding: 12px 0 16px;
+    padding-inline: 16px;
   }
   body.home-page .cards-grid.home-card-slider > .card,
   body.home-page .cards-grid.home-card-slider > .skeleton-card { padding: 0; }
