@@ -7,14 +7,14 @@
   <meta name="author" content="Career Pakistan" />
   <meta name="theme-color" content="#0891b2" />
 
-  <title>National Scholarships Pakistan 2025 — HEC, PEEF, Punjab, Sindh | Career Pakistan</title>
+  <title>Scholarships Pakistan 2026 — All Scholarships | Career Pakistan</title>
   <meta
     name="description"
-    content="Latest national scholarships in Pakistan 2025. HEC need-based, PEEF, Sindh and Punjab government scholarships for Pakistani students."
+    content="Browse all scholarships from the latest sheet, including national and international opportunities for Pakistani students."
   />
   <meta
     name="keywords"
-    content="HEC scholarship, PEEF scholarship, national scholarship Pakistan 2025, government scholarship Pakistan"
+    content="scholarships Pakistan, international scholarships, national scholarships, students scholarships 2026"
   />
 
   <link rel="canonical" href="https://careerpk.online/scholarships.html" />
@@ -25,18 +25,18 @@
   <meta property="og:url" content="https://careerpk.online/scholarships.html" />
   <meta
     property="og:title"
-    content="National Scholarships Pakistan 2025 — HEC, PEEF, Punjab, Sindh | Career Pakistan"
+    content="Scholarships Pakistan 2026 — All Scholarships | Career Pakistan"
   />
   <meta
     property="og:description"
-    content="Latest national scholarships in Pakistan 2025. HEC need-based, PEEF, Sindh and Punjab government scholarships for Pakistani students."
+    content="Browse all scholarships from the latest sheet, including national and international opportunities for Pakistani students."
   />
   <meta property="og:image" content="https://careerpk.com/banner.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta
     name="twitter:title"
-    content="National Scholarships Pakistan 2025 — HEC, PEEF, Punjab, Sindh | Career Pakistan"
+    content="Scholarships Pakistan 2026 — All Scholarships | Career Pakistan"
   />
   <meta
     name="twitter:description"
@@ -72,7 +72,7 @@
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "National Scholarships Pakistan 2025",
+      "name": "Scholarships Pakistan 2026",
       "url": "https://careerpk.online/scholarships.html"
     }
   </script>
@@ -106,7 +106,8 @@
         <li class="has-dropdown">
           <a href="scholarships.html" class="active">Scholarships <i class="fa fa-chevron-down fa-xs"></i></a>
           <ul class="dropdown">
-            <li><a href="scholarships.html" class="active">National Scholarships</a></li>
+            <li><a href="scholarships.html" class="active">All Scholarships</a></li>
+            <li><a href="scholarships-national.html">National Scholarships</a></li>
             <li><a href="scholarships-international.html">International Scholarships</a></li>
           </ul>
         </li>
@@ -147,12 +148,10 @@
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <i class="fa fa-chevron-right fa-xs"></i>
-        <a href="scholarships.html">Scholarships</a>
-        <i class="fa fa-chevron-right fa-xs"></i>
-        <span>National</span>
+        <span>Scholarships</span>
       </div>
-      <h1 class="page-title">🇵🇰 National Scholarships 2025</h1>
-      <p class="page-subtitle">Government and private scholarships for students within Pakistan</p>
+      <h1 class="page-title">🎓 Scholarships 2026</h1>
+      <p class="page-subtitle">All scholarship opportunities from the latest sheet, with quick access to national and international options.</p>
     </div>
   </header>
 
@@ -160,6 +159,13 @@
     <div class="container">
       <div class="filter-row">
         <div class="filter-left">
+          <label class="sr-only" for="filterRegion">Select scholarship region</label>
+          <select class="filter-select" id="filterRegion" onchange="applyFilters()">
+            <option value="">🌍 All Scholarships</option>
+            <option value="Pakistan">🇵🇰 National</option>
+            <option value="International">🌎 International</option>
+          </select>
+
           <label class="sr-only" for="filterFunding">Filter by funding type</label>
           <select class="filter-select" id="filterFunding" onchange="applyFilters()">
             <option value="">💰 All Funding</option>
@@ -308,8 +314,7 @@
 
     function loadData() {
       try {
-        const data = window.CMS_DATA['Scholarships'] || [];
-        allData = data.filter((s) => (s.country || '').trim().toLowerCase() === 'pakistan');
+        allData = window.CMS_DATA['Scholarships'] || [];
         document.getElementById('errorState').style.display = 'none';
         applyFilters();
       } catch (error) {
@@ -318,20 +323,24 @@
     }
 
     function applyFilters() {
+      const region = document.getElementById('filterRegion').value;
       const funding = document.getElementById('filterFunding').value;
       const type = document.getElementById('filterType').value;
       const level = document.getElementById('filterLevel').value;
       const sort = document.getElementById('sortBy').value;
 
-      let filtered = allData.filter(
-        (s) =>
+      let filtered = allData.filter((s) => {
+        return (
+          scholarshipMatchesCountry(s, region) &&
           (!funding || s.funding === funding) &&
           (!type || s.type === type) &&
           (!level || (s.level || '').includes(level))
-      );
+        );
+      });
 
       filtered = sortItems(filtered, sort);
-      document.getElementById('resultsCount').textContent = `${filtered.length} national scholarship${
+      const label = region === 'Pakistan' ? 'national' : region === 'International' ? 'international' : 'all';
+      document.getElementById('resultsCount').textContent = `${filtered.length} ${label} scholarship${
         filtered.length !== 1 ? 's' : ''
       } found`;
       renderCards(filtered, 'resultsGrid', 'scholarship');
@@ -339,7 +348,7 @@
     }
 
     function clearFilters() {
-      ['filterFunding', 'filterType', 'filterLevel'].forEach((id) => {
+      ['filterRegion', 'filterFunding', 'filterType', 'filterLevel'].forEach((id) => {
         document.getElementById(id).value = '';
       });
       document.getElementById('sortBy').value = 'newest';
