@@ -574,11 +574,14 @@ body.home-page .cards-grid.home-card-slider > .skeleton-card {
 }
 
 body.home-page .cards-grid.home-card-slider .card-img img  { width: 100%; height: 100%; object-fit: cover; }
-body.home-page .cards-grid.home-card-slider .card-body     { flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 10px 11px 8px; display: flex; flex-direction: column; gap: 5px; }
+body.home-page .cards-grid.home-card-slider .card-body     { flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 10px 11px 8px; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+body.home-page .cards-grid.home-card-slider .card-meta     { margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+body.home-page .cards-grid.home-card-slider .card-meta .card-tag { white-space: normal; max-width: 100%; }
 body.home-page .cards-grid.home-card-slider .card-title    { font-size: 0.82rem; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 600; min-height: calc(1.35em * 2); }
-body.home-page .cards-grid.home-card-slider .card-desc     { font-size: 0.74rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+body.home-page .cards-grid.home-card-slider .card-desc     { font-size: 0.74rem; margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+body.home-page .cards-grid.home-card-slider .card-org      { white-space: normal; }
 body.home-page .cards-grid.home-card-slider .card-details  { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; }
-body.home-page .cards-grid.home-card-slider .card-details span { font-size: 0.68rem; min-width: 0; max-width: 100%; }
+body.home-page .cards-grid.home-card-slider .card-details span { font-size: 0.68rem; min-width: 0; max-width: 100%; flex: 1 1 100%; white-space: normal; word-break: break-word; }
 body.home-page .cards-grid.home-card-slider .card-footer   { margin-top: auto; flex: 0 0 auto; padding: 8px 10px; gap: 6px; flex-wrap: wrap; align-items: center; }
 body.home-page .cards-grid.home-card-slider .card-footer .btn-primary { min-height: 30px; flex: 1 1 100%; font-size: 0.72rem; padding: 7px 10px; }
 body.home-page .cards-grid.home-card-slider .btn-fav,
@@ -606,9 +609,13 @@ body.home-page .home-slider-btn:disabled { opacity: 0.55; cursor: default; }
   body.home-page .cards-grid.home-card-slider > .card,
   body.home-page .cards-grid.home-card-slider > .skeleton-card { padding: 0; }
   body.home-page .cards-grid.home-card-slider .card-body      { padding: 14px 16px 10px; }
+  body.home-page .cards-grid.home-card-slider .card-meta      { margin-bottom: 8px; }
+  body.home-page .cards-grid.home-card-slider .card-meta .card-tag { white-space: normal; }
   body.home-page .cards-grid.home-card-slider .card-title     { font-size: 0.95rem; font-weight: 600; }
   body.home-page .cards-grid.home-card-slider .card-desc      { font-size: 0.82rem; }
-  body.home-page .cards-grid.home-card-slider .card-details span { font-size: 0.75rem; }
+  body.home-page .cards-grid.home-card-slider .card-org       { white-space: normal; }
+  body.home-page .cards-grid.home-card-slider .card-details   { gap: 6px; }
+  body.home-page .cards-grid.home-card-slider .card-details span { font-size: 0.75rem; white-space: normal; flex: 1 1 100%; }
   body.home-page .cards-grid.home-card-slider .card-footer .btn-primary { min-height: 34px; font-size: 0.78rem; }
 }
 
