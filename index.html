@@ -825,6 +825,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof registerMultiTabRefresh === 'function') registerMultiTabRefresh(_homeInit);
   if (typeof initializeAutoRefreshListeners === 'function') initializeAutoRefreshListeners();
   _initNavbarScroll();
+  
+  // FIX: If CMS data is empty after 3 seconds, something is wrong - log it
+  setTimeout(() => {
+    const D = window.CMS_DATA || {};
+    const hasData = (D.Scholarships?.length || 0) + (D.Jobs?.length || 0) + (D.Internships?.length || 0) > 0;
+    if (!hasData) {
+      console.warn('[HomeInit] No CMS data loaded after 3s. Check google-sheet-loader.js and API connectivity.');
+      // Grids will show skeleton cards until data loads
+    }
+  }, 3000);
 });
 
 function _initNavbarScroll() {
@@ -851,6 +861,8 @@ function _homeInit() {
     const Bk = D.Books         || [];
     const Bl = (D.Blogs || []).filter(b => b.isPublished !== false && b.is_published !== false);
     const N  = D.Notifications || [];
+
+    console.log('[HomeInit] CMS Data loaded - Scholarships:', S.length, 'Jobs:', J.length, 'Internships:', I.length, 'Exams:', E.length, 'Books:', Bk.length, 'Blogs:', Bl.length);
 
     // ── Stats
     _stat('sS',  S.length);
@@ -948,89 +960,35 @@ function _homeInit() {
 
 // ── Section renderer ──────────────────────────────────────
 function _renderSection(key, items, renderer) {
-  const grid    = document.getElementById('grid-' + key);
-  const extra   = document.getElementById('extra-' + key);
-  const moreBtn = document.getElementById('more-' + key);
+  // FIX: Use correct grid ID format (e.g., 'scholarshipsGrid' not 'grid-scholarships')
+  const gridId  = key + 'Grid';
+  const grid    = document.getElementById(gridId);
   const cntEl   = document.getElementById('cnt-' + key);
 
-  if (!grid) return;
+  if (!grid) {
+    console.warn('[HomeInit] Grid not found for key:', key, 'ID:', gridId);
+    return;
+  }
 
   if (!items || items.length === 0) {
-    grid.innerHTML = `<p style="color:var(--text-muted);font-size:.9rem;grid-column:1/-1">No ${key} available yet.</p>`;
-    if (moreBtn) moreBtn.style.display = 'none';
-    if (cntEl)   cntEl.textContent = '0';
+    grid.innerHTML = `<div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>`;
+    if (cntEl) cntEl.textContent = '—';
     return;
   }
 
   // Count badge
-  if (cntEl) cntEl.textContent = items.length + (items.length > 1 ? ' total' : '');
+  if (cntEl) cntEl.textContent = items.length;
 
-  // First 3 go into main grid
-  const first  = items.slice(0, VISIBLE_INIT);
-  const rest   = items.slice(VISIBLE_INIT);
-
-  grid.innerHTML = first.map(renderer).join('');
+  // FIX: Render all cards directly to grid (home uses horizontal scroll)
+  grid.innerHTML = items.map(renderer).join('');
   _activateCards(grid);
 
-  // Store state
-  _sectionState[key] = { items, shown: VISIBLE_INIT, renderer };
-
-  // Pre-render next batch into hidden extra container
-  if (rest.length > 0 && extra) {
-    extra.innerHTML = rest.slice(0, BATCH_SIZE).map(renderer).join('');
-    _activateCards(extra);
-    if (moreBtn) {
-      moreBtn.style.display = '';
-      moreBtn.dataset.nextStart = VISIBLE_INIT + BATCH_SIZE;
-      moreBtn.textContent = '';
-      moreBtn.innerHTML = `Show More (${Math.min(rest.length, BATCH_SIZE)} of ${rest.length} more) <i class="fa fa-chevron-down"></i>`;
-    }
-  }
+  // Store state for potential future use
+  _sectionState[key] = { items, shown: items.length, renderer };
 }
 
-// ── Show More toggle ──────────────────────────────────────
-function toggleExtra(key, btn) {
-  const extra = document.getElementById('extra-' + key);
-  const grid  = document.getElementById('grid-' + key);
-  if (!extra) return;
-
-  const state = _sectionState[key];
-  const isOpen = extra.classList.contains('revealed');
-
-  if (!isOpen) {
-    // Expand: show next batch inside extra, then move into grid
-    extra.classList.add('revealed');
-
-    // Load next batch if needed
-    const nextStart = parseInt(btn.dataset.nextStart || (state.shown + BATCH_SIZE));
-    const nextItems = state.items.slice(nextStart, nextStart + BATCH_SIZE);
-    if (nextItems.length > 0) {
-      grid.insertAdjacentHTML('beforeend', extra.innerHTML);
-      extra.innerHTML = nextItems.map(state.renderer).join('');
-      _activateCards(extra);
-      state.shown = nextStart;
-      btn.dataset.nextStart = nextStart + BATCH_SIZE;
-    } else {
-      // No more — move extra into grid and hide button
-      grid.insertAdjacentHTML('beforeend', extra.innerHTML);
-      extra.innerHTML = '';
-      _activateCards(grid);
-    }
-
-    const totalLeft = state.items.length - state.shown - BATCH_SIZE;
-    if (totalLeft <= 0) {
-      btn.style.display = 'none';
-    } else {
-      btn.innerHTML = `Show More (${Math.min(totalLeft, BATCH_SIZE)} of ${totalLeft} more) <i class="fa fa-chevron-down"></i>`;
-    }
-    _activateCards(grid);
-  } else {
-    // Already revealed, just collapse
-    extra.classList.remove('revealed');
-    btn.classList.remove('open');
-    btn.innerHTML = `Show More <i class="fa fa-chevron-down"></i>`;
-  }
-}
+// ── Show More toggle ── (Legacy - not used in current home design)
+// Removed unused function for cleaner code
 
 // ── Helpers ───────────────────────────────────────────────
 function _stat(id, n) {
@@ -1110,10 +1068,12 @@ function _swToggle(id) {
 
 function _activateCards(container) {
   if (!container) return;
-  container.querySelectorAll('.card,.exam-card').forEach(c => {
-    c.style.opacity      = '1';
-    c.style.transform    = 'translateY(0)';
-    c.style.visibility   = 'visible';
+  const cards = container.querySelectorAll('.card, .exam-card, .skeleton-card');
+  cards.forEach(c => {
+    c.style.opacity = '1';
+    c.style.transform = 'translateY(0)';
+    c.style.visibility = 'visible';
+    c.style.display = '';  // Ensure not hidden by CSS
     c.classList.add('visible');
   });
 }
