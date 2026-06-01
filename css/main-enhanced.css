@@ -529,8 +529,8 @@ body.home-page .cards-grid.home-card-slider .card-img {
 */
 body.home-page .cards-grid.home-card-slider {
   --gap: 16px;
-  --card-h: 340px;
-  --card-w: max(160px, min(260px, calc((100% - var(--gap)) / 2)));
+  --card-h: 360px;
+  --card-w: max(160px, min(280px, calc((100% - var(--gap)) / 2)));
 
   display: flex !important;
   flex-wrap: nowrap;
@@ -567,9 +567,9 @@ body.home-page .cards-grid.home-card-slider > .skeleton-card {
 
 @media (min-width: 900px) {
   body.home-page .cards-grid.home-card-slider {
-    --gap: 18px;
-    --card-h: 420px;
-    --card-w: max(200px, min(300px, calc((100% - 2 * var(--gap)) / 3)));
+    --gap: 16px;
+    --card-h: 440px;
+    --card-w: max(220px, min(320px, calc((100% - 2 * var(--gap)) / 3)));
   }
 }
 
