@@ -201,10 +201,8 @@ body:not(.dark) .fdot { opacity: 0.04; box-shadow: 0 0 14px rgba(15,118,110,0.2)
 .stat-sep{width:1px;height:38px;background:var(--border,#e2e8f0);}
 
 /* ── Page shell ── */
-.home-shell{display:grid;grid-template-columns:1fr 296px;gap:2.25rem;align-items:start;}
-@media(max-width:1100px){.home-shell{grid-template-columns:1fr;}}
-.home-sidebar{position:sticky;top:72px;}
-@media(max-width:1100px){.home-sidebar{position:static;}}
+.home-shell{display:grid;grid-template-columns:1fr;gap:2.25rem;align-items:start;}
+.home-sidebar{display:none;}
 
 /* ── Section header ── */
 .section-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;gap:.75rem;}
