@@ -549,7 +549,16 @@ body.home-page .cards-grid.home-card-slider {
   scroll-padding-inline-start: 16px;
   scroll-padding-inline-end: 16px;
 }
-body.home-page .home-block { grid-template-columns: 1fr; }
+body.home-page .home-block { 
+  grid-template-columns: 1fr; 
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+body.home-page .home-block .section-hd {
+  margin-bottom: 16px;
+}
 body.home-page .cards-grid.home-card-slider::-webkit-scrollbar { display: none; }
 
 body.home-page .cards-grid.home-card-slider > .card,
@@ -896,8 +905,424 @@ body.dark .error-text { color: #ef4444; }
   .chatbot-panel      { bottom: 136px; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   Section Sidebars & Full Section Styling — Professional
+   Each section (content + sidebar) has distinct visual identity
+   Full dark/light mode compatibility
+   ════════════════════════════════════════════════════════════ */
+
+/* Main wrapper — flex layout with full section styling */
+.section-wrapper {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding: 24px;
+  position: relative;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Primary content area */
+.section-content {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+/* Right sidebar — fixed width */
+.section-sidebar {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Sidebar widget styling */
+.sidebar-widget {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  padding: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.sidebar-widget:hover {
+  border-color: var(--primary);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.12);
+  transform: translateY(-2px);
+}
+
+.sidebar-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  background: rgba(0, 0, 0, 0.02);
+}
+.sidebar-list a:hover {
+  background: color-mix(in srgb, var(--primary) 12%, var(--bg-card) 88%);
+  border-left-color: var(--primary);
+  color: var(--primary);
+  padding-left: 14px;
+}
+
+.sidebar-tip {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SCHOLARSHIPS SECTION — Green Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-scholarships) {
+  background: linear-gradient(135deg, #dcfce7 0%, #e8f9f5 50%, #f0fcf9 100%);
+  border: 2px solid #22c55e;
+  border-left: 5px solid #16a34a;
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08);
+}
+body.dark .section-wrapper:has(#block-scholarships) {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.15) 0%, rgba(22, 163, 74, 0.08) 50%, rgba(22, 163, 74, 0.05) 100%);
+  border: 2px solid rgba(22, 163, 74, 0.4);
+  border-left: 5px solid #22c55e;
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.15);
+}
+#block-scholarships {
+  border-top: 4px solid #16a34a;
+  background: rgba(22, 163, 74, 0.04);
+}
+body.dark #block-scholarships {
+  background: transparent;
+}
+.section-wrapper:has(#block-scholarships) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #16a34a;
+  background: rgba(22, 163, 74, 0.05);
+}
+body.dark .section-wrapper:has(#block-scholarships) .section-sidebar .sidebar-widget {
+  background: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+.section-wrapper:has(#block-scholarships) .sidebar-title {
+  color: #16a34a;
+}
+
+/* ════════════════════════════════════════════════════════════
+   JOBS SECTION — Blue Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-jobs) {
+  background: linear-gradient(135deg, #dbeafe 0%, #e6f3ff 50%, #eff6ff 100%);
+  border: 2px solid #3b82f6;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+}
+body.dark .section-wrapper:has(#block-jobs) {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.08) 50%, rgba(37, 99, 235, 0.05) 100%);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-left: 5px solid #3b82f6;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+}
+#block-jobs {
+  border-top: 4px solid #2563eb;
+  background: rgba(37, 99, 235, 0.04);
+}
+body.dark #block-jobs {
+  background: transparent;
+}
+.section-wrapper:has(#block-jobs) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+}
+body.dark .section-wrapper:has(#block-jobs) .section-sidebar .sidebar-widget {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+.section-wrapper:has(#block-jobs) .sidebar-title {
+  color: #2563eb;
+}
+
+/* ════════════════════════════════════════════════════════════
+   INTERNSHIPS SECTION — Orange Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-internships) {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 50%, #fffbf0 100%);
+  border: 2px solid #f59e0b;
+  border-left: 5px solid #d97706;
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.08);
+}
+body.dark .section-wrapper:has(#block-internships) {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(217, 119, 6, 0.08) 50%, rgba(217, 119, 6, 0.05) 100%);
+  border: 2px solid rgba(217, 119, 6, 0.4);
+  border-left: 5px solid #f59e0b;
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.15);
+}
+#block-internships {
+  border-top: 4px solid #d97706;
+  background: rgba(217, 119, 6, 0.04);
+}
+body.dark #block-internships {
+  background: transparent;
+}
+.section-wrapper:has(#block-internships) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #d97706;
+  background: rgba(217, 119, 6, 0.05);
+}
+body.dark .section-wrapper:has(#block-internships) .section-sidebar .sidebar-widget {
+  background: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+.section-wrapper:has(#block-internships) .sidebar-title {
+  color: #d97706;
+}
+
+/* ════════════════════════════════════════════════════════════
+   EXAMS SECTION — Pink Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-exams) {
+  background: linear-gradient(135deg, #fce7f3 0%, #fcf0f8 50%, #fdf5fa 100%);
+  border: 2px solid #ec4899;
+  border-left: 5px solid #db2777;
+  box-shadow: 0 8px 24px rgba(219, 39, 119, 0.08);
+}
+body.dark .section-wrapper:has(#block-exams) {
+  background: linear-gradient(135deg, rgba(219, 39, 119, 0.15) 0%, rgba(219, 39, 119, 0.08) 50%, rgba(219, 39, 119, 0.05) 100%);
+  border: 2px solid rgba(219, 39, 119, 0.4);
+  border-left: 5px solid #ec4899;
+  box-shadow: 0 8px 24px rgba(219, 39, 119, 0.15);
+}
+#block-exams {
+  border-top: 4px solid #db2777;
+  background: rgba(219, 39, 119, 0.04);
+}
+body.dark #block-exams {
+  background: transparent;
+}
+.section-wrapper:has(#block-exams) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #db2777;
+  background: rgba(219, 39, 119, 0.05);
+}
+body.dark .section-wrapper:has(#block-exams) .section-sidebar .sidebar-widget {
+  background: rgba(219, 39, 119, 0.08);
+  border-color: rgba(219, 39, 119, 0.3);
+}
+.section-wrapper:has(#block-exams) .sidebar-title {
+  color: #db2777;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BOOKS SECTION — Purple Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-books) {
+  background: linear-gradient(135deg, #ede9fe 0%, #f3f0ff 50%, #faf8ff 100%);
+  border: 2px solid #a78bfa;
+  border-left: 5px solid #7c3aed;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+}
+body.dark .section-wrapper:has(#block-books) {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(124, 58, 237, 0.08) 50%, rgba(124, 58, 237, 0.05) 100%);
+  border: 2px solid rgba(124, 58, 237, 0.4);
+  border-left: 5px solid #a78bfa;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+}
+#block-books {
+  border-top: 4px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.04);
+}
+body.dark #block-books {
+  background: transparent;
+}
+.section-wrapper:has(#block-books) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.05);
+}
+body.dark .section-wrapper:has(#block-books) .section-sidebar .sidebar-widget {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+.section-wrapper:has(#block-books) .sidebar-title {
+  color: #7c3aed;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BLOG SECTION — Cyan Theme
+   ════════════════════════════════════════════════════════════ */
+.section-wrapper:has(#block-blogs) {
+  background: linear-gradient(135deg, #e0f2fe 0%, #e8f7fd 50%, #f0fbff 100%);
+  border: 2px solid #06b6d4;
+  border-left: 5px solid #0284c7;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+}
+body.dark .section-wrapper:has(#block-blogs) {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(2, 132, 199, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
+  border: 2px solid rgba(2, 132, 199, 0.4);
+  border-left: 5px solid #06b6d4;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15);
+}
+#block-blogs {
+  border-top: 4px solid #0284c7;
+  background: rgba(2, 132, 199, 0.04);
+}
+body.dark #block-blogs {
+  background: transparent;
+}
+.section-wrapper:has(#block-blogs) .section-sidebar .sidebar-widget {
+  border-left: 4px solid #0284c7;
+  background: rgba(2, 132, 199, 0.05);
+}
+body.dark .section-wrapper:has(#block-blogs) .section-sidebar .sidebar-widget {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+.section-wrapper:has(#block-blogs) .sidebar-title {
+  color: #0284c7;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Dark Mode Comprehensive Support
+   ════════════════════════════════════════════════════════════ */
+body.dark .sidebar-widget {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+body.dark .sidebar-widget:hover {
+  border-color: var(--primary);
+  box-shadow: 0 6px 16px rgba(45, 212, 191, 0.15);
+}
+
+body.dark .sidebar-list a {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+}
+body.dark .sidebar-list a:hover {
+  background: rgba(45, 212, 191, 0.15);
+  color: var(--primary);
+}
+
+body.dark .sidebar-title {
+  color: var(--primary);
+}
+
+body.dark .sidebar-tip {
+  color: var(--text-secondary);
+}
+
+/* ── Responsive sidebar layout ──────────────────────────── */
+@media (max-width: 1100px) {
+  .section-wrapper {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+  
+  .section-content {
+    flex: 1 1 100%;
+  }
+  
+  .section-sidebar {
+    flex: 1 1 100%;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .sidebar-widget {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+  }
+  
+  .section-sidebar {
+    flex: 1 1 100%;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .sidebar-widget {
+    flex: 1 1 auto;
+  }
+
+  .section-wrapper:has(#block-scholarships),
+  .section-wrapper:has(#block-jobs),
+  .section-wrapper:has(#block-internships),
+  .section-wrapper:has(#block-exams),
+  .section-wrapper:has(#block-books),
+  .section-wrapper:has(#block-blogs) {
+    gap: 12px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-wrapper {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+
+  .sidebar-widget {
+    padding: 12px;
+  }
+
+  .sidebar-title {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  .sidebar-list a {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .sidebar-tip {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+}
+
 /* ── Reduced motion override ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .card, .exam-card, .quick-nav-card, .btn, .featured-badge,
-  .img-loading, .img-loaded, .card-img img { animation: none !important; transition: none !important; }
+  .img-loading, .img-loaded, .card-img img, .sidebar-widget, .sidebar-list a,
+  .section-wrapper { animation: none !important; transition: none !important; }
 }
