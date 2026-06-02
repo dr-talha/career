@@ -1531,7 +1531,7 @@ body.dark .empty-state {
   visibility: visible;
   pointer-events: auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav-links {
     transform: translateX(-105%);
     left: 0 !important;
