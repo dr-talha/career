@@ -1345,7 +1345,7 @@ function ensureChatbotLoaded() {
 // Unified responsive navbar behavior
 let menuOpen = false;
 
-function isMobile() { return window.innerWidth <= 768; }
+function isMobile() { return window.innerWidth <= 900; }
 
 // ── Overlay ──────────────────────────────────────────────────────
 function getOverlay() {
@@ -1435,12 +1435,12 @@ function toggleMenu() {
 // ── Init ─────────────────────────────────────────────────────────
 function initMenu() {
   if (window.__careerPkMenuReady) return;
-  window.__careerPkMenuReady = true;
 
   const hamburger = document.getElementById('hamburger');
   const navbar = document.getElementById('navbar');
   const navLinks = document.getElementById('navLinks');
   if (!hamburger || !navbar || !navLinks) return;
+  window.__careerPkMenuReady = true;
   
   hamburger.setAttribute('aria-label', 'Toggle navigation menu');
   hamburger.setAttribute('aria-expanded', 'false');
@@ -2088,3 +2088,9 @@ document.addEventListener('cmsLoadFailed', function () {
 });
 
 window.initMenu = initMenu;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMenu, { once: true });
+} else {
+  initMenu();
+}
