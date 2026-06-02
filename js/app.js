@@ -1363,7 +1363,8 @@ function getOverlay() {
 
 function showOverlay() {
   const o = getOverlay();
-  o.style.display = 'block';
+  o.hidden = false;
+  o.setAttribute('aria-hidden', 'false');
   requestAnimationFrame(() => o.classList.add('active'));
 }
 
@@ -1371,7 +1372,10 @@ function hideOverlay() {
   const o = document.getElementById('navOverlay');
   if (!o) return;
   o.classList.remove('active');
-  setTimeout(() => { o.style.display = ''; }, 350);
+  o.setAttribute('aria-hidden', 'true');
+  setTimeout(() => {
+    if (!o.classList.contains('active')) o.hidden = true;
+  }, 320);
 }
 
 // ── Open / Close ─────────────────────────────────────────────────
@@ -1380,6 +1384,7 @@ function openMenu() {
   if (!hamburger) return;
 
   menuOpen = true;
+  document.body.classList.add('nav-menu-open');
   hamburger.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
   const icon = hamburger.querySelector('i');
@@ -1388,10 +1393,12 @@ function openMenu() {
     icon.classList.add('fa-times');
   }
   showOverlay();
-  document.body.style.overflow = 'hidden';
 
   const navLinks = document.getElementById('navLinks');
-  if (navLinks && isMobile()) navLinks.classList.add('active');
+  if (navLinks) {
+    navLinks.classList.add('active');
+    navLinks.setAttribute('aria-hidden', 'false');
+  }
 }
 
 function closeMenu() {
@@ -1413,11 +1420,12 @@ function closeMenu() {
   // Mobile: close navLinks drawer
   if (navLinks) {
     navLinks.classList.remove('active');
+    navLinks.setAttribute('aria-hidden', 'true');
     navLinks.querySelectorAll('.has-dropdown.accordion-open').forEach(el => el.classList.remove('accordion-open'));
   }
 
   hideOverlay();
-  document.body.style.overflow = '';
+  document.body.classList.remove('nav-menu-open');
 }
 
 function toggleMenu() {
@@ -1426,84 +1434,92 @@ function toggleMenu() {
 
 // ── Init ─────────────────────────────────────────────────────────
 function initMenu() {
+  if (window.__careerPkMenuReady) return;
+  window.__careerPkMenuReady = true;
+
   const hamburger = document.getElementById('hamburger');
   const navbar = document.getElementById('navbar');
   const navLinks = document.getElementById('navLinks');
-  if (!hamburger || !navbar) return;
-
+  if (!hamburger || !navbar || !navLinks) return;
+  
   hamburger.setAttribute('aria-label', 'Toggle navigation menu');
   hamburger.setAttribute('aria-expanded', 'false');
 
-  // Toggle on hamburger click
-  hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
+  const syncDrawerState = () => {
+    navLinks.setAttribute('aria-hidden', isMobile() && !menuOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+  };
+  syncDrawerState();
+
+  hamburger.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     toggleMenu();
+    syncDrawerState();
   });
 
-  // Mobile: accordion for dropdown parent links
-  if (navLinks) {
-    navLinks.querySelectorAll('.has-dropdown').forEach((item) => {
-      const link = item.querySelector(':scope > a');
-      if (!link) return;
-      link.addEventListener('click', (e) => {
-        if (!isMobile()) return; // desktop uses hover
-        e.preventDefault();
-        const isOpen = item.classList.contains('accordion-open');
-        navLinks.querySelectorAll('.has-dropdown.accordion-open').forEach(el => el.classList.remove('accordion-open'));
-        if (!isOpen) item.classList.add('accordion-open');
-      });
-    });
+  navLinks.addEventListener('click', (event) => {
+    const anchor = event.target.closest('a');
+    if (!anchor) return;
 
-    // Close mobile drawer when a leaf link is tapped
-    navLinks.addEventListener('click', (e) => {
-      const anchor = e.target.closest('a');
-      if (!anchor) return;
-      // If it's a top-level dropdown trigger, accordion handled above
-      if (anchor.parentElement.classList.contains('has-dropdown') && !anchor.closest('.dropdown')) return;
-      if (menuOpen) closeMenu();
-    });
-  }
+    const dropdownItem = anchor.closest('.has-dropdown');
+    const isDropdownTrigger = dropdownItem && anchor.parentElement === dropdownItem && !anchor.closest('.dropdown');
+    if (isDropdownTrigger && isMobile()) {
+      event.preventDefault();
+      const isOpen = dropdownItem.classList.contains('accordion-open');
+      navLinks.querySelectorAll('.has-dropdown.accordion-open').forEach((item) => item.classList.remove('accordion-open'));
+      if (!isOpen) dropdownItem.classList.add('accordion-open');
+      return;
+    }
+
+    if (menuOpen) {
+      closeMenu();
+      syncDrawerState();
+    }
+  });
 
   const drawerClose = document.getElementById('navDrawerClose');
-  if (drawerClose) drawerClose.addEventListener('click', closeMenu);
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
+  if (drawerClose) {
+    drawerClose.addEventListener('click', (event) => {
+      event.preventDefault();
+      closeMenu();
+      syncDrawerState();
+    });
+  }
+  
+  document.addEventListener('click', (event) => {
     if (!menuOpen) return;
-    const inNavbar = navbar.contains(e.target);
-    if (!inNavbar) closeMenu();
+    if (!event.target.closest('#navLinks') && !event.target.closest('#hamburger')) {
+      closeMenu();
+      syncDrawerState();
+    }
   });
 
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuOpen) closeMenu();
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !menuOpen) return;
+    closeMenu();
+    syncDrawerState();
+    hamburger.focus({ preventScroll: true });
   });
 
-  // On resize/orientation change: keep drawer state sane
   let resizeTimer = null;
   const handleViewportChange = () => {
-    if (resizeTimer) clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (menuOpen) closeMenu();
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      if (menuOpen) {
+        closeMenu();
+      }
+      syncDrawerState();
     }, 120);
   };
   window.addEventListener('resize', handleViewportChange, { passive: true });
   window.addEventListener('orientationchange', handleViewportChange, { passive: true });
-  
-  // Navbar scroll shadow
-  const navEl = document.getElementById('navbar');
-  if (navEl) {
-    window.addEventListener('scroll', () => {
-      navEl.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-  }
 
-  // Mobile bottom nav active state
   const currentFile = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.mob-nav-item').forEach(a => {
-    const href = a.getAttribute('href') || '';
+  document.querySelectorAll('.mob-nav-item').forEach((link) => {
+    const href = link.getAttribute('href') || '';
     if (href === currentFile || (currentFile === '' && href === 'index.html')) {
-      a.classList.add('active');
+      link.classList.add('active');
     }
   });
 }
@@ -1820,30 +1836,78 @@ function initGlobalSitePolish() {
 }
 
 function initPWA() {
+  if (window.__careerPkPwaReady) return;
+  window.__careerPkPwaReady = true;
+
+  const installButtons = Array.from(document.querySelectorAll('[data-install-app], #installAppBtn'));
+  const fallbackPanel = document.getElementById('installFallback');
+  let deferredPrompt = null;
+  let installed = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  const setInstallVisible = (visible) => {
+    installButtons.forEach((button) => {
+      button.hidden = !visible;
+      button.style.display = visible ? 'inline-flex' : 'none';
+      button.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    });
+  };
+
+  const showFallback = () => {
+    if (!fallbackPanel || installed) return;
+    fallbackPanel.hidden = false;
+  };
+
+  setInstallVisible(false);
+
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      const regs = await navigator.serviceWorker.getRegistrations().catch(() => []);
-      await Promise.all(regs.map((reg) => reg.unregister().catch(() => false)));
-      if (window.caches && typeof window.caches.keys === 'function') {
-        const keys = await window.caches.keys().catch(() => []);
-        await Promise.all(keys.map((key) => window.caches.delete(key).catch(() => false)));
-      }
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch((error) => {
+        console.warn('[CareerPK PWA] Service worker registration failed:', error);
+      });
     });
   }
-  let deferredPrompt = null;
+
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
+    if (installed) return;
     deferredPrompt = event;
-    const installBtn = document.getElementById('installAppBtn');
-    if (!installBtn) return;
-    installBtn.style.display = 'inline-flex';
-    installBtn.onclick = async () => {
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.style.display = 'none';
-    };
+    setInstallVisible(true);
   });
+  
+  installButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (installed) return;
+      if (!deferredPrompt) {
+        showFallback();
+        return;
+      }
+      button.disabled = true;
+      try {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        if (choice.outcome === 'accepted') {
+          installed = true;
+          setInstallVisible(false);
+          if (fallbackPanel) fallbackPanel.hidden = true;
+        }
+      } finally {
+        deferredPrompt = null;
+        button.disabled = false;
+        setInstallVisible(false);
+      }
+    });
+  });
+
+  window.addEventListener('appinstalled', () => {
+    installed = true;
+    deferredPrompt = null;
+    setInstallVisible(false);
+    if (fallbackPanel) fallbackPanel.hidden = true;
+  });
+
+  window.setTimeout(() => {
+    if (!deferredPrompt && !installed) showFallback();
+  }, 1800);
 }
 
 
