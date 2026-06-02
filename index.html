@@ -52,10 +52,6 @@
   <!-- Preload: only the logo renders above the fold (hero uses it as floating img).
        Banner is OG-only — remove its preload to stop it stealing bandwidth. -->
   <link rel="preload" as="image" href="logo.webp" type="image/webp" fetchpriority="high"/>
-  <!-- Preload critical font (display=swap means this is render-unblocking, but
-       preloading cuts the FOUT window) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap"/>
-
   <!-- CRITICAL CSS: style.css + main-enhanced.css drive all above-fold paint.
        Load them synchronously so the browser has tokens before first render.
        Everything else is deferred via print-media trick. -->
@@ -429,6 +425,19 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
           <a href="books.html" class="hero-pill-new">📚 Books</a>
           <a href="blog.html" class="hero-pill-new">✍️ Blog</a>
         </div>
+        <div class="install-app-cta" aria-live="polite">
+          <button type="button" class="install-app-btn" id="installAppBtn" data-install-app hidden>
+            <i class="fa fa-download" aria-hidden="true"></i> Install App
+          </button>
+        </div>
+        <div class="install-fallback" id="installFallback" hidden>
+          <strong>Install Career Pakistan on your phone:</strong>
+          <ul>
+            <li><b>Android Chrome:</b> tap the three-dot menu, then <b>Install app</b> or <b>Add to Home screen</b>.</li>
+            <li><b>Samsung Internet:</b> tap the menu icon, then <b>Add page to</b> → <b>Home screen</b>.</li>
+            <li><b>iPhone Safari:</b> tap <b>Share</b>, then <b>Add to Home Screen</b>.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -463,18 +472,19 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
           </div>
           <aside class="section-sidebar">
             <div class="sidebar-widget">
-              <div class="sidebar-title">🌍 Filter by Type</div>
+              <div class="sidebar-title">📌 Latest Deadlines</div>
               <ul class="sidebar-list">
-                <li><a href="scholarships-national.html">National Scholarships</a></li>
-                <li><a href="scholarships-international.html">International</a></li>
+                <li><a href="scholarships.html?sort=deadline">Latest scholarship deadlines</a></li>
+                <li><a href="scholarships-national.html">National deadline tracker</a></li>
+                <li><a href="scholarships-international.html">International deadline tracker</a></li>
               </ul>
             </div>
             <div class="sidebar-widget">
-              <div class="sidebar-title">⏰ Deadline Alerts</div>
+              <div class="sidebar-title">⏰ Closing Soon / Fully Funded</div>
               <ul class="sidebar-list">
-                <li><a href="scholarships-national.html">National deadlines</a></li>
-                <li><a href="scholarships-international.html">International deadlines</a></li>
-                <li><a href="scholarships.html">Latest scholarship openings</a></li>
+                <li><a href="scholarships.html?deadline=closing-soon">Closing soon scholarships</a></li>
+                <li><a href="scholarships.html?funding=fully-funded">Fully funded programs</a></li>
+                <li><a href="scholarships-international.html?funding=fully-funded">International fully funded awards</a></li>
               </ul>
             </div>
           </aside>
@@ -501,18 +511,19 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
           </div>
           <aside class="section-sidebar">
             <div class="sidebar-widget">
-              <div class="sidebar-title">🏢 Job Type</div>
+              <div class="sidebar-title">🏛️ Government Deadlines</div>
               <ul class="sidebar-list">
-                <li><a href="jobs-government.html">Government Jobs</a></li>
-                <li><a href="jobs-private.html">Private Sector</a></li>
+                <li><a href="jobs-government.html?sort=deadline">Government jobs by deadline</a></li>
+                <li><a href="jobs-government.html?deadline=closing-soon">Govt openings closing soon</a></li>
+                <li><a href="jobs-government.html">Latest government alerts</a></li>
               </ul>
             </div>
             <div class="sidebar-widget">
-              <div class="sidebar-title">⏳ Deadline Watch</div>
+              <div class="sidebar-title">⚡ Private Deadlines / Urgent Hiring</div>
               <ul class="sidebar-list">
-                <li><a href="jobs-government.html">Govt openings closing soon</a></li>
-                <li><a href="jobs-private.html">Private roles updated</a></li>
-                <li><a href="jobs.html">Latest job alerts</a></li>
+                <li><a href="jobs-private.html?sort=deadline">Private jobs by deadline</a></li>
+                <li><a href="jobs.html?tag=urgent">Urgent hiring alerts</a></li>
+                <li><a href="jobs-private.html">Latest private roles</a></li>
               </ul>
             </div>
           </aside>
@@ -539,18 +550,19 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
           </div>
           <aside class="section-sidebar">
             <div class="sidebar-widget">
-              <div class="sidebar-title">🎯 Duration</div>
+              <div class="sidebar-title">📅 Internship Deadlines</div>
               <ul class="sidebar-list">
-                <li><a href="internships.html?duration=summer">Summer Internships</a></li>
-                <li><a href="internships.html?duration=full-time">Full-time Programs</a></li>
+                <li><a href="internships.html?sort=deadline">Internships by deadline</a></li>
+                <li><a href="internships.html?deadline=closing-soon">Closing soon internships</a></li>
+                <li><a href="internships.html?duration=summer">Summer internship dates</a></li>
               </ul>
             </div>
             <div class="sidebar-widget">
-              <div class="sidebar-title">📅 Latest Deadlines</div>
+              <div class="sidebar-title">🌐 Remote Internships</div>
               <ul class="sidebar-list">
-                <li><a href="internships.html">Internships closing soon</a></li>
-                <li><a href="internships.html?duration=summer">Apply for summer programs</a></li>
-                <li><a href="internships.html?duration=full-time">Full-time deadline updates</a></li>
+                <li><a href="internships.html?location=remote">Remote internships</a></li>
+                <li><a href="internships.html?type=paid">Paid remote opportunities</a></li>
+                <li><a href="internships.html?duration=full-time">Full-time internship programs</a></li>
               </ul>
             </div>
           </aside>
@@ -577,19 +589,19 @@ body.dark .sw-pill:hover{background:rgba(45,212,191,.1);border-color:#2dd4bf;col
           </div>
           <aside class="section-sidebar">
             <div class="sidebar-widget">
-              <div class="sidebar-title">📋 Popular Exams</div>
+              <div class="sidebar-title">🗓️ Upcoming Exam Dates</div>
               <ul class="sidebar-list">
-                <li><a href="exams-mdcat.html">MDCAT</a></li>
-                <li><a href="exams-css.html">CSS</a></li>
-                <li><a href="exams-ppsc.html">PPSC</a></li>
+                <li><a href="exams.html?sort=test-date">All upcoming exam dates</a></li>
+                <li><a href="exams-mdcat.html">MDCAT schedule</a></li>
+                <li><a href="exams-css.html">CSS timeline</a></li>
               </ul>
             </div>
             <div class="sidebar-widget">
-              <div class="sidebar-title">📍 Exam Dates</div>
+              <div class="sidebar-title">📝 Registration Deadlines</div>
               <ul class="sidebar-list">
-                <li><a href="exams-mdcat.html">MDCAT schedule</a></li>
-                <li><a href="exams-css.html">CSS timeline</a></li>
-                <li><a href="exams-ppsc.html">PPSC dates</a></li>
+                <li><a href="exams.html?sort=registration-deadline">Registration deadlines</a></li>
+                <li><a href="exams-ppsc.html">PPSC registration dates</a></li>
+                <li><a href="exams.html?deadline=closing-soon">Closing soon registrations</a></li>
               </ul>
             </div>
           </aside>
