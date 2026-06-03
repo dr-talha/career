@@ -1,7 +1,7 @@
 const BLOG_PROXY_URL = '/api/sheets?sheet=Blogs';
 const BLOG_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRciVbiyyI9Kk7LS99tAB3fAYMmMebHCAAi4WdpzKwPLKh0xb57GHRr99sN1audsiOqP2Ix_kx3Ocmo/pub?output=csv';
-const FALLBACK_IMAGE = 'banner.png';
-const TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+const FALLBACK_IMAGE = 'banner.webp';
+const BLOG_TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 const BLOG_CACHE_KEY = 'careerpk_blog_cache';
 const BLOG_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
@@ -103,7 +103,7 @@ function imageWithFallback(src = '', alt = 'Image') {
   const safeSrc = optimizeImageUrl(src, 720);
   const fallbackSrc = FALLBACK_IMAGE;
   // Use proper lazy loading with direct src instead of data-src pattern
-  return `<img loading="lazy" decoding="async" fetchpriority="low" width="720" height="420" src="${TRANSPARENT_PLACEHOLDER}" data-src="${safeSrc || fallbackSrc}" alt="${safeText(alt)}" class="lazy-load-blog-img" onerror="this.onerror=null;this.src='${fallbackSrc}';">`;
+  return `<img loading="lazy" decoding="async" fetchpriority="low" width="720" height="420" src="${BLOG_TRANSPARENT_PLACEHOLDER}" data-src="${safeSrc || fallbackSrc}" alt="${safeText(alt)}" class="lazy-load-blog-img" onerror="this.onerror=null;this.src='${fallbackSrc}';">`;
 }
 
 function sanitizeRichText(raw = '') {
@@ -266,18 +266,18 @@ function initBlogListPage() {
         const img = entry.target;
         img.src = img.dataset.src;
         img.classList.add('img-loading');
-        
+
         const onLoad = () => {
           img.classList.remove('img-loading');
           img.classList.add('img-loaded');
         };
-        
+
         if (img.complete && img.naturalWidth > 0) {
           onLoad();
         } else {
           img.addEventListener('load', onLoad, { once: true });
         }
-        
+
         imageObserver.unobserve(img);
       }
     });
@@ -330,7 +330,7 @@ function initBlogListPage() {
       state.posts = posts;
       // Store globally for navigation context
       window.GLOBAL_BLOG_POSTS = posts;
-      
+
       const categoryEl = document.getElementById('categoryFilter');
       const categories = [...new Set(posts.map((p) => (p.category || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b));
       categoryEl.innerHTML = '<option value="">All Categories</option>';
@@ -396,10 +396,10 @@ function initBlogPostPage() {
       postImageEl.decoding = 'async';
       const pictureSource = postImageEl.closest('picture')?.querySelector('source');
       if (pictureSource) pictureSource.srcset = postImageSrc;
-      
+
       const contentHtml = sanitizeRichText(post.description || post.short_description || 'No content available.') || '<p>No content available.</p>';
       setSafeHtml(document.getElementById('postContent'), contentHtml);
-      
+
       const actions = document.getElementById('postActions');
       actions.innerHTML = '';
       const pdfUrl = normalizeActionLink(post.pdf_link);
@@ -438,7 +438,7 @@ function initBlogPostPage() {
         </div>
       `;
       document.getElementById('postContent').insertAdjacentHTML('afterend', navHtml);
-      
+
       const related = posts.filter((p) => p.id !== post.id && (p.category === post.category || p.tagsArray.some((tag) => post.tagsArray.includes(tag))));
       renderSidebarPosts('relatedPosts', 'relatedPostsToggle', related);
       renderSidebarPosts('latestPosts', 'latestPostsToggle', posts);
