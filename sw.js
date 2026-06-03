@@ -1,4 +1,4 @@
-const CACHE_NAME = 'career-pakistan-v1';
+const CACHE_NAME = 'career-pakistan-v2';
 const CORE_ASSETS = [
   '/',
   '/index.html',
@@ -7,7 +7,8 @@ const CORE_ASSETS = [
   '/css/style.css',
   '/css/main-enhanced.css',
   '/js/app.js',
-  '/js/google-sheet-loader.js'
+  '/js/google-sheet-loader.js',
+  '/js/chatbot-loader.js'
 ];
 
 self.addEventListener('install', (event) => {
@@ -33,6 +34,21 @@ self.addEventListener('fetch', (event) => {
 
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(fetch(event.request));
+    return;
+  }
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/index.html')))
+    );
     return;
   }
 
